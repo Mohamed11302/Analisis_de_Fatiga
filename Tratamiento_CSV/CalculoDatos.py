@@ -2,10 +2,10 @@ import math
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from Variables_Globales import *
+import Variables_Globales
 
 
-############################ FATIGA VELOCIDAD ######################################
+############################ DATOS VELOCIDAD ######################################
 def calcular_magnitud(velocidad_x: float, velocidad_y: float, velocidad_z: float) -> float:
     magnitud = round(math.sqrt(velocidad_x**2 + velocidad_y**2 + velocidad_z**2), 2)
     return magnitud
@@ -16,10 +16,10 @@ def vectorizar(handvelocity_x: float, handvelocity_y:float, handvelocity_z:float
         vector.append(calcular_magnitud(handvelocity_x.values[i],handvelocity_y.values[i],handvelocity_z.values[i]))
     return vector
 
-def VelocidadMediaPorRepeticion(df:pd.core.frame.DataFrame, repeticion: int):
-    hand_velocity_x = (df[df[NUMREPETICION] == repeticion][HANDVELOCITY_X]).values
-    hand_velocity_y = (df[df[NUMREPETICION] == repeticion][HANDVELOCITY_Y]).values
-    hand_velocity_z = (df[df[NUMREPETICION] == repeticion][HANDVELOCITY_Z]).values
+def velocidad_media_por_repeticion(df:pd.core.frame.DataFrame, repeticion: int):
+    hand_velocity_x = (df[df[Variables_Globales.NUMREPETICION] == repeticion][Variables_Globales.HANDVELOCITY_X]).values
+    hand_velocity_y = (df[df[Variables_Globales.NUMREPETICION] == repeticion][Variables_Globales.HANDVELOCITY_Y]).values
+    hand_velocity_z = (df[df[Variables_Globales.NUMREPETICION] == repeticion][Variables_Globales.HANDVELOCITY_Z]).values
     speed = []
     for i in range(0, len(hand_velocity_x)):
         speed.append(calcular_magnitud(hand_velocity_x[i], hand_velocity_y[i], hand_velocity_z[i]))
@@ -27,112 +27,117 @@ def VelocidadMediaPorRepeticion(df:pd.core.frame.DataFrame, repeticion: int):
     return average_speed
 
 
-def Datos_VelocidadPR(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
-    num_repeticiones = df[NUMREPETICION].max()
+def datos_velocidad_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
     velocidad = []
     for i in range(inicio_rep, final_rep):
-        velocidad.append(VelocidadMediaPorRepeticion(df, i))
-    #plt.plot(velocidad)
-    #plt.title("Velocidad Media Por Repeticion")
-    #plt.yticks((0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
-    #plt.show()
+        velocidad.append(velocidad_media_por_repeticion(df, i))
     return velocidad
 
-############################ FATIGA TIEMPO ######################################
-def Datos_TiempoPR(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
-    num_repeticiones = df[NUMREPETICION].max()
+############################ DATOS TIEMPO ######################################
+def datos_tiempo_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
     tiempo_por_repeticion = []
     for i in range(inicio_rep, final_rep):
-        time = (df[df[NUMREPETICION] == i][TIME]).values
+        time = (df[df[Variables_Globales.NUMREPETICION] == i][Variables_Globales.TIME]).values
         tiempo_por_repeticion.append(max(time)-min(time))
     return tiempo_por_repeticion
-    '''
-    plt.plot(tiempo_por_repeticion)
-    maximo = max(tiempo_por_repeticion)
-    minimo = min(tiempo_por_repeticion)
-    print(maximo)
-    print(minimo)
-    eje_y = []
-    i = minimo
-    while i<maximo:
-        eje_y.append(i)
-        i +=0.3
-    plt.yticks(eje_y)
-    plt.title("Tiempo por Repeticion")
-    plt.show()
-    '''
 
+############################ DATOS STRENGTH ######################################
 
-############################ FATIGA STRENGTH ######################################
+def tipo_agarre(df:pd.core.frame.DataFrame)->[str]:
+    tipos_agarre = []
+    if df[Variables_Globales.ISPINCHGRABBING].any():
+        tipos_agarre.append(Variables_Globales.ISPINCHGRABBING)
+    if df[Variables_Globales.ISPALMGRABBING].any():
+        tipos_agarre.append(Variables_Globales.ISPALMGRABBING)
+    if df[Variables_Globales.ISAUTOGRIPGRABBING].any():
+        tipos_agarre.append(Variables_Globales.ISAUTOGRIPGRABBING)
+    return tipos_agarre
 
-def Comprobar_Tipo_Agarre(df:pd.core.frame.DataFrame)->[str]:
-    Tipos_Agarre = []
-    if df[ISPINCHGRABBING].any():
-        Tipos_Agarre.append(ISPINCHGRABBING)
-    if df[ISPALMGRABBING].any():
-        Tipos_Agarre.append(ISPALMGRABBING)
-    if df[ISAUTOGRIPGRABBING].any():
-        Tipos_Agarre.append(ISAUTOGRIPGRABBING)
-    return Tipos_Agarre
-
-def Variables_A_Considerar(tipo_agarre):
+def metricas_de_agarre(tipo_agarre):
     variables_a_considerar = []
-    if tipo_agarre==ISPINCHGRABBING:
+    if tipo_agarre==Variables_Globales.ISPINCHGRABBING:
         variables_a_considerar = [
-            STRENGTHTHUMBINDEX,
-            STRENGTHTHUMB_MIDDLE,
-            STRENGTHTHUMB_RING,
-            STRENGTHTHUMB_PINKY,
+            Variables_Globales.STRENGTHTHUMBINDEX,
+            Variables_Globales.STRENGTHTHUMB_MIDDLE,
+            Variables_Globales.STRENGTHTHUMB_RING,
+            Variables_Globales.STRENGTHTHUMB_PINKY,
         ]
-    elif tipo_agarre == ISPALMGRABBING:
+    elif tipo_agarre == Variables_Globales.ISPALMGRABBING:
         variables_a_considerar = [
-            STRENGTHPALM_INDEX,
-            STRENGTHPALM_MIDDLE,
-            STRENGTHPALM_RING,
-            STRENGTHPALM_PINKY
+            Variables_Globales.STRENGTHPALM_INDEX,
+            Variables_Globales.STRENGTHPALM_MIDDLE,
+            Variables_Globales.STRENGTHPALM_RING,
+            Variables_Globales.STRENGTHPALM_PINKY
         ]
     return variables_a_considerar
 
-def Fuerza_De_Agarre(df:pd.core.frame.DataFrame, tipo_agarre, inicio_rep:int, final_rep:int):
+def fuerza_de_agarre(df:pd.core.frame.DataFrame, tipo_agarre, inicio_rep:int, final_rep:int):
     #  Criterio: Se toman los valores mayores a 0 y se calcula su media
-    num_repeticiones = df[NUMREPETICION].max()
-    Fuerza_De_Agarre = []
-    variables_a_considerar = Variables_A_Considerar(tipo_agarre)
+    fuerza_de_agarre = []
+    variables_a_considerar = metricas_de_agarre(tipo_agarre)
     for i in range(inicio_rep, final_rep):
         fuerza_dedo = []
         for j in variables_a_considerar:
-            fuerza_dedo.append((df[(df[NUMREPETICION] == i) & (df[j] > 0)][j]).values)
+            fuerza_dedo.append((df[(df[Variables_Globales.NUMREPETICION] == i) & (df[j] > 0)][j]).values)
         fuerza_dedo = np.concatenate(fuerza_dedo)
         if (len(fuerza_dedo)>0):
-            Fuerza_De_Agarre.append(sum(fuerza_dedo)/len(fuerza_dedo))
+            fuerza_de_agarre.append(sum(fuerza_dedo)/len(fuerza_dedo))
 
         fuerza_dedo = []
-    return Fuerza_De_Agarre
+    return fuerza_de_agarre
 
-def Datos_StrengthPR(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
-    #Tipos_Agarre = Comprobar_Tipo_Agarre(df)
-    Tipos_Agarre = [ISPINCHGRABBING]
-    Fatiga_Por_Repeticion = []
-    if len(Tipos_Agarre) == 2:
-        Fatiga1 = Fuerza_De_Agarre(df, Tipos_Agarre[0], inicio_rep, final_rep)
-        Fatiga2 = Fuerza_De_Agarre(df, Tipos_Agarre[1], inicio_rep, final_rep)
-        print(Fatiga1)
+def datos_fuerza_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
+    tipos_agarre = [Variables_Globales.ISPINCHGRABBING]
+    fatiga_por_repeticion = []
+    if len(tipos_agarre) == 2:
+        fatiga_1 = fuerza_de_agarre(df, tipos_agarre[0], inicio_rep, final_rep)
+        fatiga_2 = fuerza_de_agarre(df, tipos_agarre[1], inicio_rep, final_rep)
+        print(fatiga_1)
         print("---")
-        print(Fatiga2)
+        print(fatiga_2)
         ##COMPROBAR ESTO
     else:
-        Fatiga_Por_Repeticion.append(Fuerza_De_Agarre(df, Tipos_Agarre[0], inicio_rep, final_rep))
-        Fatiga_Por_Repeticion = np.concatenate(Fatiga_Por_Repeticion)
-    #plt.plot(Fatiga_Por_Repeticion)
+        fatiga_por_repeticion.append(fuerza_de_agarre(df, tipos_agarre[0], inicio_rep, final_rep))
+        fatiga_por_repeticion = np.concatenate(fatiga_por_repeticion)
     #plt.show()
-    return Fatiga_Por_Repeticion.tolist()
+    return fatiga_por_repeticion.tolist()
 
 
-############################ FATIGA WRISTTWIST ######################################
+############################ DATOS WRISTTWIST ######################################
 
-def Datos_WristTwistPR(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
-    WristTwist = []
+def datos_flexion_muneca_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
+    flexion_muneca = []
     for i in range(inicio_rep, final_rep):
-        twist = (df[df[NUMREPETICION] == i][WRISTTWIST]).values
-        WristTwist.append(round(sum(twist)/len(twist), 3))
-    return WristTwist
+        twist = (df[df[Variables_Globales.NUMREPETICION] == i][Variables_Globales.WRISTTWIST]).values
+        flexion_muneca.append(round(sum(twist)/len(twist), 3))
+    return flexion_muneca
+
+
+############################ DATOS CABEZA ######################################
+def datos_posicion_cabeza_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> dict:
+    head_position = {
+        Variables_Globales.MAX_HP_X: [],
+        Variables_Globales.MIN_HP_X: [],
+        Variables_Globales.MAX_HP_Y: [],
+        Variables_Globales.MIN_HP_Y: [],
+        Variables_Globales.MAX_HP_Z: [],
+        Variables_Globales.MIN_HP_Z: []
+    }
+    for i in range(inicio_rep, final_rep):
+        head_position[Variables_Globales.MAX_HP_X].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_X].max())
+        head_position[Variables_Globales.MIN_HP_X].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_X].min())
+
+        head_position[Variables_Globales.MAX_HP_Y].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Y].max())
+        head_position[Variables_Globales.MIN_HP_Y].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Y].min())
+
+        head_position[Variables_Globales.MAX_HP_Z].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Z].max())
+        head_position[Variables_Globales.MIN_HP_Z].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Z].min())
+    
+    return head_position
+
+def media_datos_posicion_cabeza(posicion_cabeza: dict):
+    array = [Variables_Globales.MAX_HP_X, Variables_Globales.MIN_HP_X, Variables_Globales.MAX_HP_Y, Variables_Globales.MIN_HP_Y, Variables_Globales.MAX_HP_Z, Variables_Globales.MIN_HP_Z]
+
+    for i in array:
+        posicion_cabeza[i] = round(sum(posicion_cabeza[i])/len(posicion_cabeza[i]), 3)
+    return posicion_cabeza

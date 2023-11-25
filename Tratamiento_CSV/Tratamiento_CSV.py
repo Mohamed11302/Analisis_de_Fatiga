@@ -1,32 +1,31 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from Variables_Globales import *
-from CalculoDatos import *
-from CalculoFatigas import *
-import numpy as np
-def SustituirComas(df:pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
+import Variables_Globales
+import CalculoDatos
+import CalculoFatigas
+def sustituir_comas(df:pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
     columnas_a_seleccionar = df.select_dtypes(exclude=['int', 'bool']).columns
-    df[columnas_a_seleccionar] = df[columnas_a_seleccionar].map(lambda x: float(str(x).replace(',', '.')) if pd.notnull(x) else x)
+    df[columnas_a_seleccionar] = df[columnas_a_seleccionar].applymap(lambda x: float(str(x).replace(',', '.')) if pd.notnull(x) else x)
     return df
 
 def leercsv(archivo_csv: str) -> pd.core.frame.DataFrame:
     df = pd.read_csv(archivo_csv, encoding='UTF-8', sep=';', index_col=False)
-    df = SustituirComas(df)
+    df = sustituir_comas(df)
     return df
 
 
-def Dividir_Repeticiones(df: pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
+def dividir_en_repeticiones(df: pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
     agarrando_objeto = False
     num_repeticion = 1
     columna_repeticion = []
     for i in range(0, len(df)):
         columna_repeticion.append(num_repeticion)
-        if (df.at[i, ISPINCHGRABBING] == True) and agarrando_objeto == False:
+        if (df.at[i, Variables_Globales.ISPINCHGRABBING] == True) and agarrando_objeto == False:
             num_repeticion += 1
             agarrando_objeto = True
-        elif (df.at[i, ISPINCHGRABBING] == False) and agarrando_objeto == True:
+        elif (df.at[i, Variables_Globales.ISPINCHGRABBING] == False) and agarrando_objeto == True:
             agarrando_objeto = False
-    df[NUMREPETICION] = columna_repeticion
+    df[Variables_Globales.NUMREPETICION] = columna_repeticion
     return df
 
 def representacion_por_repeticiones(df:pd.core.frame.DataFrame):
@@ -34,83 +33,91 @@ def representacion_por_repeticiones(df:pd.core.frame.DataFrame):
     repeticion = 0
     ejes_verticales.append(0)
     for i in range(0, len(df)):
-        if df.at[i, NUMREPETICION]> repeticion:
+        if df.at[i, Variables_Globales.NUMREPETICION]> repeticion:
             repeticion+=1
             ejes_verticales.append(i)
     print(ejes_verticales)
     
     
-    vector = vectorizar(df[HANDPOSITION_X],df[HANDPOSITION_Y], df[HANDPOSITION_Z])
+    vector = CalculoDatos.vectorizar(df[Variables_Globales.HANDPOSITION_X],df[Variables_Globales.HANDPOSITION_Y], df[Variables_Globales.HANDPOSITION_Z])
     for line in ejes_verticales:
         plt.axvline(x=line, color='k', linestyle='--', label=f'X = {line:.2f}')
     
     plt.plot(vector) 
-    #plt.xlabel('X')
-    #plt.ylabel('Y')
     plt.title('Division por Repeticiones')
     plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
     plt.grid()
     plt.show()
 
-def ObtenerDatos_Paciente(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
-    fatiga_wristTwist = Datos_WristTwistPR(df, inicio_rep, final_rep)
-    fatiga_strength = Datos_StrengthPR(df, inicio_rep, final_rep)
-    fatiga_tiempo = Datos_TiempoPR(df, inicio_rep, final_rep)
-    fatiga_velocidad = Datos_VelocidadPR(df, inicio_rep, final_rep)
-    return fatiga_wristTwist, fatiga_strength, fatiga_tiempo, fatiga_velocidad
+def obtener_datos_paciente(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int) -> dict:
+    fatiga_wrist_twist = CalculoDatos.datos_flexion_muneca_por_repeticion(df, inicio_rep, final_rep)
+    fatiga_strength = CalculoDatos.datos_fuerza_por_repeticion(df, inicio_rep, final_rep)
+    fatiga_tiempo = CalculoDatos.datos_tiempo_por_repeticion(df, inicio_rep, final_rep)
+    fatiga_velocidad = CalculoDatos.datos_velocidad_por_repeticion(df, inicio_rep, final_rep)
+    fatiga_headposition = CalculoDatos.datos_posicion_cabeza_por_repeticion(df, inicio_rep, final_rep)
+    datos_paciente = {
+        Variables_Globales.FATIGA_WRIST : fatiga_wrist_twist,
+        Variables_Globales.FATIGA_STRENGTH : fatiga_strength,
+        Variables_Globales.FATIGA_TIEMPO : fatiga_tiempo,
+        Variables_Globales.FATIGA_VELOCIDAD : fatiga_velocidad,
+        Variables_Globales.FATIGA_HEADPOSITION : fatiga_headposition
+    }
+    return datos_paciente
 
-def Datos_Iniciales_Paciente(df:pd.core.frame.DataFrame, porcentaje: int)->dict:
+def datos_iniciales_paciente(df:pd.core.frame.DataFrame, porcentaje: int)->dict:
     INICIO_REPES = 1
     datos_iniciales_paciente ={}
-    num_repeticiones = df[NUMREPETICION].max()
+    num_repeticiones = df[Variables_Globales.NUMREPETICION].max()
     num_rep_iniciales = round(num_repeticiones * (porcentaje/100))
-    fatiga_wristTwist, fatiga_strength, fatiga_tiempo, fatiga_velocidad = ObtenerDatos_Paciente(df, INICIO_REPES, INICIO_REPES+num_rep_iniciales)
+    _datos_paciente = obtener_datos_paciente(df, INICIO_REPES, INICIO_REPES+num_rep_iniciales)
+    fatiga_headposition = CalculoDatos.media_datos_posicion_cabeza(_datos_paciente[Variables_Globales.FATIGA_HEADPOSITION])
+    datos_iniciales_paciente[Variables_Globales.FATIGA_WRIST] = round(sum(_datos_paciente[Variables_Globales.FATIGA_WRIST])/len(_datos_paciente[Variables_Globales.FATIGA_WRIST]), 3)
+    datos_iniciales_paciente[Variables_Globales.FATIGA_STRENGTH] = round(sum(_datos_paciente[Variables_Globales.FATIGA_STRENGTH])/len(_datos_paciente[Variables_Globales.FATIGA_STRENGTH]), 3)
+    datos_iniciales_paciente[Variables_Globales.FATIGA_TIEMPO] = round(sum(_datos_paciente[Variables_Globales.FATIGA_TIEMPO])/len(_datos_paciente[Variables_Globales.FATIGA_TIEMPO]), 3)
+    datos_iniciales_paciente[Variables_Globales.FATIGA_VELOCIDAD] = round(sum(_datos_paciente[Variables_Globales.FATIGA_VELOCIDAD])/len(_datos_paciente[Variables_Globales.FATIGA_VELOCIDAD]), 3)
+    datos_iniciales_paciente[Variables_Globales.MAX_HP_X] = fatiga_headposition[Variables_Globales.MAX_HP_X]
+    datos_iniciales_paciente[Variables_Globales.MIN_HP_X] = fatiga_headposition[Variables_Globales.MIN_HP_X]
+    datos_iniciales_paciente[Variables_Globales.MAX_HP_Y] = fatiga_headposition[Variables_Globales.MAX_HP_Y]
+    datos_iniciales_paciente[Variables_Globales.MIN_HP_Y] = fatiga_headposition[Variables_Globales.MIN_HP_Y]
+    datos_iniciales_paciente[Variables_Globales.MAX_HP_Z] = fatiga_headposition[Variables_Globales.MAX_HP_Z]
+    datos_iniciales_paciente[Variables_Globales.MIN_HP_Z] = fatiga_headposition[Variables_Globales.MIN_HP_Z]
 
-    datos_iniciales_paciente[FATIGA_WRIST] = round(sum(fatiga_wristTwist)/len(fatiga_wristTwist), 3)
-    datos_iniciales_paciente[FATIGA_STRENGTH] = round(sum(fatiga_strength)/len(fatiga_strength), 3)
-    datos_iniciales_paciente[FATIGA_TIEMPO] = round(sum(fatiga_tiempo)/len(fatiga_tiempo), 3)
-    datos_iniciales_paciente[FATIGA_VELOCIDAD] = round(sum(fatiga_velocidad)/len(fatiga_velocidad), 3)
-    print(datos_iniciales_paciente)
-    return num_rep_iniciales, num_repeticiones, datos_iniciales_paciente
+    datos_iniciales_paciente = {
+        'NUM_REP_INICIALES' : num_rep_iniciales,
+        'NUM_REP' : num_repeticiones,
+        'DATOS_INICIALES_PACIENTE' : datos_iniciales_paciente
+    }
+    return datos_iniciales_paciente
 
-def CalcularFatiga(df:pd.core.frame.DataFrame, porcentaje:int):
-    num_rep_iniciales_fatiga, num_rep_finales_fatiga, datos_iniciales_paciente = Datos_Iniciales_Paciente(df, porcentaje)
-    fatiga_wristTwist, fatiga_strength, fatiga_tiempo, fatiga_velocidad = ObtenerDatos_Paciente(df, num_rep_iniciales_fatiga, num_rep_finales_fatiga)
-    cont_fatiga = 0
-    for i in range(0, len(fatiga_tiempo)):
-        print(str(i+num_rep_iniciales_fatiga) + ": " +str(datos_iniciales_paciente[FATIGA_TIEMPO]) + "-" + str(fatiga_tiempo[i]))
-        if datos_iniciales_paciente[FATIGA_TIEMPO]<fatiga_tiempo[i]:
-            cont_fatiga += 1
-        if datos_iniciales_paciente[FATIGA_VELOCIDAD]>fatiga_velocidad[i]:
-            cont_fatiga += 1
-        if datos_iniciales_paciente[FATIGA_STRENGTH]>fatiga_strength[i]:
-            cont_fatiga += 1
-        if cont_fatiga>1:
-            print("FATIGA EN " + str(i+num_rep_iniciales_fatiga))
-            pass
-        cont_fatiga = 0
-    
-def Prueba(df:pd.core.frame.DataFrame, porcentaje:int):
-    num_rep_iniciales_fatiga, num_rep_finales_fatiga, datos_iniciales_paciente = Datos_Iniciales_Paciente(df, porcentaje)
-    fatiga_wristTwist, fatiga_strength, fatiga_tiempo, fatiga_velocidad = ObtenerDatos_Paciente(df, num_rep_iniciales_fatiga, num_rep_finales_fatiga)
-    cont_fatiga = 0
+def ponderacion_owa_fatiga(fatigas) -> float:
+    CalculoFatigas.reweighting(fatigas)
+    fatiga = fatigas[Variables_Globales.FATIGA_TIEMPO] * Variables_Globales.OWA_TIEMPO + fatigas[Variables_Globales.FATIGA_STRENGTH] * Variables_Globales.OWA_STRENGTH + fatigas[Variables_Globales.FATIGA_VELOCIDAD] * Variables_Globales.OWA_VELOCIDAD + fatigas[Variables_Globales.FATIGA_HEADPOSITION] * Variables_Globales.OWA_HEADPOSITION
+    return fatiga
+
+def indice_fatiga(df:pd.core.frame.DataFrame, porcentaje:int):
+    _datos_iniciales_paciente = datos_iniciales_paciente(df, porcentaje)
+    datos_paciente = obtener_datos_paciente(df, 1, _datos_iniciales_paciente['NUM_REP'])
     fatiga = []
-    for i in range(0, len(fatiga_tiempo)):
-        f_tiempo = Fatiga_Calculo(datos_iniciales_paciente[FATIGA_TIEMPO], fatiga_tiempo[i], FATIGA_TIEMPO)
-        f_strength = Fatiga_Calculo(datos_iniciales_paciente[FATIGA_STRENGTH], fatiga_strength[i], FATIGA_STRENGTH)
-        f_velocidad = Fatiga_Calculo(datos_iniciales_paciente[FATIGA_VELOCIDAD], fatiga_velocidad[i], FATIGA_VELOCIDAD)
-        f = f_tiempo * 0.3 + f_strength * 0.3 + f_velocidad * 0.3
-        fatiga.append(f)
+    for i in range(0, len(datos_paciente[Variables_Globales.FATIGA_TIEMPO])):
+        fatigas = {
+            Variables_Globales.FATIGA_TIEMPO : CalculoFatigas.fatiga_calculo(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Variables_Globales.FATIGA_TIEMPO], datos_paciente[Variables_Globales.FATIGA_TIEMPO][i], Variables_Globales.FATIGA_TIEMPO),
+            Variables_Globales.FATIGA_STRENGTH : CalculoFatigas.fatiga_calculo(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Variables_Globales.FATIGA_STRENGTH], datos_paciente[Variables_Globales.FATIGA_STRENGTH][i], Variables_Globales.FATIGA_STRENGTH),
+            Variables_Globales.FATIGA_VELOCIDAD : CalculoFatigas.fatiga_calculo(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Variables_Globales.FATIGA_VELOCIDAD], datos_paciente[Variables_Globales.FATIGA_VELOCIDAD][i], Variables_Globales.FATIGA_VELOCIDAD),
+            Variables_Globales.FATIGA_HEADPOSITION : CalculoFatigas.fatiga_calculo_headposition(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'], datos_paciente[Variables_Globales.FATIGA_HEADPOSITION], i, df)
+        }
+        f = ponderacion_owa_fatiga(fatigas)
+        fatiga.append(round(f, 3))
     
     print(fatiga)
     plt.plot(fatiga)
+    plt.title('FATIGA CON '+str(porcentaje)+str('%'))
     plt.show()
 
 def main():
     archivo = 'OculusTracking_20230928_135634.csv'
     df = leercsv(archivo)
-    df = Dividir_Repeticiones(df)
-    Prueba(df, 30)
+    df = dividir_en_repeticiones(df)
+    indice_fatiga(df, 30)
 
 if __name__ == '__main__':
     main()

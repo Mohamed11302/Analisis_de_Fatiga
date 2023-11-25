@@ -1,5 +1,5 @@
 import bpy
-
+##PRUEBA
 # Configurar la escena
 bpy.context.scene.frame_start = 1
 bpy.context.scene.frame_end = 250
