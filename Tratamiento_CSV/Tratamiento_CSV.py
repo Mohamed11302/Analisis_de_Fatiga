@@ -5,7 +5,8 @@ import CalculoDatos
 import CalculoFatigas
 def sustituir_comas(df:pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
     columnas_a_seleccionar = df.select_dtypes(exclude=['int', 'bool']).columns
-    df[columnas_a_seleccionar] = df[columnas_a_seleccionar].applymap(lambda x: float(str(x).replace(',', '.')) if pd.notnull(x) else x)
+    df[columnas_a_seleccionar] = df[columnas_a_seleccionar].applymap(lambda x:
+                                        float(str(x).replace(',', '.')) if pd.notnull(x) else x)
     return df
 
 def leercsv(archivo_csv: str) -> pd.core.frame.DataFrame:
@@ -37,13 +38,15 @@ def representacion_por_repeticiones(df:pd.core.frame.DataFrame):
             repeticion+=1
             ejes_verticales.append(i)
     print(ejes_verticales)
-    
-    
-    vector = CalculoDatos.vectorizar(df[Variables_Globales.HANDPOSITION_X],df[Variables_Globales.HANDPOSITION_Y], df[Variables_Globales.HANDPOSITION_Z])
+
+
+    vector = CalculoDatos.vectorizar(df[Variables_Globales.HANDPOSITION_X],
+                                     df[Variables_Globales.HANDPOSITION_Y],
+                                     df[Variables_Globales.HANDPOSITION_Z])
     for line in ejes_verticales:
         plt.axvline(x=line, color='k', linestyle='--', label=f'X = {line:.2f}')
-    
-    plt.plot(vector) 
+
+    plt.plot(vector)
     plt.title('Division por Repeticiones')
     plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
     plt.grid()
