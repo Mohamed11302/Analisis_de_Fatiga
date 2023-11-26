@@ -5,6 +5,51 @@ import matplotlib.pyplot as plt
 import Variables_Globales
 
 
+def obtener_datos_paciente(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int) -> dict:
+    datos_paciente = {
+        Variables_Globales.FATIGA_WRIST : datos_flexion_muneca_por_repeticion(df, inicio_rep, final_rep),
+        Variables_Globales.FATIGA_STRENGTH : datos_fuerza_por_repeticion(df, inicio_rep, final_rep),
+        Variables_Globales.FATIGA_TIEMPO : datos_tiempo_por_repeticion(df, inicio_rep, final_rep),
+        Variables_Globales.FATIGA_VELOCIDAD : datos_velocidad_por_repeticion(df, inicio_rep, final_rep),
+        Variables_Globales.FATIGA_HEADPOSITION : datos_posicion_cabeza_por_repeticion(df, inicio_rep, final_rep),
+        Variables_Globales.FATIGA_CURVATURA_MANO : datos_curvatura(df, inicio_rep, final_rep)
+    }
+    return datos_paciente
+
+def datos_iniciales_paciente(df:pd.core.frame.DataFrame, porcentaje: int)->dict:
+    INICIO_REPES = 2
+    datos_de_fatiga ={}
+    num_repeticiones = df[Variables_Globales.NUMREPETICION].max()
+    num_rep_iniciales = round(num_repeticiones * (porcentaje/100))
+    _datos_paciente = obtener_datos_paciente(df, INICIO_REPES, INICIO_REPES+num_rep_iniciales)
+    fatiga_headposition = media_datos(_datos_paciente[Variables_Globales.FATIGA_HEADPOSITION])
+    fatiga_curvatura_mano = media_datos(_datos_paciente[Variables_Globales.FATIGA_CURVATURA_MANO])
+
+    for columna in [Variables_Globales.FATIGA_WRIST, Variables_Globales.FATIGA_STRENGTH, Variables_Globales.FATIGA_TIEMPO, Variables_Globales.FATIGA_VELOCIDAD]:
+        datos_de_fatiga[columna] = round(sum(_datos_paciente[columna])/len(_datos_paciente[columna]), 3)
+    
+    datos_fatiga_posicion_cabeza = {}
+    for columna in [Variables_Globales.HEADPOSITION_MAX_X, Variables_Globales.HEADPOSITION_MIN_X,
+                    Variables_Globales.HEADPOSITION_MAX_Y, Variables_Globales.HEADPOSITION_MIN_Y,
+                    Variables_Globales.HEADPOSITION_MAX_Z, Variables_Globales.HEADPOSITION_MIN_Z]:
+        datos_fatiga_posicion_cabeza[columna] = fatiga_headposition[columna]
+
+    datos_fatiga_curvatura_mano = {}
+    for columna in [Variables_Globales.CURVATURA_PUNTO_MAS_ALTO_Y_IDA, Variables_Globales.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA,
+                    Variables_Globales.CURVATURA_SOLTAR_BLOQUE_X, Variables_Globales.CURVATURA_SOLTAR_BLOQUE_Y,
+                    Variables_Globales.CURVATURA_TOMAR_BLOQUE_Y]:
+        datos_fatiga_curvatura_mano[columna] = fatiga_curvatura_mano[columna]
+
+    datos_de_fatiga[Variables_Globales.FATIGA_HEADPOSITION] = datos_fatiga_posicion_cabeza
+    datos_de_fatiga[Variables_Globales.FATIGA_CURVATURA_MANO] = datos_fatiga_curvatura_mano
+    datos_iniciales_paciente = {
+        'NUM_REP_INICIALES' : num_rep_iniciales,
+        'NUM_REP' : num_repeticiones,
+        'DATOS_INICIALES_PACIENTE' : datos_de_fatiga
+    }
+    return datos_iniciales_paciente
+
+
 ############################ DATOS VELOCIDAD ######################################
 def calcular_magnitud(velocidad_x: float, velocidad_y: float, velocidad_z: float) -> float:
     magnitud = round(math.sqrt(velocidad_x**2 + velocidad_y**2 + velocidad_z**2), 2)
@@ -116,28 +161,51 @@ def datos_flexion_muneca_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:i
 ############################ DATOS CABEZA ######################################
 def datos_posicion_cabeza_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> dict:
     head_position = {
-        Variables_Globales.MAX_HP_X: [],
-        Variables_Globales.MIN_HP_X: [],
-        Variables_Globales.MAX_HP_Y: [],
-        Variables_Globales.MIN_HP_Y: [],
-        Variables_Globales.MAX_HP_Z: [],
-        Variables_Globales.MIN_HP_Z: []
+        Variables_Globales.HEADPOSITION_MAX_X: [],
+        Variables_Globales.HEADPOSITION_MIN_X: [],
+        Variables_Globales.HEADPOSITION_MAX_Y: [],
+        Variables_Globales.HEADPOSITION_MIN_Y: [],
+        Variables_Globales.HEADPOSITION_MAX_Z: [],
+        Variables_Globales.HEADPOSITION_MIN_Z: []
     }
     for i in range(inicio_rep, final_rep):
-        head_position[Variables_Globales.MAX_HP_X].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_X].max())
-        head_position[Variables_Globales.MIN_HP_X].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_X].min())
+        head_position[Variables_Globales.HEADPOSITION_MAX_X].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_X].max())
+        head_position[Variables_Globales.HEADPOSITION_MIN_X].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_X].min())
 
-        head_position[Variables_Globales.MAX_HP_Y].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Y].max())
-        head_position[Variables_Globales.MIN_HP_Y].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Y].min())
+        head_position[Variables_Globales.HEADPOSITION_MAX_Y].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Y].max())
+        head_position[Variables_Globales.HEADPOSITION_MIN_Y].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Y].min())
 
-        head_position[Variables_Globales.MAX_HP_Z].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Z].max())
-        head_position[Variables_Globales.MIN_HP_Z].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Z].min())
+        head_position[Variables_Globales.HEADPOSITION_MAX_Z].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Z].max())
+        head_position[Variables_Globales.HEADPOSITION_MIN_Z].append(df[df[Variables_Globales.NUMREPETICION]==i][Variables_Globales.HEADPOSITION_Z].min())
     
     return head_position
 
-def media_datos_posicion_cabeza(posicion_cabeza: dict):
-    array = [Variables_Globales.MAX_HP_X, Variables_Globales.MIN_HP_X, Variables_Globales.MAX_HP_Y, Variables_Globales.MIN_HP_Y, Variables_Globales.MAX_HP_Z, Variables_Globales.MIN_HP_Z]
+def media_datos(diccionario: dict):
+    nuevo_diccionario = {}
+    for clave, lista in diccionario.items():
+        nuevo_diccionario[clave] = sum(lista) / len(lista)
+    return nuevo_diccionario
 
-    for i in array:
-        posicion_cabeza[i] = round(sum(posicion_cabeza[i])/len(posicion_cabeza[i]), 3)
-    return posicion_cabeza
+
+############################ DATOS CURVATURA ######################################
+def datos_curvatura(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> dict:
+    curvatura = {
+        Variables_Globales.CURVATURA_TOMAR_BLOQUE_Y: [],
+        Variables_Globales.CURVATURA_PUNTO_MAS_ALTO_Y_IDA: [],
+        Variables_Globales.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA: [],
+        Variables_Globales.CURVATURA_SOLTAR_BLOQUE_Y: [],
+        Variables_Globales.CURVATURA_SOLTAR_BLOQUE_X: [],
+    }
+    for repeticion in range(inicio_rep, final_rep):
+        rep_data = df[df[Variables_Globales.NUMREPETICION] == repeticion]
+
+        datos_ida = rep_data[rep_data[Variables_Globales.ISPINCHGRABBING] == True]
+        datos_vuelta = rep_data[rep_data[Variables_Globales.ISPINCHGRABBING] == False]
+
+        curvatura[Variables_Globales.CURVATURA_TOMAR_BLOQUE_Y].append(datos_ida[Variables_Globales.HANDPOSITION_Y].iloc[0])
+        curvatura[Variables_Globales.CURVATURA_PUNTO_MAS_ALTO_Y_IDA].append(datos_ida[Variables_Globales.HANDPOSITION_Y].max())
+        curvatura[Variables_Globales.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA].append(datos_vuelta[Variables_Globales.HANDPOSITION_Y].max())
+        curvatura[Variables_Globales.CURVATURA_SOLTAR_BLOQUE_Y].append(datos_vuelta[Variables_Globales.HANDPOSITION_Y].iloc[0])
+        curvatura[Variables_Globales.CURVATURA_SOLTAR_BLOQUE_X].append(datos_vuelta[Variables_Globales.HANDPOSITION_X].iloc[0])
+
+    return curvatura
