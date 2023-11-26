@@ -130,7 +130,7 @@ def reweighting(valores_fatiga: dict):
     nuevos_pesos = {}
     suma_nuevos_pesos = 0
     for tipo_fatiga, valor_fatiga in valores_fatiga.items():
-        if valor_fatiga > FATIGA_INDICE_AGUDA:
+        if valor_fatiga > FATIGA_INDICE_GRAVE:
             for tipo,peso in pesos_fatiga.items():
                 A = 1 - peso
                 B = A - peso
