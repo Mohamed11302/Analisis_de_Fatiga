@@ -34,12 +34,12 @@ NUMREPETICION = 'NumRepeticion'
 
 
 ## FATIGAS
-FATIGA_WRIST = 'Fatiga_Wrist'
-FATIGA_STRENGTH = 'Fatiga_Strength'
-FATIGA_TIEMPO = 'Fatiga_Tiempo'
-FATIGA_VELOCIDAD = 'Fatiga_Velocidad'
-FATIGA_HEADPOSITION = 'Fatiga_HeadPosition'
-FATIGA_CURVATURA_MANO = 'Fatiga_curvatura_mano'
+FATIGA_WRIST = 'Fatiga Wrist'
+FATIGA_STRENGTH = 'Fatiga Strength'
+FATIGA_TIEMPO = 'Fatiga Tiempo'
+FATIGA_VELOCIDAD = 'Fatiga Velocidad'
+FATIGA_HEADPOSITION = 'Fatiga HeadPosition'
+FATIGA_CURVATURA_MANO = 'Fatiga Curvatura Trayectoria Mano'
 
 ### PESOS OWA
 OWA_TIEMPO = 0.05

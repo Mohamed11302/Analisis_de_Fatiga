@@ -98,7 +98,7 @@ def tipo_agarre(df:pd.core.frame.DataFrame)->[str]:
         tipos_agarre.append(Constantes.ISAUTOGRIPGRABBING)
     return tipos_agarre
 
-def metricas_de_agarre(tipo_agarre):
+""" def metricas_de_agarre(tipo_agarre):
     variables_a_considerar = []
     if tipo_agarre==Constantes.ISPINCHGRABBING:
         variables_a_considerar = [
@@ -114,12 +114,25 @@ def metricas_de_agarre(tipo_agarre):
             Constantes.STRENGTHPALM_RING,
             Constantes.STRENGTHPALM_PINKY
         ]
+    return variables_a_considerar """
+
+def metricas_de_agarre():
+    variables_a_considerar = [
+        Constantes.STRENGTHTHUMBINDEX,
+        Constantes.STRENGTHTHUMB_MIDDLE,
+        Constantes.STRENGTHTHUMB_RING,
+        Constantes.STRENGTHTHUMB_PINKY,
+        Constantes.STRENGTHPALM_INDEX,
+        Constantes.STRENGTHPALM_MIDDLE,
+        Constantes.STRENGTHPALM_RING,
+        Constantes.STRENGTHPALM_PINKY
+    ]
     return variables_a_considerar
 
-def fuerza_de_agarre(df:pd.core.frame.DataFrame, tipo_agarre, inicio_rep:int, final_rep:int):
+def fuerza_de_agarre(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
     #  Criterio: Se toman los valores mayores a 0 y se calcula su media
     fuerza_de_agarre = []
-    variables_a_considerar = metricas_de_agarre(tipo_agarre)
+    variables_a_considerar = metricas_de_agarre()
     for i in range(inicio_rep, final_rep):
         fuerza_dedo = []
         for j in variables_a_considerar:
@@ -127,23 +140,15 @@ def fuerza_de_agarre(df:pd.core.frame.DataFrame, tipo_agarre, inicio_rep:int, fi
         fuerza_dedo = np.concatenate(fuerza_dedo)
         if (len(fuerza_dedo)>0):
             fuerza_de_agarre.append(sum(fuerza_dedo)/len(fuerza_dedo))
-
+        else:
+            fuerza_de_agarre.append(0)
         fuerza_dedo = []
     return fuerza_de_agarre
 
 def datos_fuerza_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int):
-    tipos_agarre = [Constantes.ISPINCHGRABBING]
     fatiga_por_repeticion = []
-    if len(tipos_agarre) == 2:
-        fatiga_1 = fuerza_de_agarre(df, tipos_agarre[0], inicio_rep, final_rep)
-        fatiga_2 = fuerza_de_agarre(df, tipos_agarre[1], inicio_rep, final_rep)
-        print(fatiga_1)
-        print("---")
-        print(fatiga_2)
-        ##COMPROBAR ESTO
-    else:
-        fatiga_por_repeticion.append(fuerza_de_agarre(df, tipos_agarre[0], inicio_rep, final_rep))
-        fatiga_por_repeticion = np.concatenate(fatiga_por_repeticion)
+    fatiga_por_repeticion.append(fuerza_de_agarre(df, inicio_rep, final_rep))
+    fatiga_por_repeticion = np.concatenate(fatiga_por_repeticion)
     #plt.show()
     return fatiga_por_repeticion.tolist()
 

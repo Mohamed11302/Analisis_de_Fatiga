@@ -17,8 +17,45 @@ FATIGA_INDICE_GRAVE = 0.6
 
 
 
+def CalcularFatiga_PorRepeticion(preprocesado_fatiga: dict)-> [float]:
+    fatiga_por_repeticion = []
+    for repeticion, valor_de_fatiga in preprocesado_fatiga.items():
+        fatiga = ponderacion_owa(valor_de_fatiga)
+        fatiga_por_repeticion.append(round(fatiga, 3))
+    return fatiga_por_repeticion
 
-def ponderacion_owa_fatiga(fatigas) -> float:
+
+def CalcularFatiga_Serie(fatiga:[float]):
+    fatiga = quitar_porcentaje_mas_bajo(fatiga, 30)
+    return fatiga.mean()
+
+
+
+def preprocesado_indice_fatiga(df:pd.core.frame.DataFrame, porcentaje:int)->[float]:
+    _datos_iniciales_paciente = CalculoDatos.datos_iniciales_paciente(df, porcentaje)
+    datos_paciente = CalculoDatos.obtener_datos_paciente(df, 2, _datos_iniciales_paciente['NUM_REP'])
+    preprocesado_fatiga = {}
+    for repeticion in range(0, len(datos_paciente[Constantes.FATIGA_TIEMPO])):
+        preprocesado_fatiga[repeticion] = (extraer_fatigas(_datos_iniciales_paciente, datos_paciente, df, repeticion))
+        #fatiga = ponderacion_owa(fatigas)
+        #indice_fatiga.append(round(fatiga, 3))
+    return preprocesado_fatiga
+
+
+
+
+
+def extraer_fatigas(_datos_iniciales_paciente: dict, datos_paciente: dict, df: pd.core.frame.DataFrame, repeticion:int)-> dict:
+    fatigas = {
+            Constantes.FATIGA_TIEMPO : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_TIEMPO], datos_paciente[Constantes.FATIGA_TIEMPO][repeticion], Constantes.FATIGA_TIEMPO),
+            Constantes.FATIGA_STRENGTH : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_STRENGTH], datos_paciente[Constantes.FATIGA_STRENGTH][repeticion], Constantes.FATIGA_STRENGTH),
+            Constantes.FATIGA_VELOCIDAD : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_VELOCIDAD], datos_paciente[Constantes.FATIGA_VELOCIDAD][repeticion], Constantes.FATIGA_VELOCIDAD),
+            Constantes.FATIGA_HEADPOSITION : fatiga_calculo_headposition(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_HEADPOSITION], datos_paciente[Constantes.FATIGA_HEADPOSITION], repeticion, df),
+            Constantes.FATIGA_CURVATURA_MANO : fatiga_calculo_curvatura_mano(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_CURVATURA_MANO], datos_paciente[Constantes.FATIGA_CURVATURA_MANO], repeticion)
+        }
+    return fatigas
+
+def ponderacion_owa(fatigas) -> float:
     reweighting(fatigas)
     fatiga = (fatigas[Constantes.FATIGA_TIEMPO] * Constantes.OWA_TIEMPO +
               fatigas[Constantes.FATIGA_STRENGTH] * Constantes.OWA_STRENGTH +
@@ -28,21 +65,47 @@ def ponderacion_owa_fatiga(fatigas) -> float:
             )
     return fatiga
 
-def indice_fatiga(df:pd.core.frame.DataFrame, porcentaje:int)->[]:
-    _datos_iniciales_paciente = CalculoDatos.datos_iniciales_paciente(df, porcentaje)
-    datos_paciente = CalculoDatos.obtener_datos_paciente(df, 2, _datos_iniciales_paciente['NUM_REP'])
-    fatiga = []
-    for repeticion in range(0, len(datos_paciente[Constantes.FATIGA_TIEMPO])):
-        fatigas = {
-            Constantes.FATIGA_TIEMPO : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_TIEMPO], datos_paciente[Constantes.FATIGA_TIEMPO][repeticion], Constantes.FATIGA_TIEMPO),
-            Constantes.FATIGA_STRENGTH : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_STRENGTH], datos_paciente[Constantes.FATIGA_STRENGTH][repeticion], Constantes.FATIGA_STRENGTH),
-            Constantes.FATIGA_VELOCIDAD : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_VELOCIDAD], datos_paciente[Constantes.FATIGA_VELOCIDAD][repeticion], Constantes.FATIGA_VELOCIDAD),
-            Constantes.FATIGA_HEADPOSITION : fatiga_calculo_headposition(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_HEADPOSITION], datos_paciente[Constantes.FATIGA_HEADPOSITION], repeticion, df),
-            Constantes.FATIGA_CURVATURA_MANO : fatiga_calculo_curvatura_mano(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_CURVATURA_MANO], datos_paciente[Constantes.FATIGA_CURVATURA_MANO], repeticion)
-        }
-        f = ponderacion_owa_fatiga(fatigas)
-        fatiga.append(round(f, 3))
-    return fatiga
+def existe_fatiga_grave(valores_fatiga: dict)-> bool:
+    _existe_fatiga_grave = False
+    for tipo_fatiga, valor_fatiga in valores_fatiga.items():
+        if valor_fatiga > FATIGA_INDICE_GRAVE:
+            _existe_fatiga_grave = True
+    return _existe_fatiga_grave
+
+def reweighting(valores_fatiga: dict):
+    """ Reajuste de los pesos para cada métrica de fatiga si se detecta que alguna llega al valor Grave """
+    pesos_fatiga = {
+        Constantes.FATIGA_HEADPOSITION : Constantes.OWA_HEADPOSITION,
+        Constantes.FATIGA_STRENGTH : Constantes.OWA_STRENGTH,
+        Constantes.FATIGA_VELOCIDAD : Constantes.OWA_VELOCIDAD,
+        Constantes.FATIGA_TIEMPO : Constantes.OWA_TIEMPO,
+        Constantes.FATIGA_CURVATURA_MANO : Constantes.OWA_CURVATURA_MANO
+    }
+    nuevos_pesos = {}
+    suma_nuevos_pesos = 0
+    for tipo_fatiga, valor_fatiga in valores_fatiga.items():
+        if valor_fatiga > FATIGA_INDICE_GRAVE:
+            for tipo,peso in pesos_fatiga.items():
+                A = 1 - peso
+                B = A - peso
+                if B <= 0:
+                    nuevos_pesos[tipo] = valor_fatiga
+                    suma_nuevos_pesos += valor_fatiga
+                else:
+                    nuevos_pesos[tipo] = valor_fatiga + B
+                    suma_nuevos_pesos += valor_fatiga + B
+            for tipo, valor in nuevos_pesos.items():
+                nuevos_pesos[tipo] = round(valor/suma_nuevos_pesos, 2)
+            ajustar_nuevos_pesos(nuevos_pesos)
+    
+def ajustar_nuevos_pesos(nuevos_pesos: dict):
+    Constantes.OWA_HEADPOSITION = nuevos_pesos[Constantes.FATIGA_HEADPOSITION]
+    Constantes.OWA_STRENGTH = nuevos_pesos[Constantes.FATIGA_STRENGTH]
+    Constantes.OWA_TIEMPO = nuevos_pesos[Constantes.FATIGA_TIEMPO]
+    Constantes.OWA_VELOCIDAD = nuevos_pesos[Constantes.FATIGA_VELOCIDAD]
+    Constantes.OWA_CURVATURA_MANO = nuevos_pesos[Constantes.FATIGA_CURVATURA_MANO]
+
+
 
 def representar_fatiga(fatiga:[float], porcentaje:int):
     print(fatiga)
@@ -50,10 +113,6 @@ def representar_fatiga(fatiga:[float], porcentaje:int):
     plt.bar(repeticiones, fatiga)
     plt.title('FATIGA CON '+str(porcentaje)+str('%'))
     plt.show()
-
-def ValorUnicoFatiga(fatiga:[float]):
-    fatiga = quitar_porcentaje_mas_bajo(fatiga, 30)
-    print("VALOR DE FATIGA: " + str(fatiga.mean()))
 
 
 def quitar_porcentaje_mas_bajo(fatiga:[], porcentaje:int):
@@ -125,7 +184,6 @@ def fatiga_calculo_headposition(datos_iniciales_paciente:dict, fatiga_headpositi
             indice_fatiga = 0.3
         if distancia_head_hand < 0.3:
             indice_fatiga = 0.5
-        #print("DISTANCIA MINIMA: " + str(round(distancia_head_hand,2)) + " en repeticion: " + str(repeticion) + ". Fatiga: " + str(indice_fatiga))
     return indice_fatiga
 
 def distancia_euclidiana(punto1, punto2):
@@ -182,40 +240,7 @@ def fatiga_calculo_curvatura_mano(datos_iniciales_paciente:dict, fatiga_curvatur
 
     return fatiga
 
-
-def reweighting(valores_fatiga: dict):
-    pesos_fatiga = {
-        Constantes.FATIGA_HEADPOSITION : Constantes.OWA_HEADPOSITION,
-        Constantes.FATIGA_STRENGTH : Constantes.OWA_STRENGTH,
-        Constantes.FATIGA_VELOCIDAD : Constantes.OWA_VELOCIDAD,
-        Constantes.FATIGA_TIEMPO : Constantes.OWA_TIEMPO,
-        Constantes.FATIGA_CURVATURA_MANO : Constantes.OWA_CURVATURA_MANO
-    }
-    nuevos_pesos = {}
-    suma_nuevos_pesos = 0
-    for tipo_fatiga, valor_fatiga in valores_fatiga.items():
-        if valor_fatiga > FATIGA_INDICE_GRAVE:
-            for tipo,peso in pesos_fatiga.items():
-                A = 1 - peso
-                B = A - peso
-                if B <= 0:
-                    nuevos_pesos[tipo] = valor_fatiga
-                    suma_nuevos_pesos += valor_fatiga
-                else:
-                    nuevos_pesos[tipo] = valor_fatiga + B
-                    suma_nuevos_pesos += valor_fatiga + B
-            for tipo, valor in nuevos_pesos.items():
-                nuevos_pesos[tipo] = round(valor/suma_nuevos_pesos, 2)
-            Constantes.OWA_HEADPOSITION = nuevos_pesos[Constantes.FATIGA_HEADPOSITION]
-            Constantes.OWA_STRENGTH = nuevos_pesos[Constantes.FATIGA_STRENGTH]
-            Constantes.OWA_TIEMPO = nuevos_pesos[Constantes.FATIGA_TIEMPO]
-            Constantes.OWA_VELOCIDAD = nuevos_pesos[Constantes.FATIGA_VELOCIDAD]
-            Constantes.OWA_CURVATURA_MANO = nuevos_pesos[Constantes.FATIGA_CURVATURA_MANO]
-            print("NUEVOS PESOS:")
-            print(pesos_fatiga)
-
-
-def mediahistorica(df: pd.core.frame.DataFrame):
+def mediahistorica(df: pd.core.frame.DataFrame)-> dict:
     porcentaje_a_eliminar = 20
     datos = CalculoDatos.obtener_datos_paciente(df, 2, df[Constantes.NUMREPETICION].max())
     columnas_a_procesar = [
@@ -240,9 +265,6 @@ def mediahistorica(df: pd.core.frame.DataFrame):
 
     for columna in [Constantes.FATIGA_HEADPOSITION, Constantes.FATIGA_CURVATURA_MANO]:
         datos[columna] = CalculoDatos.media_datos(datos[columna])
-
-    print(datos)
-
-
+    return datos
 
         
