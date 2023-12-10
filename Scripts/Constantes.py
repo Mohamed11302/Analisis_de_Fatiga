@@ -30,6 +30,8 @@ STRENGTHPALM_INDEX = 'StrengthPalmIndex'
 STRENGTHPALM_MIDDLE = 'StrengthPalmMiddle'
 STRENGTHPALM_RING = 'StrengthPalmRing'
 STRENGTHPALM_PINKY = 'StrengthPalmPinky'
+GRABIDENTIFIER = 'GrabIdentifier'
+MOVEDCORRECTLY = 'MovedCorrectly'
 NUMREPETICION = 'NumRepeticion'
 
 
@@ -40,6 +42,8 @@ FATIGA_TIEMPO = 'Fatiga Tiempo'
 FATIGA_VELOCIDAD = 'Fatiga Velocidad'
 FATIGA_HEADPOSITION = 'Fatiga HeadPosition'
 FATIGA_CURVATURA_MANO = 'Fatiga Curvatura Trayectoria Mano'
+FATIGA_NUM_CAIDAS_BLOQUE = 'Fatiga Caidas del Bloque'
+FATIGA_MOVIMIENTO_CORRECTO = 'Fatiga Movimiento Correcto'
 
 ### PESOS OWA
 OWA_TIEMPO = 0.05

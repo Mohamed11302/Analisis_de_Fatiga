@@ -19,7 +19,7 @@ FATIGA_INDICE_GRAVE = 0.6
 
 def CalcularFatiga_PorRepeticion(preprocesado_fatiga: dict)-> [float]:
     fatiga_por_repeticion = []
-    for repeticion, valor_de_fatiga in preprocesado_fatiga.items():
+    for _, valor_de_fatiga in preprocesado_fatiga.items():
         fatiga = ponderacion_owa(valor_de_fatiga)
         fatiga_por_repeticion.append(round(fatiga, 3))
     return fatiga_por_repeticion
@@ -30,13 +30,12 @@ def CalcularFatiga_Serie(fatiga:[float]):
     return fatiga.mean()
 
 
-
 def preprocesado_indice_fatiga(df:pd.core.frame.DataFrame, porcentaje:int)->[float]:
     _datos_iniciales_paciente = CalculoDatos.datos_iniciales_paciente(df, porcentaje)
     datos_paciente = CalculoDatos.obtener_datos_paciente(df, 2, _datos_iniciales_paciente['NUM_REP'])
     preprocesado_fatiga = {}
     for repeticion in range(0, len(datos_paciente[Constantes.FATIGA_TIEMPO])):
-        preprocesado_fatiga[repeticion] = (extraer_fatigas(_datos_iniciales_paciente, datos_paciente, df, repeticion))
+        preprocesado_fatiga[repeticion+1] = (extraer_fatigas(_datos_iniciales_paciente, datos_paciente, df, repeticion))
         #fatiga = ponderacion_owa(fatigas)
         #indice_fatiga.append(round(fatiga, 3))
     return preprocesado_fatiga
@@ -207,9 +206,9 @@ def fatiga_calculo_curvatura_mano(datos_iniciales_paciente:dict, fatiga_curvatur
     rendimiento_soltar_bloque_x = round(abs(fatiga_curvatura_mano[Constantes.CURVATURA_SOLTAR_BLOQUE_X][repeticion])/
                                         abs(datos_iniciales_paciente[Constantes.CURVATURA_SOLTAR_BLOQUE_X]), 3)*100
     
-    if fatiga_curvatura_mano[Constantes.CURVATURA_SOLTAR_BLOQUE_X][repeticion] > 0: #HA TIRADO EL BLOQUE
-        fatiga_soltar_bloque_x = 1
-    elif rendimiento_soltar_bloque_x<60:
+    #if fatiga_curvatura_mano[Constantes.CURVATURA_SOLTAR_BLOQUE_X][repeticion] > 0: #HA TIRADO EL BLOQUE
+    #    fatiga_soltar_bloque_x = 1
+    if rendimiento_soltar_bloque_x<60:
         fatiga_soltar_bloque_x = 0.5
     elif rendimiento_soltar_bloque_x<80:
         fatiga_soltar_bloque_x = 0.3
@@ -267,4 +266,3 @@ def mediahistorica(df: pd.core.frame.DataFrame)-> dict:
         datos[columna] = CalculoDatos.media_datos(datos[columna])
     return datos
 
-        

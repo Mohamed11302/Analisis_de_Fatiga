@@ -44,19 +44,23 @@ def obtener_json_output(ruta_json: str) -> pd.core.frame.DataFrame:
             json.dump(archivo_json, archivo, indent=2)
     return archivo_json
 
-def modificar_json_output(ruta_json: str, datos_a_escribir:dict):
+def modificar_json_output(ruta_json: str, datos_a_escribir:dict, valores_fatiga: [float]):
     datos_fichero_json = obtener_json_output(ruta_json)
-    datos_fichero_json = escribir_datos_json(datos_fichero_json, datos_a_escribir)
+    datos_fichero_json = escribir_datos_json(datos_fichero_json, datos_a_escribir, valores_fatiga)
     with open(ruta_json, 'w') as archivo:
             json.dump(datos_fichero_json, archivo, indent=2)
 
-def escribir_datos_json(datos_fichero_json: dict, datos_a_escribir: dict)-> dict:
+def escribir_datos_json(datos_fichero_json: dict, datos_a_escribir: dict, valores_fatiga:[float])-> dict:
+    i = 0
     for repeticion, fatiga in datos_a_escribir.items():
         nueva_repeticion = {
             "num_repeticion": repeticion,
-            "fallos": escribir_mensajes_fatiga(fatiga)
+            "fatiga_repeticion": valores_fatiga[i],
+            "fatiga_metricas": fatiga, 
+            "avisos": escribir_mensajes_fatiga(fatiga)
         }
         datos_fichero_json["repeticiones"].append(nueva_repeticion)
+        i += 1
     return datos_fichero_json
 
 def escribir_mensajes_fatiga(fatiga: dict):
