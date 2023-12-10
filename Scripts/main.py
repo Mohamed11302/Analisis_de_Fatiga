@@ -15,6 +15,7 @@ def main():
     preprocesado_fatiga  = CalculoFatigas.preprocesado_indice_fatiga(df1, porcentaje)
     fatiga_por_repeticion = CalculoFatigas.CalcularFatiga_PorRepeticion(preprocesado_fatiga)
     fatiga_serie = CalculoFatigas.CalcularFatiga_Serie(fatiga_por_repeticion)
+    print(fatiga_serie)
     fichero_salida.comprobar_y_crear_carpeta()
     ruta_json = fichero_salida.crear_ruta_json(ruta, user)
     fichero_salida.modificar_json_output(ruta_json, preprocesado_fatiga, fatiga_por_repeticion)

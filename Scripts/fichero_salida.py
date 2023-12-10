@@ -57,7 +57,7 @@ def escribir_datos_json(datos_fichero_json: dict, datos_a_escribir: dict, valore
             "num_repeticion": repeticion,
             "fatiga_repeticion": valores_fatiga[i],
             "fatiga_metricas": fatiga, 
-            "avisos": escribir_mensajes_fatiga(fatiga)
+            "avisos": escribir_mensajes_fatiga(fatiga["FATIGA"])
         }
         datos_fichero_json["repeticiones"].append(nueva_repeticion)
         i += 1

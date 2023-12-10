@@ -20,9 +20,18 @@ FATIGA_INDICE_GRAVE = 0.6
 def CalcularFatiga_PorRepeticion(preprocesado_fatiga: dict)-> [float]:
     fatiga_por_repeticion = []
     for _, valor_de_fatiga in preprocesado_fatiga.items():
-        fatiga = ponderacion_owa(valor_de_fatiga)
+        fatiga = ponderacion_owa(valor_de_fatiga["FATIGA"])
+        fatiga = PenalizacionErrores(fatiga, valor_de_fatiga[Constantes.FATIGA_NUM_CAIDAS_BLOQUE], valor_de_fatiga[Constantes.FATIGA_MOVIMIENTO_INCORRECTO])
         fatiga_por_repeticion.append(round(fatiga, 3))
     return fatiga_por_repeticion
+
+def PenalizacionErrores(fatiga, num_caidas_bloque, movimiento_incorrecto):
+    fatiga = fatiga + fatiga*(num_caidas_bloque*Constantes.MULTIPLICACION_CAIDA_DEL_BLOQUE)
+    if movimiento_incorrecto == True:
+        fatiga = fatiga + fatiga*Constantes.MULTIPLICACION_CAIDA_DEL_BLOQUE
+
+    return fatiga
+
 
 
 def CalcularFatiga_Serie(fatiga:[float]):
@@ -32,7 +41,7 @@ def CalcularFatiga_Serie(fatiga:[float]):
 
 def preprocesado_indice_fatiga(df:pd.core.frame.DataFrame, porcentaje:int)->[float]:
     _datos_iniciales_paciente = CalculoDatos.datos_iniciales_paciente(df, porcentaje)
-    datos_paciente = CalculoDatos.obtener_datos_paciente(df, 2, _datos_iniciales_paciente['NUM_REP'])
+    datos_paciente = CalculoDatos.obtener_datos_paciente(df, 1, df[Constantes.NUMREPETICION].max())
     preprocesado_fatiga = {}
     for repeticion in range(0, len(datos_paciente[Constantes.FATIGA_TIEMPO])):
         preprocesado_fatiga[repeticion+1] = (extraer_fatigas(_datos_iniciales_paciente, datos_paciente, df, repeticion))
@@ -41,18 +50,19 @@ def preprocesado_indice_fatiga(df:pd.core.frame.DataFrame, porcentaje:int)->[flo
     return preprocesado_fatiga
 
 
-
-
-
 def extraer_fatigas(_datos_iniciales_paciente: dict, datos_paciente: dict, df: pd.core.frame.DataFrame, repeticion:int)-> dict:
     fatigas = {
-            Constantes.FATIGA_TIEMPO : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_TIEMPO], datos_paciente[Constantes.FATIGA_TIEMPO][repeticion], Constantes.FATIGA_TIEMPO),
-            Constantes.FATIGA_STRENGTH : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_STRENGTH], datos_paciente[Constantes.FATIGA_STRENGTH][repeticion], Constantes.FATIGA_STRENGTH),
-            Constantes.FATIGA_VELOCIDAD : fatiga_calculo_general(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_VELOCIDAD], datos_paciente[Constantes.FATIGA_VELOCIDAD][repeticion], Constantes.FATIGA_VELOCIDAD),
-            Constantes.FATIGA_HEADPOSITION : fatiga_calculo_headposition(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_HEADPOSITION], datos_paciente[Constantes.FATIGA_HEADPOSITION], repeticion, df),
-            Constantes.FATIGA_CURVATURA_MANO : fatiga_calculo_curvatura_mano(_datos_iniciales_paciente['DATOS_INICIALES_PACIENTE'][Constantes.FATIGA_CURVATURA_MANO], datos_paciente[Constantes.FATIGA_CURVATURA_MANO], repeticion)
+            Constantes.FATIGA_TIEMPO : fatiga_calculo_general(_datos_iniciales_paciente[Constantes.FATIGA_TIEMPO], datos_paciente[Constantes.FATIGA_TIEMPO][repeticion], Constantes.FATIGA_TIEMPO),
+            Constantes.FATIGA_STRENGTH : fatiga_calculo_general(_datos_iniciales_paciente[Constantes.FATIGA_STRENGTH], datos_paciente[Constantes.FATIGA_STRENGTH][repeticion], Constantes.FATIGA_STRENGTH),
+            Constantes.FATIGA_VELOCIDAD : fatiga_calculo_general(_datos_iniciales_paciente[Constantes.FATIGA_VELOCIDAD], datos_paciente[Constantes.FATIGA_VELOCIDAD][repeticion], Constantes.FATIGA_VELOCIDAD),
+            Constantes.FATIGA_HEADPOSITION : fatiga_calculo_headposition(_datos_iniciales_paciente[Constantes.FATIGA_HEADPOSITION], datos_paciente[Constantes.FATIGA_HEADPOSITION], repeticion, df),
+            Constantes.FATIGA_CURVATURA_MANO : fatiga_calculo_curvatura_mano(_datos_iniciales_paciente[Constantes.FATIGA_CURVATURA_MANO], datos_paciente[Constantes.FATIGA_CURVATURA_MANO], repeticion)
         }
-    return fatigas
+    datos_repeticion = {}
+    datos_repeticion[Constantes.FATIGA_MOVIMIENTO_INCORRECTO] = datos_paciente[Constantes.FATIGA_MOVIMIENTO_INCORRECTO][repeticion]
+    datos_repeticion[Constantes.FATIGA_NUM_CAIDAS_BLOQUE] = datos_paciente[Constantes.FATIGA_NUM_CAIDAS_BLOQUE][repeticion]
+    datos_repeticion["FATIGA"] = fatigas
+    return datos_repeticion
 
 def ponderacion_owa(fatigas) -> float:
     reweighting(fatigas)
@@ -63,13 +73,6 @@ def ponderacion_owa(fatigas) -> float:
               fatigas[Constantes.FATIGA_CURVATURA_MANO] * Constantes.OWA_CURVATURA_MANO
             )
     return fatiga
-
-def existe_fatiga_grave(valores_fatiga: dict)-> bool:
-    _existe_fatiga_grave = False
-    for tipo_fatiga, valor_fatiga in valores_fatiga.items():
-        if valor_fatiga > FATIGA_INDICE_GRAVE:
-            _existe_fatiga_grave = True
-    return _existe_fatiga_grave
 
 def reweighting(valores_fatiga: dict):
     """ Reajuste de los pesos para cada métrica de fatiga si se detecta que alguna llega al valor Grave """
@@ -104,35 +107,8 @@ def ajustar_nuevos_pesos(nuevos_pesos: dict):
     Constantes.OWA_VELOCIDAD = nuevos_pesos[Constantes.FATIGA_VELOCIDAD]
     Constantes.OWA_CURVATURA_MANO = nuevos_pesos[Constantes.FATIGA_CURVATURA_MANO]
 
-
-
-def representar_fatiga(fatiga:[float], porcentaje:int):
-    print(fatiga)
-    repeticiones = list(range(len(fatiga)))
-    plt.bar(repeticiones, fatiga)
-    plt.title('FATIGA CON '+str(porcentaje)+str('%'))
-    plt.show()
-
-
-def quitar_porcentaje_mas_bajo(fatiga:[], porcentaje:int):
-    elementos_a_conservar = quitar_porcentaje(fatiga, porcentaje, False)
-    return elementos_a_conservar
-
-def quitar_porcentaje_mas_alto(fatiga:[], porcentaje:int):
-    elementos_a_conservar = quitar_porcentaje(fatiga, porcentaje, True)
-    return elementos_a_conservar
-
-def quitar_porcentaje(fatiga:[], porcentaje:int, mas_alto):
-    num_elementos_a_conservar = int((1 - porcentaje/100) * len(fatiga))
-    array_ordenado = np.sort(fatiga)
-    if mas_alto:
-        elementos_a_conservar = array_ordenado[:num_elementos_a_conservar]
-    else:
-        elementos_a_conservar = array_ordenado[len(fatiga)-num_elementos_a_conservar:]
-    return elementos_a_conservar
-
 def fatiga_calculo_general(valor_medio:float, valor_a_comparar:float, tipo:str)->float:
-    fatiga = valor_de_fatiga(valor_medio, valor_a_comparar, tipo)
+    fatiga = aux_valor_de_fatiga(valor_medio, valor_a_comparar, tipo)
     indice_fatiga = 0
     if fatiga > FATIGA_RENDIMIENTO_LEVE:
         indice_fatiga = FATIGA_INDICE_LEVE
@@ -144,14 +120,6 @@ def fatiga_calculo_general(valor_medio:float, valor_a_comparar:float, tipo:str)-
         indice_fatiga = FATIGA_INDICE_GRAVE
     #print(indice_fatiga)
     return indice_fatiga
-
-def valor_de_fatiga(valor_medio:float, valor_a_comparar:float, tipo:str):
-    fatiga = 0
-    if tipo in (Constantes.FATIGA_VELOCIDAD, Constantes.FATIGA_STRENGTH):
-        fatiga = -((valor_a_comparar-valor_medio)/valor_medio)*100
-    if tipo == Constantes.FATIGA_TIEMPO:
-        fatiga = ((valor_a_comparar-valor_medio)/valor_medio)*100
-    return fatiga
 
 def fatiga_calculo_headposition(datos_iniciales_paciente:dict, fatiga_headposition:dict, repeticion:int, df:pd.core.frame.DataFrame)-> float:
     # DISTANCIA EUCLIDIANA
@@ -173,7 +141,7 @@ def fatiga_calculo_headposition(datos_iniciales_paciente:dict, fatiga_headpositi
         distancia_head_hand = 99999
         filas_repeticion = df[df[Constantes.NUMREPETICION] == repeticion]
         for _, fila in filas_repeticion.iterrows():
-            distancia = distancia_euclidiana((round((datos_iniciales_paciente[Constantes.HEADPOSITION_MAX_X]+
+            distancia = aux_distancia_euclidiana((round((datos_iniciales_paciente[Constantes.HEADPOSITION_MAX_X]+
                                                      datos_iniciales_paciente[Constantes.HEADPOSITION_MIN_X])/2, 2),round((datos_iniciales_paciente[Constantes.HEADPOSITION_MAX_Y]+datos_iniciales_paciente[Constantes.HEADPOSITION_MIN_Y])/2, 2),round((datos_iniciales_paciente[Constantes.HEADPOSITION_MAX_Z]+datos_iniciales_paciente[Constantes.HEADPOSITION_MIN_Z])/2, 2)), (fila[Constantes.HANDPOSITION_X], fila[Constantes.HANDPOSITION_Y], fila[Constantes.HANDPOSITION_Z]))
             if distancia_head_hand > distancia:
                 distancia_head_hand = distancia
@@ -184,14 +152,6 @@ def fatiga_calculo_headposition(datos_iniciales_paciente:dict, fatiga_headpositi
         if distancia_head_hand < 0.3:
             indice_fatiga = 0.5
     return indice_fatiga
-
-def distancia_euclidiana(punto1, punto2):
-    x1, y1, z1 = punto1
-    x2, y2, z2 = punto2
-
-    distancia = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
-    return distancia
-
 
 def fatiga_calculo_curvatura_mano(datos_iniciales_paciente:dict, fatiga_curvatura_mano:dict, repeticion:int)->float:
     fatiga_soltar_bloque_x = 0
@@ -266,3 +226,44 @@ def mediahistorica(df: pd.core.frame.DataFrame)-> dict:
         datos[columna] = CalculoDatos.media_datos(datos[columna])
     return datos
 
+
+def representar_fatiga(fatiga:[float], porcentaje:int):
+    print(fatiga)
+    repeticiones = list(range(len(fatiga)))
+    plt.bar(repeticiones, fatiga)
+    plt.title('FATIGA CON '+str(porcentaje)+str('%'))
+    plt.show()
+
+
+def quitar_porcentaje_mas_bajo(fatiga:[], porcentaje:int):
+    elementos_a_conservar = aux_quitar_porcentaje(fatiga, porcentaje, False)
+    return elementos_a_conservar
+
+def quitar_porcentaje_mas_alto(fatiga:[], porcentaje:int):
+    elementos_a_conservar = aux_quitar_porcentaje(fatiga, porcentaje, True)
+    return elementos_a_conservar
+
+############################ AUXILIARES ######################################
+def aux_distancia_euclidiana(punto1, punto2):
+    x1, y1, z1 = punto1
+    x2, y2, z2 = punto2
+
+    distancia = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    return distancia
+
+def aux_quitar_porcentaje(fatiga:[], porcentaje:int, mas_alto):
+    num_elementos_a_conservar = int((1 - porcentaje/100) * len(fatiga))
+    array_ordenado = np.sort(fatiga)
+    if mas_alto:
+        elementos_a_conservar = array_ordenado[:num_elementos_a_conservar]
+    else:
+        elementos_a_conservar = array_ordenado[len(fatiga)-num_elementos_a_conservar:]
+    return elementos_a_conservar
+
+def aux_valor_de_fatiga(valor_medio:float, valor_a_comparar:float, tipo:str):
+    fatiga = 0
+    if tipo in (Constantes.FATIGA_VELOCIDAD, Constantes.FATIGA_STRENGTH):
+        fatiga = -((valor_a_comparar-valor_medio)/valor_medio)*100
+    if tipo == Constantes.FATIGA_TIEMPO:
+        fatiga = ((valor_a_comparar-valor_medio)/valor_medio)*100
+    return fatiga

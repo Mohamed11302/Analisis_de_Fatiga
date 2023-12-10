@@ -12,7 +12,9 @@ def obtener_datos_paciente(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep
         Constantes.FATIGA_TIEMPO : datos_tiempo_por_repeticion(df, inicio_rep, final_rep),
         Constantes.FATIGA_VELOCIDAD : datos_velocidad_por_repeticion(df, inicio_rep, final_rep),
         Constantes.FATIGA_HEADPOSITION : datos_posicion_cabeza_por_repeticion(df, inicio_rep, final_rep),
-        Constantes.FATIGA_CURVATURA_MANO : datos_curvatura(df, inicio_rep, final_rep)
+        Constantes.FATIGA_CURVATURA_MANO : datos_curvatura(df, inicio_rep, final_rep),
+        Constantes.FATIGA_NUM_CAIDAS_BLOQUE : datos_caida_del_bloque(df, inicio_rep, final_rep),
+        Constantes.FATIGA_MOVIMIENTO_INCORRECTO : datos_movimiento_correcto(df, inicio_rep, final_rep)
     }
     return datos_paciente
 
@@ -28,12 +30,7 @@ def datos_iniciales_paciente(df:pd.core.frame.DataFrame, porcentaje: int)->dict:
     for columna in [Constantes.FATIGA_WRIST, Constantes.FATIGA_STRENGTH, Constantes.FATIGA_TIEMPO, Constantes.FATIGA_VELOCIDAD]:
         _datos_paciente[columna] = sum(_datos_paciente[columna])/len(_datos_paciente[columna])
 
-    datos_iniciales_paciente = {
-        'NUM_REP_INICIALES' : num_rep_iniciales,
-        'NUM_REP' : num_repeticiones,
-        'DATOS_INICIALES_PACIENTE' : _datos_paciente
-    }
-    return datos_iniciales_paciente
+    return _datos_paciente
 
 
 ############################ DATOS VELOCIDAD ######################################
@@ -152,7 +149,7 @@ def datos_curvatura(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->
 
 def datos_caida_del_bloque(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[int]:
     caida_del_bloque = []
-    for rep in len(inicio_rep, final_rep):
+    for rep in range(inicio_rep, final_rep):
         df = df[df[Constantes.NUMREPETICION]== rep]
         num_intentos = 0
         moviendo_objeto = False
@@ -169,7 +166,7 @@ def datos_caida_del_bloque(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep
 ############################ DATOS MOVIMIENTO CORRECTO ######################################
 def datos_movimiento_correcto(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> [bool]:
     movimiento_correcto = []
-    for rep in len(inicio_rep, final_rep):
+    for rep in range(inicio_rep, final_rep):
         df = df[df[Constantes.NUMREPETICION]== rep]
         mov_correcto = False
         if df[Constantes.MOVEDCORRECTLY].any():

@@ -4,6 +4,16 @@ import Constantes
 import CalculoDatos
 import CalculoFatigas
 
+
+def leercsv(archivo_csv: str) -> pd.core.frame.DataFrame:
+    df = pd.read_csv(archivo_csv, encoding='UTF-8', sep=';', index_col=False)
+    df = sustituir_comas(df)
+    return df
+
+def escribircsv(df:pd.core.frame.DataFrame, ruta_original:str):
+    ruta_original = ruta_original.split('.csv')
+    df.to_csv(ruta_original[0] + str("_modificado.csv"), sep=";", decimal=',')
+
 def LeerDatosHistoricos(user: str) -> dict:
     df = pd.read_csv('CSVs/Historical.csv', encoding='UTF-8', sep=';', index_col=False)
     intentos = df[df['USER']==user]['DATE']
@@ -23,22 +33,7 @@ def SacarMediaHistorica(csvs: dict):
         df1 = dividir_en_repeticiones(df)
         media_historica[clave] = CalculoFatigas.mediahistorica(df1)
     print(media_historica)
- 
-def sustituir_comas(df:pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
-    columnas_a_seleccionar = df.select_dtypes(exclude=['int', 'bool']).columns
-    columnas_a_seleccionar = columnas_a_seleccionar[~columnas_a_seleccionar.isin(['GrabIdentifier'])]
-    df[columnas_a_seleccionar] = df[columnas_a_seleccionar].applymap(lambda x:
-                                        float(str(x).replace(',', '.')) if pd.notnull(x) else x)
-    return df
 
-def leercsv(archivo_csv: str) -> pd.core.frame.DataFrame:
-    df = pd.read_csv(archivo_csv, encoding='UTF-8', sep=';', index_col=False)
-    df = sustituir_comas(df)
-    return df
-
-def escribircsv(df:pd.core.frame.DataFrame, archivo:str):
-    archivo = archivo.split('.csv')
-    df.to_csv(archivo[0] + str("_modificado.csv"), sep=";", decimal=',')
 
 def dividir_en_repeticiones(df: pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
     unique_blocks = df[Constantes.GRABIDENTIFIER].dropna().unique()
@@ -56,13 +51,6 @@ def dividir_en_repeticiones(df: pd.core.frame.DataFrame) -> pd.core.frame.DataFr
     df[Constantes.NUMREPETICION] = columna_repeticion    
     df = df[df[Constantes.NUMREPETICION] != 0]
     return df
-
-def tomarposicion_hmd(archivo:str):
-    archivo = archivo.removeprefix('CSVs/OculusTracking_').removesuffix('.csv')
-    df = pd.read_csv('CSVs/Historical.csv', encoding='UTF-8', sep=';', index_col=False)
-    hmd_x = df[df['DATE']==archivo]['HMD_POSITION_X'].values[0]
-    hmd_x = float(hmd_x.replace(',', '.'))
-    return hmd_x
 
 def representacion_handposition_por_repeticiones(df:pd.core.frame.DataFrame):
     ejes_verticales = []
@@ -87,5 +75,16 @@ def representacion_handposition_por_repeticiones(df:pd.core.frame.DataFrame):
     plt.grid()
     plt.show()
 
+def sustituir_comas(df:pd.core.frame.DataFrame) -> pd.core.frame.DataFrame:
+    columnas_a_seleccionar = df.select_dtypes(exclude=['int', 'bool']).columns
+    columnas_a_seleccionar = columnas_a_seleccionar[~columnas_a_seleccionar.isin(['GrabIdentifier'])]
+    df[columnas_a_seleccionar] = df[columnas_a_seleccionar].applymap(lambda x:
+                                        float(str(x).replace(',', '.')) if pd.notnull(x) else x)
+    return df
 
-
+def tomarposicion_hmd(archivo:str):
+    archivo = archivo.removeprefix('CSVs/OculusTracking_').removesuffix('.csv')
+    df = pd.read_csv('CSVs/Historical.csv', encoding='UTF-8', sep=';', index_col=False)
+    hmd_x = df[df['DATE']==archivo]['HMD_POSITION_X'].values[0]
+    hmd_x = float(hmd_x.replace(',', '.'))
+    return hmd_x
