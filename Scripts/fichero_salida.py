@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import re
 import json
+import Constantes as Const
 
 RUTA_CARPETA_SALIDA = "Output_fatigue"
 RUTA_CARPETA_JSON = RUTA_CARPETA_SALIDA + "\Jsons" 
@@ -28,7 +29,7 @@ def modificar_csv_output(nombre_paciente:str, ruta_json:str, valor_fatiga: float
 
 
 def crear_ruta_json(ruta_datos_originales: str, user: str):
-    patron = re.compile(r'CSVs/OculusTracking_(.*?).csv')
+    patron = re.compile(r'CSVs/TrackingData/OculusTracking_(.*?).csv')
     fecha = patron.search(ruta_datos_originales)
     return RUTA_CARPETA_JSON + str("\Fatigue_") + user + "_" + str(fecha.group(1)) + ".json"
 
@@ -57,7 +58,7 @@ def escribir_datos_json(datos_fichero_json: dict, datos_a_escribir: dict, valore
             "num_repeticion": repeticion,
             "fatiga_repeticion": valores_fatiga[i],
             "fatiga_metricas": fatiga, 
-            "avisos": escribir_mensajes_fatiga(fatiga["FATIGA"])
+            "avisos": escribir_mensajes_fatiga(fatiga)
         }
         datos_fichero_json["repeticiones"].append(nueva_repeticion)
         i += 1
@@ -65,9 +66,13 @@ def escribir_datos_json(datos_fichero_json: dict, datos_a_escribir: dict, valore
 
 def escribir_mensajes_fatiga(fatiga: dict):
     mensajes = []
-    for nombre, valor in fatiga.items():
+    for nombre, valor in fatiga["FATIGA"].items():
         if valor > 0.5:
             mensajes.append("El paciente ha disminuido su rendimiento en "  + str(nombre))
+    if fatiga[Const.FATIGA_NUM_CAIDAS_BLOQUE]>0:
+        mensajes.append("Al paciente se le ha caido el bloque: "+ str(fatiga[Const.FATIGA_NUM_CAIDAS_BLOQUE]) + " veces")
+    if fatiga[Const.FATIGA_MOVIMIENTO_INCORRECTO]:
+        mensajes.append("El paciente ha dejado el objeto fuera de la caja")
     return mensajes
 
  
