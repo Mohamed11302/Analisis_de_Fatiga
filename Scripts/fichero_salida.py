@@ -9,7 +9,7 @@ import Constantes as Const
 def generar_Salida(user:str, juego):
     comprobar_y_crear_carpeta()
     ruta_json = crear_ruta_json(juego.date)
-    modificar_csv_output(user, ruta_json, juego.fatiga_serie)  
+    modificar_csv_output(user, ruta_json, juego)  
     modificar_json_output(ruta_json, juego)
     
 
@@ -60,10 +60,14 @@ def obtener_csv_output() -> pd.core.frame.DataFrame:
         df = pd.DataFrame(columns=['nombre_paciente','ruta_json', 'valor_fatiga'])
     return df
 
-def modificar_csv_output(nombre_paciente:str, ruta_json:str, valor_fatiga:str):
+def modificar_csv_output(nombre_paciente:str, ruta_json:str, juego):
     df = obtener_csv_output()
-    nueva_fila = {'nombre_paciente': nombre_paciente, 'ruta_json': ruta_json, 'valor_fatiga': valor_fatiga}
-    df = df._append(nueva_fila, ignore_index=True)
+    nueva_fila = {'nombre_paciente': nombre_paciente, 'ruta_json': ruta_json, 'valor_fatiga': juego.fatiga_serie}
+    if ruta_json not in df['ruta_json'].values:
+        df = df._append(nueva_fila, ignore_index=True)
+    for juego_historico in juego.data_BBT_historico:
+        ruta_json = crear_ruta_json(juego_historico.date)
+        df.loc[df['ruta_json'] == ruta_json, 'valor_fatiga'] = juego_historico.fatiga_serie
     df.to_csv(Const.RUTA_CSV, index=False)
 
 

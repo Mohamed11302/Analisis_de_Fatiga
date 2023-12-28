@@ -12,7 +12,7 @@ def elegir_clase_juego(juego, df, porcentaje, nombre_intento):
     return myBBT
     
 def main():
-    nombre_intento = "20231226_204929"
+    nombre_intento = "20231226_205101"
     porcentaje = 20
     df = Tratamiento_CSV.leercsv(nombre_intento)
     juego, user = Tratamiento_CSV.obtener_juego_y_user(nombre_intento)

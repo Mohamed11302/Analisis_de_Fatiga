@@ -68,6 +68,9 @@ class BBT:
                 #print("Media historica")
                 datos_historico = self.calcular_media_datos_historicos()
                 self.calcular_datos_comparacion(datos_historico, data_inicio_reps)
+            else:
+                self.datos_comparacion = data_inicio_reps
+
 
     def extraer_datos_historicos(self):
         data_historico = Tratamiento_CSV.LeerDatosHistoricos(self.date)
@@ -143,10 +146,9 @@ class BBT:
             self.metricas = nuevas_metricas
             valor_fatiga = self.aplicar_penalizacion(valor_fatiga, f)
             fatigas.append(valor_fatiga)
-    
+        valor_min = min(fatigas)
+        valor_max = max(fatigas)
         if not self.bbt_historico:
-            valor_min = 99999
-            valor_max = -99999        
             for i in self.data_BBT_historico:
                 _min = min(i.fatiga_por_repeticion)
                 _max = max(i.fatiga_por_repeticion)     
@@ -157,9 +159,13 @@ class BBT:
             for i in self.data_BBT_historico:
                 data_norm = np.round((np.array(i.fatiga_por_repeticion) - valor_min) / (valor_max - valor_min), 3)
                 i.fatiga_por_repeticion = data_norm.tolist()
-            data_norm = np.round((np.array(fatigas) - valor_min) / (valor_max - valor_min), 3)
-            fatigas = data_norm.tolist()
-            print(fatigas)
+                #print(f"{i.date}: {data_norm}")
+            if len(self.data_BBT_historico)>1:
+                data_norm = np.round((np.array(fatigas) - valor_min) / (valor_max - valor_min), 3)
+                fatigas = data_norm.tolist()
+                #print("-")
+                #print(fatigas)
+
         self.fatiga_por_repeticion = fatigas
 
 
@@ -173,27 +179,32 @@ class BBT:
 
     def obtener_fatiga_serie(self):
         fatiga_serie = []
-        valor_min=9999
-        valor_max=-9999
+
+        data_sin_valores_bajos =aux.quitar_porcentaje_mas_bajo(self.fatiga_por_repeticion, 20)
+        valor_fatiga_serie = sum(data_sin_valores_bajos)/len(data_sin_valores_bajos)
+
+        valor_min = valor_fatiga_serie
+        valor_max = valor_fatiga_serie
         for i in self.data_BBT_historico:
             data_sin_valores_bajos =aux.quitar_porcentaje_mas_bajo(i.fatiga_por_repeticion, 20)
-            valor_fatiga = sum(data_sin_valores_bajos)/len(data_sin_valores_bajos)
-            if valor_fatiga < valor_min:
-                valor_min = valor_fatiga 
-            if valor_fatiga > valor_max:
-                valor_max = valor_fatiga 
-            i.fatiga_serie = valor_fatiga
-
-        for i in self.data_BBT_historico: ##ACABAR, SOLO QUEDA NORMALIZAR LOS DATOS DEL HISTORICO Y CALCULAR EL DE ESTA SERIE
-            fatiga_serie_normalizado = round(((i.fatiga_serie)-valor_min) / (valor_max - valor_min), 3)
-            i.fatiga_serie = fatiga_serie_normalizado
-            print(f"{i.date}: {fatiga_serie_normalizado}")
+            valor_fatiga_historico = sum(data_sin_valores_bajos)/len(data_sin_valores_bajos)
+            if valor_fatiga_historico < valor_min:
+                valor_min = valor_fatiga_historico 
+            if valor_fatiga_historico > valor_max:
+                valor_max = valor_fatiga_historico 
+            i.fatiga_serie = valor_fatiga_historico
         
-        data_sin_valores_bajos =aux.quitar_porcentaje_mas_bajo(self.fatiga_por_repeticion, 20)
-        valor_fatiga = sum(data_sin_valores_bajos)/len(data_sin_valores_bajos)
-        fatiga_serie_normalizado = round(((valor_fatiga)-valor_min) / (valor_max - valor_min), 3)
-        self.fatiga_serie = fatiga_serie_normalizado
+        if len(self.data_BBT_historico)>1:
+            for i in self.data_BBT_historico: ##ACABAR, SOLO QUEDA NORMALIZAR LOS DATOS DEL HISTORICO Y CALCULAR EL DE ESTA SERIE
+                fatiga_serie_normalizado = round(((i.fatiga_serie)-valor_min) / (valor_max - valor_min), 3)
+                i.fatiga_serie = fatiga_serie_normalizado
+                print(f"{i.date}: {fatiga_serie_normalizado}")
+        
+            valor_fatiga_serie = round(((valor_fatiga_serie)-valor_min) / (valor_max - valor_min), 3)
+        
+        self.fatiga_serie = valor_fatiga_serie        
         print(f"{self.date}: {self.fatiga_serie}")
+
 
 
         
