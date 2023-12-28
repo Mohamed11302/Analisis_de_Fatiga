@@ -1,5 +1,5 @@
 import pandas as pd
-import Constantes as Const
+import Constantes.Constantes as Const
 import ExtraerDatos
 import Excepciones
 import auxiliares as aux

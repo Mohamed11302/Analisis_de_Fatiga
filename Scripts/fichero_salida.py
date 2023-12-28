@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import re
 import json
-import Constantes as Const
-
+import Constantes.Configuracion as Config
+import Constantes.Constantes as Const
 
 
 def generar_Salida(user:str, juego):
@@ -45,17 +45,17 @@ def modificar_json_output(ruta_json: str, datos_a_escribir:dict):
             json.dump(datos_fichero_json, archivo, indent=2)
 
 def crear_ruta_json(date: str):
-    return Const.RUTA_CARPETA_JSON + Const.PREFIJO_FICHEROS + date + ".json"
+    return Config.RUTA_CARPETA_JSON + Config.PREFIJO_FICHEROS + date + ".json"
 
 def comprobar_y_crear_carpeta():
-    if not os.path.exists(Const.RUTA_CARPETA_SALIDA):
-        os.makedirs(Const.RUTA_CARPETA_SALIDA)
-    if not os.path.exists(Const.RUTA_CARPETA_JSON):
-        os.makedirs(Const.RUTA_CARPETA_JSON)
+    if not os.path.exists(Config.RUTA_CARPETA_SALIDA):
+        os.makedirs(Config.RUTA_CARPETA_SALIDA)
+    if not os.path.exists(Config.RUTA_CARPETA_JSON):
+        os.makedirs(Config.RUTA_CARPETA_JSON)
 
 def obtener_csv_output() -> pd.core.frame.DataFrame:
     try:
-        df = pd.read_csv(Const.RUTA_CSV)
+        df = pd.read_csv(Config.RUTA_CSV)
     except FileNotFoundError:
         df = pd.DataFrame(columns=['nombre_paciente','ruta_json', 'valor_fatiga'])
     return df
@@ -68,7 +68,7 @@ def modificar_csv_output(nombre_paciente:str, ruta_json:str, juego):
     for juego_historico in juego.data_BBT_historico:
         ruta_json = crear_ruta_json(juego_historico.date)
         df.loc[df['ruta_json'] == ruta_json, 'valor_fatiga'] = juego_historico.fatiga_serie
-    df.to_csv(Const.RUTA_CSV, index=False)
+    df.to_csv(Config.RUTA_CSV, index=False)
 
 
 

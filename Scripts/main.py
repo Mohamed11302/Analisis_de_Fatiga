@@ -1,5 +1,5 @@
 import pandas as pd
-import Constantes as Const
+import Constantes.Constantes as Const
 import Tratamiento_CSV
 from BBT import BBT
 import fichero_salida

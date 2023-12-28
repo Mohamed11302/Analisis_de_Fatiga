@@ -1,5 +1,5 @@
 import pandas as pd
-import Constantes as Const
+import Constantes.Constantes as Const
 from Procesador_Datos import Procesador_Datos
 from Procesador_Fatigas import Procesador_Fatigas
 import Tratamiento_CSV
