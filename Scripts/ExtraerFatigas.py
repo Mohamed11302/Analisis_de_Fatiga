@@ -21,14 +21,14 @@ def CalcularFatiga_PorRepeticion(preprocesado_fatiga: dict)-> [float]:
     fatiga_por_repeticion = []
     for _, valor_de_fatiga in preprocesado_fatiga.items():
         fatiga = ponderacion_owa(valor_de_fatiga["FATIGA"])
-        fatiga = PenalizacionErrores(fatiga, valor_de_fatiga[Const.FATIGA_NUM_CAIDAS_BLOQUE], valor_de_fatiga[Const.FATIGA_MOVIMIENTO_INCORRECTO])
+        fatiga = PenalizacionErrores(fatiga, valor_de_fatiga[Const.PENALIZACION_NUM_CAIDAS_BLOQUE], valor_de_fatiga[Const.PENALIZACION_MOVIMIENTO_INCORRECTO])
         fatiga_por_repeticion.append(round(fatiga, 3))
     return fatiga_por_repeticion
 
 def PenalizacionErrores(fatiga, num_caidas_bloque, movimiento_incorrecto):
-    fatiga = fatiga + fatiga*(num_caidas_bloque*Const.MULTIPLICACION_CAIDA_DEL_BLOQUE)
+    fatiga = fatiga + fatiga*(num_caidas_bloque*Const.VALOR_PENALIZACION_CAIDA_DEL_BLOQUE)
     if movimiento_incorrecto == True:
-        fatiga = fatiga + fatiga*Const.MULTIPLICACION_CAIDA_DEL_BLOQUE
+        fatiga = fatiga + fatiga*Const.VALOR_PENALIZACION_CAIDA_DEL_BLOQUE
     return fatiga
 
 
@@ -55,8 +55,8 @@ def extraer_fatigas(_datos_iniciales_paciente: dict, datos_paciente: dict, df: p
             Const.FATIGA_CURVATURA_MANO : fatiga_calculo_curvatura_mano(_datos_iniciales_paciente[Const.FATIGA_CURVATURA_MANO], datos_paciente[Const.FATIGA_CURVATURA_MANO], repeticion)
         }
     datos_repeticion = {}
-    datos_repeticion[Const.FATIGA_MOVIMIENTO_INCORRECTO] = datos_paciente[Const.FATIGA_MOVIMIENTO_INCORRECTO][repeticion]
-    datos_repeticion[Const.FATIGA_NUM_CAIDAS_BLOQUE] = datos_paciente[Const.FATIGA_NUM_CAIDAS_BLOQUE][repeticion]
+    datos_repeticion[Const.PENALIZACION_MOVIMIENTO_INCORRECTO] = datos_paciente[Const.PENALIZACION_MOVIMIENTO_INCORRECTO][repeticion]
+    datos_repeticion[Const.PENALIZACION_NUM_CAIDAS_BLOQUE] = datos_paciente[Const.PENALIZACION_NUM_CAIDAS_BLOQUE][repeticion]
     datos_repeticion["FATIGA"] = fatigas
     return datos_repeticion
 
@@ -116,7 +116,9 @@ def fatiga_calculo_general(valor_medio:float, valor_a_comparar:float, tipo:str)-
         indice_fatiga = FATIGA_INDICE_GRAVE
     return indice_fatiga
 
-def fatiga_calculo_headposition(datos_iniciales_paciente:dict, fatiga_headposition:dict, repeticion:int, df:pd.core.frame.DataFrame)-> float:
+def fatiga_calculo_headposition(fatiga_headposition:dict,datos_iniciales_paciente:dict, rep_df)-> float:
+    repeticion = rep_df['repeticion']
+    df = rep_df['df']
     # DISTANCIA EUCLIDIANA
     indice_fatiga = 0    
     valor_medio_x = round((fatiga_headposition[Const.HEADPOSITION_MAX_X][repeticion]+
@@ -154,13 +156,12 @@ def fatiga_calculo_curvatura_mano(datos_iniciales_paciente:dict, fatiga_curvatur
     fatiga_punto_mas_alto_ida = 0
     fatiga_punto_mas_alto_vuelta = 0
     fatiga = 0
-    
-    rendimiento_punto_mas_alto_y_ida = round(fatiga_curvatura_mano[Const.CURVATURA_PUNTO_MAS_ALTO_Y_IDA][repeticion]/
-                                             datos_iniciales_paciente[Const.CURVATURA_PUNTO_MAS_ALTO_Y_IDA], 3)*100
-    rendimiento_punto_mas_alto_y_vuelta = round(fatiga_curvatura_mano[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA][repeticion]/
-                                                datos_iniciales_paciente[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA], 3)*100
-    rendimiento_soltar_bloque_x = round(abs(fatiga_curvatura_mano[Const.CURVATURA_SOLTAR_BLOQUE_X][repeticion])/
-                                        abs(datos_iniciales_paciente[Const.CURVATURA_SOLTAR_BLOQUE_X]), 3)*100
+    rendimiento_punto_mas_alto_y_ida = round(fatiga_curvatura_mano[Const.CURVATURA_PUNTO_MAS_ALTO_Y_IDA]/
+                                             datos_iniciales_paciente[Const.CURVATURA_PUNTO_MAS_ALTO_Y_IDA][repeticion], 3)*100
+    rendimiento_punto_mas_alto_y_vuelta = round(fatiga_curvatura_mano[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA]/
+                                                datos_iniciales_paciente[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA][repeticion], 3)*100
+    rendimiento_soltar_bloque_x = round(abs(fatiga_curvatura_mano[Const.CURVATURA_SOLTAR_BLOQUE_X])/
+                                        abs(datos_iniciales_paciente[Const.CURVATURA_SOLTAR_BLOQUE_X][repeticion]), 3)*100
     
     #if fatiga_curvatura_mano[Const.CURVATURA_SOLTAR_BLOQUE_X][repeticion] > 0: #HA TIRADO EL BLOQUE
     #    fatiga_soltar_bloque_x = 1

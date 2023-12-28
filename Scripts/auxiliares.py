@@ -14,7 +14,7 @@ def vectorizar(x: float, y:float, z:float) -> [float]:
         vector.append(calcular_magnitud(x.values[i],y.values[i],z.values[i]))
     return vector
 
-def media_dict(diccionario: dict)->dict:
+def media_dict_lista(diccionario: dict)->dict:
     nuevo_diccionario = {}
     for clave, lista in diccionario.items():
         nuevo_diccionario[clave] = sum(lista) / len(lista)
@@ -34,7 +34,32 @@ def quitar_porcentaje(fatiga:[], porcentaje:int, mas_alto):
         elementos_a_conservar = array_ordenado[:num_elementos_a_conservar]
     else:
         elementos_a_conservar = array_ordenado[len(fatiga)-num_elementos_a_conservar:]
+    return elementos_a_conservar.tolist()
+
+def quitar_porcentaje_mas_bajo(fatiga:[], porcentaje:int):
+    elementos_a_conservar = quitar_porcentaje(fatiga, porcentaje, False)
     return elementos_a_conservar
+
+def quitar_porcentaje_mas_alto(fatiga:[], porcentaje:int):
+    elementos_a_conservar = quitar_porcentaje(fatiga, porcentaje, True)
+    return elementos_a_conservar
+
+
+def quitar_porcentaje_dict(diccionario:dict, porcentaje:int):
+    for clave, valor in diccionario.items():
+        if isinstance(diccionario[clave], list):
+            diccionario[clave] = quitar_porcentaje_mas_alto(diccionario[clave], porcentaje)
+            diccionario[clave] = quitar_porcentaje_mas_bajo(diccionario[clave], porcentaje)
+            #diccionario[clave] = sum(diccionario[clave]) / len(diccionario[clave])
+
+        if isinstance(diccionario[clave], dict):
+            for subclave, valor2 in diccionario[clave].items():
+                diccionario[clave][subclave] = quitar_porcentaje_mas_alto(diccionario[clave][subclave], porcentaje)
+                diccionario[clave][subclave] = quitar_porcentaje_mas_bajo(diccionario[clave][subclave], porcentaje)
+                #diccionario[clave][subclave] = sum(diccionario[clave][subclave]) / len(diccionario[clave][subclave])
+    return diccionario
+
+
 
 def valor_de_fatiga(valor_medio:float, valor_a_comparar:float, tipo:str):
     fatiga = 0
@@ -58,3 +83,27 @@ def normalizar_dict(data:dict):
     for clave, valor in data.items():
         data[clave] = normalizar_list(valor)
     return data
+
+def crear_pesos(n):
+    pesos = [i / sum(range(1, n + 1)) for i in range(n, 0, -1)]
+    return pesos
+
+
+def media_ponderada_lista_diccionarios(lista_diccionarios, clave, pesos):
+    valores_por_diccionario = [d.get(clave) for d in lista_diccionarios if isinstance(d.get(clave), (int, float, dict))]
+    if valores_por_diccionario and isinstance(valores_por_diccionario[0], (int, float)):
+        return calcular_media_ponderada(valores_por_diccionario, pesos)
+    elif valores_por_diccionario and isinstance(valores_por_diccionario[0], dict):
+        return calcular_media_ponderada_dict(valores_por_diccionario, pesos)
+
+def calcular_media_ponderada(valores_por_diccionario, pesos):
+    valores_por_diccionario = valores_por_diccionario[::-1]
+    if len(valores_por_diccionario) != len(pesos):
+        raise ValueError("Las listas de valores y pesos deben tener la misma longitud.")
+    return sum(v * p for v, p in zip(valores_por_diccionario, pesos))
+
+def calcular_media_ponderada_dict(valores_por_diccionario, pesos):
+    _media_clave = {}
+    for clav, valor in valores_por_diccionario[0].items(): 
+        _media_clave[clav] = media_ponderada_lista_diccionarios(valores_por_diccionario, clav, pesos)
+    return _media_clave

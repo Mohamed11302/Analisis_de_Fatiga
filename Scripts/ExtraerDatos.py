@@ -3,20 +3,20 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import Constantes as Const
-import CalculoFatigas
+import ExtraerFatigas
 import auxiliares as aux
 import Tratamiento_CSV
 
 def obtener_datos_paciente(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int) -> dict:
     datos_paciente = {
         Const.FATIGA_WRIST : datos_flexion_muneca_por_repeticion(df, inicio_rep, final_rep),
-        Const.FATIGA_STRENGTH : datos_fuerza_por_repeticion(df, inicio_rep, final_rep),
-        Const.FATIGA_TIEMPO : datos_tiempo_por_repeticion(df, inicio_rep, final_rep),
+        Const.FATIGA_STRENGTH : datos_fuerza_por_repeticion_por_repeticion(df, inicio_rep, final_rep),
+        Const.FATIGA_TIEMPO : datos_tiempo_por_repeticion_por_repeticion(df, inicio_rep, final_rep),
         Const.FATIGA_VELOCIDAD : datos_velocidad_por_repeticion(df, inicio_rep, final_rep),
         Const.FATIGA_HEADPOSITION : datos_posicion_cabeza_por_repeticion(df, inicio_rep, final_rep),
-        Const.FATIGA_CURVATURA_MANO : datos_curvatura(df, inicio_rep, final_rep),
-        Const.FATIGA_NUM_CAIDAS_BLOQUE : datos_caida_del_bloque(df, inicio_rep, final_rep),
-        Const.FATIGA_MOVIMIENTO_INCORRECTO : datos_movimiento_correcto(df, inicio_rep, final_rep)
+        Const.FATIGA_CURVATURA_MANO : datos_curvatura_por_repeticion(df, inicio_rep, final_rep),
+        Const.PENALIZACION_NUM_CAIDAS_BLOQUE : datos_caida_del_bloque_por_repeticion(df, inicio_rep, final_rep),
+        Const.PENALIZACION_MOVIMIENTO_INCORRECTO : datos_movimiento_incorrecto_por_repeticion(df, inicio_rep, final_rep)
     }
     return normalizar_datos_paciente(datos_paciente)
 
@@ -44,7 +44,7 @@ def media_historic_initial(valor_historico, valor_primeras_reps):
                 valores_por_subclave[clave] = []
             valores_por_subclave[clave].append(valor)
             valores_por_subclave[clave].append(valor_primeras_reps[clave])
-        media = aux.media_dict(valores_por_subclave)
+        media = aux.media_dict_lista(valores_por_subclave)
     else:
         media = (valor_historico+valor_primeras_reps)/2
     return media
@@ -57,23 +57,23 @@ def datos_primeras_repeticiones_paciente(df:pd.core.frame.DataFrame, porcentaje:
     _datos_paciente = obtener_datos_paciente(df, INICIO_REPES, INICIO_REPES+num_rep_iniciales)
     
     #Sacamos la media de los valores
-    _datos_paciente[Const.FATIGA_HEADPOSITION] = aux.media_dict(_datos_paciente[Const.FATIGA_HEADPOSITION])
-    _datos_paciente[Const.FATIGA_CURVATURA_MANO] = aux.media_dict(_datos_paciente[Const.FATIGA_CURVATURA_MANO])
+    _datos_paciente[Const.FATIGA_HEADPOSITION] = aux.media_dict_lista(_datos_paciente[Const.FATIGA_HEADPOSITION])
+    _datos_paciente[Const.FATIGA_CURVATURA_MANO] = aux.media_dict_lista(_datos_paciente[Const.FATIGA_CURVATURA_MANO])
     for columna in [Const.FATIGA_WRIST, Const.FATIGA_STRENGTH, Const.FATIGA_TIEMPO, Const.FATIGA_VELOCIDAD]:
         _datos_paciente[columna] = sum(_datos_paciente[columna])/len(_datos_paciente[columna])
 
 
-    if Const.FATIGA_MOVIMIENTO_INCORRECTO in _datos_paciente:
-        del _datos_paciente[Const.FATIGA_MOVIMIENTO_INCORRECTO]
-    if Const.FATIGA_NUM_CAIDAS_BLOQUE in _datos_paciente:
-        del _datos_paciente[Const.FATIGA_NUM_CAIDAS_BLOQUE]
+    if Const.PENALIZACION_MOVIMIENTO_INCORRECTO in _datos_paciente:
+        del _datos_paciente[Const.PENALIZACION_MOVIMIENTO_INCORRECTO]
+    if Const.PENALIZACION_NUM_CAIDAS_BLOQUE in _datos_paciente:
+        del _datos_paciente[Const.PENALIZACION_NUM_CAIDAS_BLOQUE]
     
     return _datos_paciente
 
 
 def normalizar_datos_paciente(datos:dict):
     for clave, valor in datos.items():
-        if clave != Const.FATIGA_MOVIMIENTO_INCORRECTO and clave != Const.FATIGA_NUM_CAIDAS_BLOQUE and clave != Const.FATIGA_HEADPOSITION:
+        if clave != Const.PENALIZACION_MOVIMIENTO_INCORRECTO and clave != Const.PENALIZACION_NUM_CAIDAS_BLOQUE and clave != Const.FATIGA_HEADPOSITION:
             if isinstance(valor, list):
                 datos[clave] = aux.normalizar_list(valor)
             if isinstance(valor, dict):
@@ -102,7 +102,7 @@ def datos_velocidad_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, f
     return velocidad
 
 ############################ DATOS TIEMPO ######################################
-def datos_tiempo_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[float]:
+def datos_tiempo_por_repeticion_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[float]:
     tiempo_por_repeticion = []
     for i in range(inicio_rep, final_rep):
         time = (df[df[Const.NUMREPETICION] == i][Const.TIME]).values
@@ -124,7 +124,7 @@ def metricas_de_agarre():
     ]
     return variables_a_considerar
 
-def datos_fuerza_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[float]:
+def datos_fuerza_por_repeticion_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[float]:
     #  Criterio: Se toman los valores mayores a 0 y se calcula su media
     fuerza_de_agarre = []
     variables_a_considerar = metricas_de_agarre()
@@ -173,7 +173,7 @@ def datos_posicion_cabeza_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:
     return head_position
 
 ############################ DATOS CURVATURA ######################################
-def datos_curvatura(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> dict:
+def datos_curvatura_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> dict:
     curvatura = {
         Const.CURVATURA_TOMAR_BLOQUE_Y: [],
         Const.CURVATURA_PUNTO_MAS_ALTO_Y_IDA: [],
@@ -183,21 +183,23 @@ def datos_curvatura(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->
     }
     for repeticion in range(inicio_rep, final_rep):
         rep_data = df[df[Const.NUMREPETICION] == repeticion]
-
         datos_ida = rep_data[rep_data[Const.ISPINCHGRABBING] == True]
         datos_vuelta = rep_data[rep_data[Const.ISPINCHGRABBING] == False]
 
         curvatura[Const.CURVATURA_TOMAR_BLOQUE_Y].append(datos_ida[Const.HANDPOSITION_Y].iloc[0])
         curvatura[Const.CURVATURA_PUNTO_MAS_ALTO_Y_IDA].append(datos_ida[Const.HANDPOSITION_Y].max())
-        curvatura[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA].append(datos_vuelta[Const.HANDPOSITION_Y].max())
-        curvatura[Const.CURVATURA_SOLTAR_BLOQUE_Y].append(datos_vuelta[Const.HANDPOSITION_Y].iloc[0])
-        curvatura[Const.CURVATURA_SOLTAR_BLOQUE_X].append(datos_vuelta[Const.HANDPOSITION_X].iloc[0])
+        curvatura[Const.CURVATURA_SOLTAR_BLOQUE_Y].append(datos_ida[Const.HANDPOSITION_Y].iloc[-1])
+        curvatura[Const.CURVATURA_SOLTAR_BLOQUE_X].append(datos_ida[Const.HANDPOSITION_X].iloc[-1])
+        if repeticion != final_rep:
+            curvatura[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA].append(datos_vuelta[Const.HANDPOSITION_Y].max())
+        else: #En la última repetición una vez dejas el bloque se corta la ejecución por lo que no habrá una vuelta
+            curvatura[Const.CURVATURA_PUNTO_MAS_ALTO_Y_VUELTA].append(-99)            
 
     return curvatura
 
 ############################ DATOS CAIDA DEL BLOQUE ######################################
 
-def datos_caida_del_bloque(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[int]:
+def datos_caida_del_bloque_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)->[int]:
     caida_del_bloque = []
     for rep in range(inicio_rep, final_rep):
         df = df[df[Const.NUMREPETICION]== rep]
@@ -214,7 +216,7 @@ def datos_caida_del_bloque(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep
     return caida_del_bloque
 
 ############################ DATOS MOVIMIENTO CORRECTO ######################################
-def datos_movimiento_correcto(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> [bool]:
+def datos_movimiento_incorrecto_por_repeticion(df:pd.core.frame.DataFrame, inicio_rep:int, final_rep:int)-> [bool]:
     movimiento_correcto = []
     for rep in range(inicio_rep, final_rep):
         df = df[df[Const.NUMREPETICION]== rep]
@@ -242,23 +244,23 @@ def mediahistorica(df: pd.core.frame.DataFrame)-> dict:
 
     for columna in columnas_a_procesar:
         if isinstance(datos[columna], list):
-            datos[columna] = CalculoFatigas.quitar_porcentaje_mas_alto(datos[columna], porcentaje_a_eliminar)
-            datos[columna] = CalculoFatigas.quitar_porcentaje_mas_bajo(datos[columna], porcentaje_a_eliminar)
+            datos[columna] = ExtraerFatigas.quitar_porcentaje_mas_alto(datos[columna], porcentaje_a_eliminar)
+            datos[columna] = ExtraerFatigas.quitar_porcentaje_mas_bajo(datos[columna], porcentaje_a_eliminar)
             datos[columna] = sum(datos[columna]) / len(datos[columna])
 
         if isinstance(datos[columna], pd.DataFrame):
             for subcolumna in datos[columna].columns:
-                datos[columna][subcolumna] = CalculoFatigas.quitar_porcentaje_mas_alto(datos[columna][subcolumna], porcentaje_a_eliminar)
-                datos[columna][subcolumna] = CalculoFatigas.quitar_porcentaje_mas_bajo(datos[columna][subcolumna], porcentaje_a_eliminar)
+                datos[columna][subcolumna] = ExtraerFatigas.quitar_porcentaje_mas_alto(datos[columna][subcolumna], porcentaje_a_eliminar)
+                datos[columna][subcolumna] = ExtraerFatigas.quitar_porcentaje_mas_bajo(datos[columna][subcolumna], porcentaje_a_eliminar)
 
     for columna in [Const.FATIGA_HEADPOSITION, Const.FATIGA_CURVATURA_MANO]:
-        datos[columna] = aux.media_dict(datos[columna])
+        datos[columna] = aux.media_dict_lista(datos[columna])
 
 
-    if Const.FATIGA_MOVIMIENTO_INCORRECTO in datos:
-        del datos[Const.FATIGA_MOVIMIENTO_INCORRECTO]
-    if Const.FATIGA_NUM_CAIDAS_BLOQUE in datos:
-        del datos[Const.FATIGA_NUM_CAIDAS_BLOQUE]
+    if Const.PENALIZACION_MOVIMIENTO_INCORRECTO in datos:
+        del datos[Const.PENALIZACION_MOVIMIENTO_INCORRECTO]
+    if Const.PENALIZACION_NUM_CAIDAS_BLOQUE in datos:
+        del datos[Const.PENALIZACION_NUM_CAIDAS_BLOQUE]
     
     return datos
 
@@ -287,7 +289,7 @@ def ponderar_media_historica(datos:dict)->dict:
                 _isDict = False
 
         if _isDict:            
-            medias_por_componente[clave] = aux.media_dict(valores_por_subclave)
+            medias_por_componente[clave] = aux.media_dict_lista(valores_por_subclave)
         else: 
             media = int(np.mean(valores_por_fecha))
             medias_por_componente[clave] = media

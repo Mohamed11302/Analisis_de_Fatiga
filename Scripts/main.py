@@ -1,25 +1,24 @@
+import pandas as pd
+import Constantes as Const
 import Tratamiento_CSV
-import CalculoFatigas
+from BBT import BBT
 import fichero_salida
 
+
+
+def elegir_clase_juego(juego, df, porcentaje, nombre_intento):
+    if juego == Const.JUEGO_BBT:
+        myBBT = BBT(df, 30, nombre_intento, False)
+    return myBBT
+    
 def main():
-    ### DATOS DE INICIO
-    ruta = 'CSVs/TrackingData/OculusTracking_20231216_120552.csv'
-    user = "default"
-    porcentaje = 30
-
-    df = Tratamiento_CSV.leercsv(ruta)
-    df1 = Tratamiento_CSV.dividir_en_repeticiones(df)
-    preprocesado_fatiga  = CalculoFatigas.preprocesado_indice_fatiga(df1, porcentaje, user)
-    fatiga_por_repeticion = CalculoFatigas.CalcularFatiga_PorRepeticion(preprocesado_fatiga)
-    fatiga_serie = CalculoFatigas.CalcularFatiga_Serie(fatiga_por_repeticion)
-    print(fatiga_serie)
-
-    ### SALIDA    
-    fichero_salida.comprobar_y_crear_carpeta()
-    ruta_json = fichero_salida.crear_ruta_json(ruta, user)
-    fichero_salida.modificar_json_output(ruta_json, preprocesado_fatiga, fatiga_por_repeticion)
-    fichero_salida.modificar_csv_output(user, ruta_json, fatiga_serie)
-
+    nombre_intento = "20231226_204929"
+    porcentaje = 20
+    df = Tratamiento_CSV.leercsv(nombre_intento)
+    juego, user = Tratamiento_CSV.obtener_juego_y_user(nombre_intento)
+    mygame = elegir_clase_juego(juego, df, porcentaje, nombre_intento)
+    fichero_salida.generar_Salida(user, mygame)
+    
 if __name__ == "__main__":
     main()
+

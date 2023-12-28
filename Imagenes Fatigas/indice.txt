@@ -1,4 +1,0 @@
-V1 = primer modelo con las 4 metricas definidas (velocidad, tiempo, fuerza y posicion de la cabez)
-V2 = se ha cambiado la metrica de headposition, cuando se sale del radio se le aplica un peso dependiendo 
-de la distancia de la cabeza a la mano
-V3 = con reweighting
