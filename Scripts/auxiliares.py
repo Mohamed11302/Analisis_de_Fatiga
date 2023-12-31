@@ -85,7 +85,7 @@ def normalizar_dict(data:dict):
     return data
 
 def crear_pesos(n):
-    pesos = [i / sum(range(1, n + 1)) for i in range(n, 0, -1)]
+    pesos = [i / sum(range(1, n + 1)) for i in range(1, n + 1)]
     return pesos
 
 

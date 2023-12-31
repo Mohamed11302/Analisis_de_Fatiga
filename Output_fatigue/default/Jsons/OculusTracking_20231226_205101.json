@@ -1,0 +1,940 @@
+{
+  "Repeticiones": [
+    {
+      "Numero repeticion": 0,
+      "Fatiga repeticion": 0.307,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.6,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 1,
+        "Penalizacion Movimiento Incorrecto": true
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Tiempo",
+        "Al paciente se le ha caido el bloque: 1 veces",
+        "El paciente ha dejado el objeto fuera de la caja"
+      ]
+    },
+    {
+      "Numero repeticion": 1,
+      "Fatiga repeticion": 0.17,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 2,
+      "Fatiga repeticion": 0.091,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 3,
+      "Fatiga repeticion": 0.176,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 4,
+      "Fatiga repeticion": 0.152,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 5,
+      "Fatiga repeticion": 0.164,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 6,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 7,
+      "Fatiga repeticion": 0.309,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 8,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 9,
+      "Fatiga repeticion": 0.079,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 10,
+      "Fatiga repeticion": 0.091,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 11,
+      "Fatiga repeticion": 0.091,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 12,
+      "Fatiga repeticion": 0.048,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 13,
+      "Fatiga repeticion": 0.23,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 14,
+      "Fatiga repeticion": 0.2,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 15,
+      "Fatiga repeticion": 0.024,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 16,
+      "Fatiga repeticion": 0.2,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 17,
+      "Fatiga repeticion": 0.188,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.5,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 18,
+      "Fatiga repeticion": 0.315,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 19,
+      "Fatiga repeticion": 0.224,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 20,
+      "Fatiga repeticion": 0.024,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 21,
+      "Fatiga repeticion": 0.255,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 22,
+      "Fatiga repeticion": 0.309,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 23,
+      "Fatiga repeticion": 0.321,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.6,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Tiempo"
+      ]
+    },
+    {
+      "Numero repeticion": 24,
+      "Fatiga repeticion": 0.067,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 25,
+      "Fatiga repeticion": 0.303,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 26,
+      "Fatiga repeticion": 0.067,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 27,
+      "Fatiga repeticion": 0.103,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 28,
+      "Fatiga repeticion": 0.309,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 29,
+      "Fatiga repeticion": 0.079,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 30,
+      "Fatiga repeticion": 0.2,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 31,
+      "Fatiga repeticion": 0.091,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 32,
+      "Fatiga repeticion": 0.048,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 33,
+      "Fatiga repeticion": 0.055,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 34,
+      "Fatiga repeticion": 0.2,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 35,
+      "Fatiga repeticion": 0.164,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 36,
+      "Fatiga repeticion": 0.139,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 37,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 38,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.35,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 39,
+      "Fatiga repeticion": 0.139,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 40,
+      "Fatiga repeticion": 0.024,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 41,
+      "Fatiga repeticion": 0.073,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 42,
+      "Fatiga repeticion": 0.224,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 43,
+      "Fatiga repeticion": 0.103,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 44,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 45,
+      "Fatiga repeticion": 0.176,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 46,
+      "Fatiga repeticion": 0.176,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 47,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.1,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 48,
+      "Fatiga repeticion": 0.248,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.5,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 49,
+      "Fatiga repeticion": 0.164,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 50,
+      "Fatiga repeticion": 0.079,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 51,
+      "Fatiga repeticion": 0.2,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.55,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Curvatura Trayectoria Mano"
+      ]
+    },
+    {
+      "Numero repeticion": 52,
+      "Fatiga repeticion": 0.115,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.2,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 53,
+      "Fatiga repeticion": 0.532,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.65,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Curvatura Trayectoria Mano"
+      ]
+    },
+    {
+      "Numero repeticion": 54,
+      "Fatiga repeticion": 0.347,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.44999999999999996,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 55,
+      "Fatiga repeticion": 0.341,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.35,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 56,
+      "Fatiga repeticion": 0.252,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 57,
+      "Fatiga repeticion": 0.252,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 58,
+      "Fatiga repeticion": 0.379,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.5,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 59,
+      "Fatiga repeticion": 0.615,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 60,
+      "Fatiga repeticion": 0.252,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 61,
+      "Fatiga repeticion": 0.603,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.1,
+        "Fatiga Velocidad": 0.6,
+        "Fatiga Curvatura Trayectoria Mano": 0,
+        "Fatiga HeadPosition": 0.3,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": [
+        "El paciente ha disminuido su rendimiento en Fatiga Velocidad"
+      ]
+    },
+    {
+      "Numero repeticion": 62,
+      "Fatiga repeticion": 0.545,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0.4,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.4,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 63,
+      "Fatiga repeticion": 0.252,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    },
+    {
+      "Numero repeticion": 64,
+      "Fatiga repeticion": 0.252,
+      "Fatiga por metrica": {
+        "Fatiga Strength": 0,
+        "Fatiga Tiempo": 0,
+        "Fatiga Velocidad": 0,
+        "Fatiga Curvatura Trayectoria Mano": 0.3,
+        "Fatiga HeadPosition": 0.1,
+        "Penalizacion Caidas del Bloque": 0,
+        "Penalizacion Movimiento Incorrecto": false
+      },
+      "Avisos de fatiga": []
+    }
+  ]
+}
