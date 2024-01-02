@@ -5,7 +5,21 @@ import signal
 import ctypes
 import grabacion as grabacion
 import psutil
+import subprocess
+
 process = None
+grabando_video = False
+
+def encontrar_puerto_libre(host, puerto_inicial=5000):
+    while True:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.bind((host, puerto_inicial))
+            s.close()
+            return puerto_inicial
+        except socket.error:
+            puerto_inicial += 1
+
 
 def is_process_running(process):
     if process is None:
@@ -15,16 +29,20 @@ def is_process_running(process):
 
 def handle_client(client_socket, evento):
     global process
+    global grabando_video
     request = client_socket.recv(1024).decode('utf-8')
 
     if request == "GRABAR":
         process = grabacion.grabar_oculus(process)
-        grabacion.grabar_webcam(evento)
+        if grabando_video == False:
+            threading.Thread(target=grabacion.grabar_webcam, args=(evento,)).start()
+        grabando_video = True
 
     elif request == "TERMINAR":
-        process = grabacion.finalizar_grabacion_oculus(process)
         evento.set()
-        time.sleep(1)
+        grabando_video = False
+        process = grabacion.finalizar_grabacion_oculus(process)
+        time.sleep(0.1)
         evento.clear()
 
     client_socket.close()
@@ -33,14 +51,32 @@ def handle_client(client_socket, evento):
 def signal_handler(sig, frame):
     global process
     if is_process_running(process):
-        ctypes.windll.kernel32.GenerateConsoleCtrlEvent(0, process.pid)
+        pid = process.pid
+        ctypes.windll.kernel32.GenerateConsoleCtrlEvent(0, pid)
         process.wait()
-        print(f"[*] Proceso con PID {process.pid} terminado por señal.")
+        print(f"[*] Proceso con PID {pid} terminado por señal.")
         process = None
 
+def adb_command(command):
+    try:
+        result = subprocess.run(command, check=True, text=True, capture_output=True)
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing command '{e.cmd}': {e.stderr}")
+        return None
+
+def create_file_on_oculus(file_path, content):
+    # Comando para escribir el contenido en un archivo en Oculus Quest
+    adb_command(["adb", "shell", f"echo '{content}' > {file_path}"])
+
 def start_server():
-    host = '192.168.18.177'
-    port = 5000
+    host = socket.gethostbyname(socket.gethostname())
+    port = encontrar_puerto_libre(host)
+    oculus_file_path = "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt"
+    file_content = f"{host}\n{port}"
+    create_file_on_oculus(oculus_file_path, file_content)
+    #host = '192.168.18.177'
+    #port = 5000
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))

@@ -3,7 +3,7 @@ import subprocess
 import ctypes
 import server2
 
-cmd = "scrcpy --crop=2000:2000:0:0 --record=prueba_oculus.mkv --record-format=mkv  --no-playback --kill-adb-on-close --max-fps=30"
+cmd = "scrcpy --crop=2000:2000:0:0 --record=prueba_oculus.mkv --record-format=mkv  --no-playback --kill-adb-on-close --max-fps=30 --display-buffer=50"
 def grabar_oculus(process):
     if server2.is_process_running(process):
         print("[!] Ya hay un proceso en ejecución. No se puede iniciar otro.")
@@ -38,7 +38,7 @@ def grabar_webcam(evento):
             break
         video.write(frame)
 
-    print("Deteniendo grabación de video")
+    print("Deteniendo grabación de webcam")
     evento.clear()
     cap.release()
     video.release()
