@@ -11,8 +11,6 @@ def cliente():
 
     #cliente.sendall('GRABAR'.encode('utf-8'))
     cliente.sendall('TERMINAR'.encode('utf-8'))    
-    #cliente.sendall('OCULUS INICIAR VIDEO'.encode('utf-8'))
-    #cliente.sendall('OCULUS FINALIZAR VIDEO'.encode('utf-8'))
 
     #Hay 3 segundos de delay hasta que se enciende la camara
     cliente.close()

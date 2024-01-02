@@ -1,6 +1,6 @@
 import socket
 import threading
-import grabar_video
+import Scripts.Video.grabacion as grabacion
 
 
 def manejar_cliente(conn, evento):
@@ -8,7 +8,7 @@ def manejar_cliente(conn, evento):
     if mensaje == 'OCULUS INICIAR VIDEO':
         print("Iniciando grabación de video")
         evento.clear() 
-        grabar_video.grabar_webcam(evento)
+        grabacion.grabar_webcam(evento)
         print("Grabación de video finalizada")
     elif mensaje == 'OCULUS FINALIZAR VIDEO':
         evento.set()  # Establecer el evento para detener la grabación
