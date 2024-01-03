@@ -45,19 +45,21 @@ def quitar_porcentaje_mas_alto(fatiga:[], porcentaje:int):
     return elementos_a_conservar
 
 
-def quitar_porcentaje_dict(diccionario:dict, porcentaje:int):
-    for clave, valor in diccionario.items():
+def quitar_porcentaje_dict(diccionario:dict, porcentaje:int, metricas):
+    resultado = {}
+    for clave in metricas:
         if isinstance(diccionario[clave], list):
-            diccionario[clave] = quitar_porcentaje_mas_alto(diccionario[clave], porcentaje)
-            diccionario[clave] = quitar_porcentaje_mas_bajo(diccionario[clave], porcentaje)
+            resultado[clave] = quitar_porcentaje_mas_alto(diccionario[clave], porcentaje)
+            resultado[clave] = quitar_porcentaje_mas_bajo(diccionario[clave], porcentaje)
             #diccionario[clave] = sum(diccionario[clave]) / len(diccionario[clave])
 
         if isinstance(diccionario[clave], dict):
+            resultado[clave] = {}
             for subclave, valor2 in diccionario[clave].items():
-                diccionario[clave][subclave] = quitar_porcentaje_mas_alto(diccionario[clave][subclave], porcentaje)
-                diccionario[clave][subclave] = quitar_porcentaje_mas_bajo(diccionario[clave][subclave], porcentaje)
+                resultado[clave][subclave] = quitar_porcentaje_mas_alto(diccionario[clave][subclave], porcentaje)
+                resultado[clave][subclave] = quitar_porcentaje_mas_bajo(diccionario[clave][subclave], porcentaje)
                 #diccionario[clave][subclave] = sum(diccionario[clave][subclave]) / len(diccionario[clave][subclave])
-    return diccionario
+    return resultado
 
 
 
@@ -107,3 +109,33 @@ def calcular_media_ponderada_dict(valores_por_diccionario, pesos):
     for clav, valor in valores_por_diccionario[0].items(): 
         _media_clave[clav] = media_ponderada_lista_diccionarios(valores_por_diccionario, clav, pesos)
     return _media_clave
+
+
+def encontrar_extremos(instance, attribute):
+    valor_max = getattr(instance, attribute)
+    valor_min = getattr(instance, attribute)
+    hijo = instance.hijo
+
+    while hijo is not None:
+        _max = getattr(hijo, attribute)
+        _min = getattr(hijo, attribute)
+        
+        valor_max = max(valor_max, _max)
+        valor_min = min(valor_min, _min)
+
+        hijo = hijo.hijo
+
+    return valor_max, valor_min
+
+def normalizar_atributo(instance, attribute, valor_max, valor_min):
+    hijo = instance.hijo
+
+    while hijo is not None:
+        print(len(np.array(getattr(hijo, attribute))))
+        print(len(valor_min))
+        data_norm = np.round((np.array(getattr(hijo, attribute)) - valor_min) / (valor_max - valor_min), 3)
+        setattr(hijo, attribute, data_norm.tolist())
+        hijo = hijo.hijo
+
+    data_norm = np.round((np.array(getattr(instance, attribute)) - valor_min) / (valor_max - valor_min), 3)
+    setattr(instance, attribute, data_norm.tolist())

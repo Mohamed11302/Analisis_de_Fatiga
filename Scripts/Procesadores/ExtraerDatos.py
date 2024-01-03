@@ -4,6 +4,52 @@ import Constantes.Constantes as Const
 import auxiliares as aux
 
 
+############################ DIVIDIR EN REPETICIONES ######################################
+
+def dividir_en_repeticiones(dataframe):
+    unique_blocks = dataframe[Const.GRABIDENTIFIER].dropna().unique()
+    num_repeticion = 0
+    columna_repeticion = []
+    for i in range(len(dataframe)):
+        if pd.notnull(dataframe[Const.GRABIDENTIFIER].iloc[i]):
+            if ((num_repeticion < len(unique_blocks)) and 
+                (dataframe[Const.GRABIDENTIFIER].iloc[i] == unique_blocks[num_repeticion])):
+                num_repeticion += 1
+            columna_repeticion.append(num_repeticion)
+        else:
+            columna_repeticion.append(num_repeticion)
+    columna_repeticion = comprobar_repeticiones(columna_repeticion)
+    dataframe[Const.NUMREPETICION] = columna_repeticion
+    dataframe = dataframe[dataframe[Const.NUMREPETICION] != 0]
+    dataframe = dataframe.reset_index(drop=True)
+    return dataframe
+
+def comprobar_repeticiones(columna):
+    for i in set(columna):
+        if columna.count(i) == 1:
+            for j in range(len(columna)):
+                if columna[j] == i:
+                    columna[j] += 1
+    i = 0
+    while i < len(columna) - 1:
+        if columna[i+1] - columna[i] == 2:
+            for j in range(i+1, len(columna)):
+                columna[j] -= 1
+        i += 1
+    return columna
+
+############################ SE ESTA USANDO MANO DERECHA ######################################
+def mano_derecha(df):
+    mano_derecha = True 
+    indice_primera_fila = df[Const.GRABIDENTIFIER].first_valid_index()
+    df_resultado = df.iloc[indice_primera_fila:]
+    fila_primer_valor = df_resultado.iloc[0][Const.HANDPOSITION_X]
+    idx_first_empty_row = df[df_resultado[Const.GRABIDENTIFIER].isnull()].index[0]
+    if idx_first_empty_row >= 0:
+        previous_row = df_resultado.iloc[idx_first_empty_row-1][Const.HANDPOSITION_X]
+        if fila_primer_valor - previous_row < 0:
+            mano_derecha = False
+    return mano_derecha
 
 ############################ DATOS VELOCIDAD ######################################
 def velocidad_media_por_repeticion(df:pd.core.frame.DataFrame, repeticion: int)-> [float]:

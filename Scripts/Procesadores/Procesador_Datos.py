@@ -35,27 +35,14 @@ class Procesador_Datos:
     def obtener_media(self, data_serie: dict, metricas: [str]):
         data_media = {}
         for metrica in metricas:
-            if isinstance(data_serie[metrica], list) and (
-                metrica != Const.PENALIZACION_MOVIMIENTO_INCORRECTO
-                and metrica != Const.PENALIZACION_NUM_CAIDAS_BLOQUE
-            ):
+            if isinstance(data_serie[metrica], list):
                 data_media[metrica] = sum(data_serie[metrica]) / len(data_serie[metrica])
 
-            if metrica in {Const.FATIGA_HEADPOSITION, Const.FATIGA_CURVATURA_MANO}:
+            if metrica in [Const.FATIGA_HEADPOSITION, Const.FATIGA_CURVATURA_MANO]:
                 data_media[metrica] = {
                     clave: max(data_serie[metrica][clave]) if 'MAX' in clave else min(data_serie[metrica][clave])
                     for clave in data_serie[metrica]
                 }
 
         return data_media
-    def mano_derecha(self, df):
-        mano_derecha = True 
-        indice_primera_fila = df[Const.GRABIDENTIFIER].first_valid_index()
-        df_resultado = df.iloc[indice_primera_fila:]
-        fila_primer_valor = df_resultado.iloc[0][Const.HANDPOSITION_X]
-        idx_first_empty_row = df[df_resultado[Const.GRABIDENTIFIER].isnull()].index[0]
-        if idx_first_empty_row >= 0:
-            previous_row = df_resultado.iloc[idx_first_empty_row-1][Const.HANDPOSITION_X]
-            if fila_primer_valor - previous_row < 0:
-                mano_derecha = False
-        return mano_derecha
+

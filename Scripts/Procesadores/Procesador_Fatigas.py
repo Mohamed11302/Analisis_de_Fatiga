@@ -22,6 +22,7 @@ class Procesador_Fatigas:
         return fatiga
     def ponderacion_owa(self, fatigas, metricas) -> float:
         nuevas_metricas = self.reweighting(fatigas, metricas)
+        #nuevas_metricas = metricas
         valor_fatiga = 0
         for clave, valor in nuevas_metricas.items():
             valor_fatiga += fatigas[clave] * valor
