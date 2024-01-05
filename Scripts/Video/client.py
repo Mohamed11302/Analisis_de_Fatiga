@@ -1,5 +1,6 @@
 import socket
-import time
+
+##Cliente para probar la conexion al servidor
 
 def cliente():
     host = '192.168.18.177'

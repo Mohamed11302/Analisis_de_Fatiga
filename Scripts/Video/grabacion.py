@@ -1,11 +1,13 @@
 import cv2
 import subprocess
 import ctypes
-import server2
+import server as server
+import Constantes as Const
 
-cmd = "scrcpy --crop=2000:2000:0:0 --record=prueba_oculus.mkv --record-format=mkv  --no-playback --kill-adb-on-close --max-fps=30 --display-buffer=50"
+
 def grabar_oculus(process):
-    if server2.is_process_running(process):
+    cmd = F"scrcpy --crop=2000:2000:0:0 --record={Const.RUTA_VIDEO_OCULUS} --record-format=mkv  --no-playback --kill-adb-on-close --max-fps=30 --display-buffer=50"
+    if server.is_process_running(process):
         print("[!] Ya hay un proceso en ejecución. No se puede iniciar otro.")
     else:
         process = subprocess.Popen(cmd, shell=True)
@@ -13,7 +15,7 @@ def grabar_oculus(process):
     return process
 
 def finalizar_grabacion_oculus(process):
-    if server2.is_process_running(process):
+    if server.is_process_running(process):
         ctypes.windll.kernel32.GenerateConsoleCtrlEvent(0, process.pid)
         process.wait()
         print(f"[*] Proceso con PID {process.pid} terminado.")
@@ -29,7 +31,7 @@ def grabar_webcam(evento):
     ancho = int(cap.get(3))
     alto = int(cap.get(4))
     fps = 30
-    video = cv2.VideoWriter('prueba_webcam.avi', cv2.VideoWriter_fourcc(*'XVID'), fps, (ancho, alto))
+    video = cv2.VideoWriter(Const.RUTA_VIDEO_WEBCAM, cv2.VideoWriter_fourcc(*'XVID'), fps, (ancho, alto))
 
     while not evento.is_set():
         ret, frame = cap.read()

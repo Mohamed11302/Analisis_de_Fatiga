@@ -1,3 +1,0 @@
-scrcpy --max-size=1024 --record <Directorio>
-scrcpy --crop=2000:2000:0:0
-scrcpy --crop=2000:2000:0:0 --record prueba.mp4 --no-playback --kill-adb-on-close
