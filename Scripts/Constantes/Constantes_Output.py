@@ -10,3 +10,8 @@ OUTPUT_NUMREPETITION = 'Repetition number'
 OUTPUT_FATIGUE_REPETITION = 'Repetition Fatigue'
 OUTPUT_FATIGUE_METRICS = 'Fatigue per metric'
 OUTPUT_WARNINGS = 'Fatigue warnings'
+
+
+OUTPUT_FOLDER = "Output_fatigue/"
+OUTPUT_JSON_FOLDER = "Jsons/" 
+CSV_NAME = "output.csv"

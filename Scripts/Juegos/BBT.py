@@ -229,7 +229,7 @@ def bucleBBT(juegos, user):
     valores_de_fatiga = []
     outputs = []
     while bbt:
-        output = f"{bbt.date} = {bbt.fatiga_serie_num:<6} {bbt.fatiga_serie_clasificacion}"
+        output = f"{bbt.date} = {bbt.fatiga_serie_clasificacion}"
         outputs.append(output)
         valores_de_fatiga.append(bbt.fatiga_serie_num)
         bbt = bbt.hijo

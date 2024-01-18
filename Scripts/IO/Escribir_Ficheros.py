@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-import re
 import json
 import Constantes.Configuracion as Config
 import Constantes.Constantes as Const
@@ -10,7 +9,7 @@ def generar_salida(juego):
     comprobar_y_crear_carpeta(juego.user)
     modificar_csv_output(juego)  
     modificar_json_output(juego)
-    print(f"Results saved in {Config.RUTA_CARPETA_SALIDA}{juego.user}")
+    print(f"Results saved in {Const_output.OUTPUT_FOLDER}{juego.user}")
     
 
 def escribir_datos_json(datos_fichero_json: dict, juego)-> dict:
@@ -49,19 +48,19 @@ def modificar_json_output(juego:dict):
         juego_copia = juego_copia.hijo
 
 def crear_ruta_json(date: str, user:str):
-    return Config.RUTA_CARPETA_SALIDA + user + "/" + Config.RUTA_CARPETA_JSON + Config.PREFIJO_FICHEROS + date + ".json"
+    return Const_output.OUTPUT_FOLDER + user + "/" + Const_output.OUTPUT_JSON_FOLDER + Config.PREFIJO_FICHEROS + date + ".json"
 
 def comprobar_y_crear_carpeta(user:str):
-    if not os.path.exists(Config.RUTA_CARPETA_SALIDA):
-        os.makedirs(Config.RUTA_CARPETA_SALIDA)
-    if not os.path.exists(Config.RUTA_CARPETA_SALIDA + user):
-        os.makedirs(Config.RUTA_CARPETA_SALIDA + user)
-    if not os.path.exists(Config.RUTA_CARPETA_SALIDA + user + "/" + Config.RUTA_CARPETA_JSON):
-        os.makedirs(Config.RUTA_CARPETA_SALIDA + user + "/" + Config.RUTA_CARPETA_JSON)
+    if not os.path.exists(Const_output.OUTPUT_FOLDER):
+        os.makedirs(Const_output.OUTPUT_FOLDER)
+    if not os.path.exists(Const_output.OUTPUT_FOLDER + user):
+        os.makedirs(Const_output.OUTPUT_FOLDER + user)
+    if not os.path.exists(Const_output.OUTPUT_FOLDER + user + "/" + Const_output.OUTPUT_JSON_FOLDER):
+        os.makedirs(Const_output.OUTPUT_FOLDER + user + "/" + Const_output.OUTPUT_JSON_FOLDER)
 
 def obtener_csv_output(user: str) -> pd.core.frame.DataFrame:
     try:
-        df = pd.read_csv(Config.RUTA_CARPETA_SALIDA + user + "/" + Config.RUTA_CSV, index_col=Const_output.OUTPUT_INDEX)
+        df = pd.read_csv(Const_output.OUTPUT_FOLDER + user + "/" + Const_output.CSV_NAME, index_col=Const_output.OUTPUT_INDEX)
     except:
         df = pd.DataFrame(columns=[Const_output.OUTPUT_USER,Const_output.OUTPUT_DATE, Const_output.OUTPUT_FATIGUE_VALUE, Const_output.OUTPUT_FATIGUE_CLASIFICATION])
     return df
@@ -77,7 +76,7 @@ def modificar_csv_output(juego):
         df = df.sort_values(Const_output.OUTPUT_DATE)
         df = df.reset_index(drop=True) 
         df.index.name = Const_output.OUTPUT_INDEX
-        df.to_csv(Config.RUTA_CARPETA_SALIDA + juego.user + "/" + Config.RUTA_CSV, index=True, index_label=Const_output.OUTPUT_INDEX, sep=';')
+        df.to_csv(Const_output.OUTPUT_FOLDER + juego.user + "/" + Const_output.CSV_NAME, index=True, index_label=Const_output.OUTPUT_INDEX, sep=';')
 
 def modificar_registro_csv(df, juego):
     filtro = df[Const_output.OUTPUT_DATE].eq(juego.date).any()

@@ -4,13 +4,11 @@ LEER_FICHEROS_OCULUS = False
 
 DIRECTORIO_FICHEROS_GENERADOS_OCULUS = "/sdcard/Android/data/com.RehabImmersive.BoxAndBlock/BoxAndBlock/"
 DIRECTORIO_FICHEROS_GENERADOS_LOCAL = "CSVs/"
-DIRECTORIO_UTILIZADO = ''
 DIRECTORIO_HISTORICAL = "Historical.csv"
 DIRECTORIO_TRACKING_DATA = "/TrackingData/"
 PREFIJO_FICHEROS = "OculusTracking_"
 EXTENSION_FICHEROS = ".csv"
+DIRECTORIO_UTILIZADO = '' #No modificar
 
 
-RUTA_CARPETA_SALIDA = "Output_fatigue/"
-RUTA_CARPETA_JSON = "Jsons/" 
-RUTA_CSV = "output.csv"
+
