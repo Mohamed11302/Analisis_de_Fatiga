@@ -1,7 +1,6 @@
 import pandas as pd
 import Constantes.Constantes as Const
 import Procesadores.ExtraerDatos as ExtraerDatos 
-import Excepciones
 class Procesador_Datos:
     def __init__(self):
         pass
@@ -23,7 +22,7 @@ class Procesador_Datos:
         elif metrica == Const.FATIGA_TIEMPO:
             data = ExtraerDatos.datos_tiempo_por_repeticion_por_repeticion(dataframe, inicio_rep, final_rep)
         else:
-            raise Excepciones.ErrorNombre("Esa métrica no se mide en el programa")
+            raise ValueError("Esa métrica no se mide en el programa")
         return data
     
     def obtener_datos_paciente(self, dataframe: pd.DataFrame, metricas: [str], inicio_rep: int, final_rep: int) -> dict:

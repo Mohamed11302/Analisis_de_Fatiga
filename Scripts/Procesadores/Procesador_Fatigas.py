@@ -1,7 +1,7 @@
 import Constantes.Constantes as Const
 import Procesadores.ExtraerFatigas as ExtraerFatigas
 
-FATIGA_INDICE_GRAVE = 0.6
+FATIGA_INDICE_GRAVE = 0.7
 class Procesador_Fatigas:
     def __init__(self):
         pass
@@ -46,4 +46,5 @@ class Procesador_Fatigas:
                     nuevos_pesos[tipo] = round(valor/suma_nuevos_pesos, 2)
         if len(nuevos_pesos)==0:
             nuevos_pesos = metricas
+    
         return nuevos_pesos
