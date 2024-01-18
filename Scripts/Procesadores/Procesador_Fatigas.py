@@ -1,23 +1,23 @@
 import Constantes.Constantes as Const
 import Procesadores.ExtraerFatigas as ExtraerFatigas
 
-FATIGA_INDICE_GRAVE = 0.7
+
 class Procesador_Fatigas:
     def __init__(self):
         pass
     def fatiga_por_repeticion(self, valor_medio, valor_a_comparar, metrica:str, atributo_opcional=0):
         fatiga = -1
-        if metrica == Const.FATIGA_VELOCIDAD:
+        if metrica == Const.FATIGUE_VELOCITY:
             fatiga = ExtraerFatigas.fatiga_calculo_general(valor_medio, valor_a_comparar, metrica)
-        if metrica == Const.FATIGA_TIEMPO:
+        if metrica == Const.FATIGUE_TIME:
             fatiga = ExtraerFatigas.fatiga_calculo_general(valor_medio, valor_a_comparar, metrica)
-        if metrica == Const.FATIGA_STRENGTH:
+        if metrica == Const.FATIGUE_STRENGTH:
             fatiga = ExtraerFatigas.fatiga_calculo_general(valor_medio, valor_a_comparar, metrica)
-        if metrica == Const.FATIGA_CURVATURA_MANO:
+        if metrica == Const.FATIGUE_HAND_TRAJECTORY:
             fatiga = ExtraerFatigas.fatiga_calculo_curvatura_mano(valor_medio, valor_a_comparar, atributo_opcional)
-        if metrica == Const.FATIGA_HEADPOSITION:
+        if metrica == Const.FATIGUE_HEADPOSITION:
             fatiga = ExtraerFatigas.fatiga_calculo_headposition(valor_medio, valor_a_comparar, atributo_opcional)
-        if metrica == Const.FATIGA_WRIST:
+        if metrica == Const.FATIGUE_WRIST:
             pass
         return fatiga
     def ponderacion_owa(self, fatigas, metricas) -> float:
@@ -32,7 +32,7 @@ class Procesador_Fatigas:
         nuevos_pesos = {}
         suma_nuevos_pesos = 0
         for tipo_fatiga, valor_fatiga in valores_fatiga.items():
-            if valor_fatiga > FATIGA_INDICE_GRAVE:
+            if valor_fatiga > Const.ABNORMAL_FATIGUE:
                 for tipo,peso in metricas.items():
                     A = 1 - peso
                     B = A - peso

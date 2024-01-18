@@ -52,13 +52,13 @@ def obtener_argumentos_entrada():
 
 
 def ejecutar_juego(nombre_intento, user, juego):
-    print("Iniciando el cálculo de fatiga")
+    print(f"Starting fatigue calculation for user {user}")
     juegos = aux.obtener_historico(user, nombre_intento)
     if juego == Const.JUEGO_BBT:
         mygame = bucleBBT(juegos, user)
-    print("Guardando resultados")
-    Escribir_Ficheros.generar_Salida(mygame) 
-    print("Finalización del programa...")
+    print("Saving results")
+    Escribir_Ficheros.generar_salida(mygame) 
+    print("Concluding program...")
 
 
 def main():

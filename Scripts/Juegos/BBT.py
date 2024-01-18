@@ -1,4 +1,5 @@
 import pandas as pd
+import Juegos.BBT_constantes as bbt_const
 import Constantes.Constantes as Const
 import Constantes.Configuracion as Config
 from Procesadores.Procesador_Datos import Procesador_Datos
@@ -15,8 +16,8 @@ class BBT(JUEGO):
         self.dataframe = dataframe
         self.hijo = hijo
 
-        self.metricas = Const.METRICAS_FATIGA_BBT
-        self.penalizaciones = Const.PENALIZACIONES_FATIGA_BBT
+        self.metricas = bbt_const.FATIGUE_METRICS_BBT
+        self.penalizaciones = bbt_const.FATIGUE_PENALIZATIONS_BBT
         self.Procesador_Datos = Procesador_Datos()
         self.Procesador_Fatigas = Procesador_Fatigas()
         
@@ -145,9 +146,9 @@ class BBT(JUEGO):
         for clave in self.metricas.keys():
             if isinstance(self.datos_serie[clave], list):
                 fatigas[clave] = self.Procesador_Fatigas.fatiga_por_repeticion(self.datos_serie[clave][repeticion], self.datos_comparacion[clave], clave)
-            elif clave==Const.FATIGA_CURVATURA_MANO:
+            elif clave==Const.FATIGUE_HAND_TRAJECTORY:
                 fatigas[clave] = self.Procesador_Fatigas.fatiga_por_repeticion(self.datos_serie[clave], self.datos_comparacion[clave], clave, repeticion)
-            elif clave==Const.FATIGA_HEADPOSITION:
+            elif clave==Const.FATIGUE_HEADPOSITION:
                 fatigas[clave] = self.Procesador_Fatigas.fatiga_por_repeticion(self.datos_serie[clave], self.datos_comparacion[clave], clave, {'repeticion': repeticion, 'df':self.dataframe})
         for clave in self.penalizaciones.keys():
             fatigas[clave] = self.datos_serie[clave][repeticion]
@@ -166,9 +167,9 @@ class BBT(JUEGO):
 
     def aplicar_penalizacion(self, valor_fatiga:int, repeticion):
         for clave, valor in self.penalizaciones.items():
-            if clave==Const.PENALIZACION_NUM_CAIDAS_BLOQUE:
+            if clave==Const.PENALIZATION_BLOCK_DROP:
                 valor_fatiga += valor_fatiga*(self.fatiga_por_metrica[repeticion][clave]*valor)
-            if clave==Const.PENALIZACION_MOVIMIENTO_INCORRECTO and self.fatiga_por_metrica[repeticion][clave]:
+            if clave==Const.PENALIZATION_INCORRECT_MOVEMENT and self.fatiga_por_metrica[repeticion][clave]:
                 valor_fatiga += valor_fatiga*valor       
         return valor_fatiga
 
@@ -217,15 +218,14 @@ class BBT(JUEGO):
 
 def bucleBBT(juegos, user):
     lista_juegos = list(juegos.keys())
-    myBBT = None
+    my_bbt = None
     for date in reversed(lista_juegos):
-        myBBT = BBT(juegos[date], Config.PORCENTAJE_COMPARACION, date, user, myBBT)
-        myBBT.main()
-    bbt = myBBT
+        my_bbt = BBT(juegos[date], Config.PORCENTAJE_COMPARACION, date, user, my_bbt)
+        my_bbt.main()
     if len(lista_juegos)>1:
-        myBBT.normalizar_datos()
-        myBBT.clasificar_fatigas()
-    bbt = myBBT
+        my_bbt.normalizar_datos()
+        my_bbt.clasificar_fatigas()
+    bbt = my_bbt
     valores_de_fatiga = []
     outputs = []
     while bbt:
@@ -233,10 +233,10 @@ def bucleBBT(juegos, user):
         outputs.append(output)
         valores_de_fatiga.append(bbt.fatiga_serie_num)
         bbt = bbt.hijo
+    print(f"Fatigue outputs for user: {my_bbt.user}")
     for output in outputs[::-1]:
         print(output)
-    print(valores_de_fatiga[::-1])
-    return myBBT
+    return my_bbt
 
 
         

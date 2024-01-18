@@ -66,9 +66,9 @@ def quitar_porcentaje_dict(diccionario:dict, porcentaje:int, metricas):
 
 def valor_de_fatiga(valor_medio:float, valor_a_comparar:float, tipo:str):
     fatiga = 0
-    if tipo in (Const.FATIGA_VELOCIDAD, Const.FATIGA_STRENGTH):
+    if tipo in (Const.FATIGUE_VELOCITY, Const.FATIGUE_STRENGTH):
         fatiga = -((valor_a_comparar-valor_medio)/valor_medio)*100
-    if tipo == Const.FATIGA_TIEMPO:
+    if tipo == Const.FATIGUE_TIME:
         fatiga = ((valor_a_comparar-valor_medio)/valor_medio)*100
     return fatiga
 
