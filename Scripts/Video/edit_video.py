@@ -1,7 +1,7 @@
 from moviepy.editor import VideoFileClip, clips_array
 import argparse
 import Constantes as Const
-def editar_video(ruta_webcam, ruta_oculus, ruta_salida):
+def edit_video(ruta_webcam, ruta_oculus, ruta_salida):
     try:
         video_webcam = VideoFileClip(ruta_webcam)
         video_oculus = VideoFileClip(ruta_oculus)
@@ -18,19 +18,19 @@ def editar_video(ruta_webcam, ruta_oculus, ruta_salida):
         print(f"Las rutas \n\t{ruta_webcam}\n\t{ruta_oculus}\nno están bien definidas")
 
 def obtener_argumentos_entrada():
-    parser = argparse.ArgumentParser(description='Argumentos Análisis de fatiga.')
-    parser.add_argument('--video_salida', type=str, help='Ruta donde guardar el video de salida')
-    parser.add_argument('--video_oculus', type=str, help='Ruta donde esta el video de las oculus')
-    parser.add_argument('--video_webcam', type=str, help='Ruta donde esta el video de la webcam')
+    parser = argparse.ArgumentParser(description='Edit video arguments.')
+    parser.add_argument('--output_video', type=str, help='Directory to save output video')
+    parser.add_argument('--oculus_video', type=str, help='Directory of oculus video')
+    parser.add_argument('--webcam_video', type=str, help='Directory of webcam video')
     args = parser.parse_args()
-    if args.video_webcam != None:
-        Const.RUTA_VIDEO_WEBCAM = args.video_webcam
-    if args.video_oculus != None:
-        Const.RUTA_VIDEO_OCULUS = args.video_oculus
-    if args.video_salida != None:
-        Const.RUTA_VIDEO_SALIDA = args.video_salida
+    if args.webcam_video != None:
+        Const.RUTA_VIDEO_WEBCAM = args.webcam_video
+    if args.oculus_video != None:
+        Const.RUTA_VIDEO_OCULUS = args.oculus_video
+    if args.output_video != None:
+        Const.RUTA_VIDEO_SALIDA = args.output_video
 
 
 if __name__ == "__main__":
     obtener_argumentos_entrada()
-    editar_video(Const.RUTA_VIDEO_WEBCAM, Const.RUTA_VIDEO_OCULUS, Const.RUTA_VIDEO_SALIDA)
+    edit_video(Const.RUTA_VIDEO_WEBCAM, Const.RUTA_VIDEO_OCULUS, Const.RUTA_VIDEO_SALIDA)

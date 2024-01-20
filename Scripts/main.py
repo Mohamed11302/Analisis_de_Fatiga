@@ -5,7 +5,7 @@ import Constantes.Constantes as Const
 import Constantes.Configuracion as Config
 import IO.Escribir_Ficheros as Escribir_Ficheros
 import pre_requisitos
-from Juegos.BBT import bucleBBT
+from Fatigue_Games.BBT import bucleBBT
 
 
 
@@ -15,18 +15,19 @@ def obtener_argumentos_entrada():
     parser = argparse.ArgumentParser(description='Fatigue analyzation arguments.')
     parser.add_argument('--user', type=str,required=True, help='User name.')
     parser.add_argument('--date', type=str,required=True, help='Date of the exercise with format: YYYYMMDD_HHMMSS.')
-    parser.add_argument('--leer_oculus', type=int, help='Read files from oculus. 0: No, 1: Yes.')
-    parser.add_argument('--directorio', type=str, help='Main directory of saved files from Rehab-Immersive.')
+    parser.add_argument('--read_oculus', type=int, help='Read files from oculus. 0: No, 1: Yes.')
+    parser.add_argument('--directory', type=str, help='Main directory of saved files from Rehab-Immersive.')
     args = parser.parse_args()
     
-    if args.leer_oculus != None:
-        Config.LEER_FICHEROS_OCULUS = bool(args.leer_oculus)
-    if args.directorio != None:
-        Config.DIRECTORIO_UTILIZADO = args.directorio
+    if args.read_oculus != None:
+        Config.LEER_FICHEROS_OCULUS = bool(args.read_oculus)
+    if args.directory != None:
+        Config.DIRECTORIO_UTILIZADO = args.directory
     elif Config.LEER_FICHEROS_OCULUS == True:
         Config.DIRECTORIO_UTILIZADO = Config.DIRECTORIO_FICHEROS_GENERADOS_OCULUS
     elif Config.LEER_FICHEROS_OCULUS == False:
         Config.DIRECTORIO_UTILIZADO = Config.DIRECTORIO_FICHEROS_GENERADOS_LOCAL
+    Config.DIRECTORIO_UTILIZADO +="/"
     return args.user, args.date
 
 

@@ -3,7 +3,7 @@ import socket
 import threading
 import signal
 import ctypes
-import grabacion as grabacion
+import Scripts.Video.recording as recording
 import psutil
 import subprocess
 import Constantes as Const
@@ -12,17 +12,17 @@ process = None
 grabando_video = False
 
 def obtener_argumentos_entrada():
-    parser = argparse.ArgumentParser(description='Argumentos Análisis de fatiga.')
-    parser.add_argument('--ruta_oculus', type=str, help='Ruta donde escribir el fichero con host y puerto en las oculus quest')
-    parser.add_argument('--video_oculus', type=str, help='Ruta donde guardar el video de las oculus')
-    parser.add_argument('--video_webcam', type=str, help='Ruta donde guardar el video de la webcam')
+    parser = argparse.ArgumentParser(description='Server arguments.')
+    parser.add_argument('--oculus_directory', type=str, help='Directory where the file with host and port will be written in oculus quest')
+    parser.add_argument('--oculus_video_directory', type=str, help='Directory to save oculus video')
+    parser.add_argument('--webcam_video_directory', type=str, help='Directory to save webcam video')
     args = parser.parse_args()
-    if args.video_webcam != None:
-        Const.RUTA_VIDEO_WEBCAM = args.video_webcam
-    if args.video_oculus != None:
-        Const.RUTA_VIDEO_OCULUS = args.video_oculus
-    if args.ruta_oculus != None:
-        Const.FICHERO_OCULUS = args.ruta_oculus
+    if args.webcam_video_directory != None:
+        Const.RUTA_VIDEO_WEBCAM = args.webcam_video_directory
+    if args.oculus_video_directory != None:
+        Const.RUTA_VIDEO_OCULUS = args.oculus_video_directory
+    if args.oculus_directory != None:
+        Const.FICHERO_OCULUS = args.oculus_directory
 
 def encontrar_puerto_libre(host, puerto_inicial=5000):
     while True:
@@ -45,15 +45,15 @@ def handle_client(client_socket, evento):
     request = client_socket.recv(1024).decode('utf-8')
 
     if request == "GRABAR":
-        process = grabacion.grabar_oculus(process)
+        process = recording.record_oculus(process)
         if grabando_video == False:
-            threading.Thread(target=grabacion.grabar_webcam, args=(evento,)).start()
+            threading.Thread(target=recording.record_webcam, args=(evento,)).start()
         grabando_video = True
 
     elif request == "TERMINAR":
         evento.set()
         grabando_video = False
-        process = grabacion.finalizar_grabacion_oculus(process)
+        process = recording.finish_oculus_recording(process)
         time.sleep(0.1)
         evento.clear()
 

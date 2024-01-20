@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 # Puntos de datos
-
+import skfuzzy as fuzz
 
 def imprimir_todas_las_graficas(values, nombres):
     timestamps = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
@@ -14,6 +14,34 @@ def imprimir_todas_las_graficas(values, nombres):
 
     # Mostrar el gráfico
     plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+import skfuzzy as fuzz
+
+def plot_fuzzy_sets():
+    x = np.arange(0, 101, 1)
+
+    mf1 = fuzz.trapmf(x, [0, 0, 15, 30])
+    mf2 = fuzz.trimf(x, [15, 30, 40])
+    mf3 = fuzz.trimf(x, [30, 40, 60])
+    mf4 = fuzz.trapmf(x, [40, 60, 100, 100])
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(x, mf1, 'darkblue', linewidth=1.5, label='15% underperform')
+    plt.plot(x, mf2, 'darkgreen', linewidth=1.5, label='15-40% underperform')
+    plt.plot(x, mf3, 'darkred', linewidth=1.5, label='30-60% underperform')
+    plt.plot(x, mf4, 'darkcyan', linewidth=1.5, label='40-100% underperform')
+    plt.title('Fuzzy Sets', fontsize=15)
+    plt.xlabel('Value', fontsize=13)
+    plt.ylabel('Membership', fontsize=13)
+    plt.legend(loc='upper right', fontsize=10)
+    plt.grid(True, color='gray', linestyle='--', linewidth=0.5)
+    plt.tight_layout()
+    plt.show()
+
+# Example of use
+plot_fuzzy_sets()
 
 
 
@@ -39,6 +67,5 @@ values_daniel = [0.655, 0.0, 0.491, 0.123, 0.297, 0.233, 0.008, 0.035, 1.0, 0.96
 
 
 
-imprimir_todas_las_graficas([values_mohamed, values_mohamed_fatigado, values_mohamed_fatigado2], ["sin_acumulacion", "acumulando v1", "acumulando v2"])
-
+#imprimir_todas_las_graficas([values_mohamed, values_mohamed_fatigado, values_mohamed_fatigado2], ["sin_acumulacion", "acumulando v1", "acumulando v2"])
 

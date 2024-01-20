@@ -1,13 +1,13 @@
 import pandas as pd
-import Juegos.BBT_constantes as bbt_const
+import Fatigue_Games.BBT_constantes as bbt_const
 import Constantes.Constantes as Const
 import Constantes.Configuracion as Config
 from Procesadores.Procesador_Datos import Procesador_Datos
 from Procesadores.Procesador_Fatigas import Procesador_Fatigas
-from Juegos.JUEGO import JUEGO
+from Fatigue_Games.FATIGUE_GAMES import FATIGUE_GAMES
 import auxiliares as aux
 import numpy as np
-class BBT(JUEGO):
+class BBT(FATIGUE_GAMES):
     def __init__(self, dataframe:pd.DataFrame, porcentaje:int, date:str, user:str, hijo, fatiga_serie=None):
         super().__init__(date, user, fatiga_serie)
         self.user = user
@@ -17,6 +17,7 @@ class BBT(JUEGO):
         self.hijo = hijo
 
         self.metricas = bbt_const.FATIGUE_METRICS_BBT
+        self.owa_weights = bbt_const.OWA_BBT
         self.penalizaciones = bbt_const.FATIGUE_PENALIZATIONS_BBT
         self.Procesador_Datos = Procesador_Datos()
         self.Procesador_Fatigas = Procesador_Fatigas()
@@ -30,13 +31,13 @@ class BBT(JUEGO):
         #self.main()
 
     def main(self):
-        self.extraer_datos_serie()        
-        self.extraer_datos_comparacion()
-        self.fatigas_por_metricas()
-        self.obtener_fatiga_por_repeticion()
-        self.obtener_fatiga_serie()
+        self.extract_series_data()        
+        self.extract_comparative_data()
+        self.obtain_fatigue_per_metric()
+        self.obtain_fatigue_per_repetition()
+        self.obtain_fatigue_per_series()
 
-    def normalizar_datos(self):
+    def normalize_data(self):
         self.normalizar_repeticiones()
         self.normalizar_serie()
 
@@ -79,13 +80,13 @@ class BBT(JUEGO):
         fatiga_serie_normalizado = round(((self.fatiga_serie_num)-valor_min) / (valor_max - valor_min), 3)
         self.fatiga_serie_num = fatiga_serie_normalizado
 
-    def extraer_datos_serie(self):
+    def extract_series_data(self):
         _, num_repeticiones = self.num_repeticiones()
-        _metricas = set(self.metricas.keys()) | set(self.penalizaciones.keys())
+        _metricas = set(self.metricas) | set(self.penalizaciones.keys())
         self.datos_serie = self.Procesador_Datos.obtener_datos_paciente(self.dataframe, _metricas, 
                                                                         Const.INICIO_REPES, 
                                                                         num_repeticiones+1)
-    def extraer_datos_comparacion(self):
+    def extract_comparative_data(self):
         data_inicio_reps = self.procesar_datos_iniciales()
         if self.hijo == None:
             self.datos_comparacion = data_inicio_reps
@@ -106,7 +107,7 @@ class BBT(JUEGO):
     def procesar_datos_iniciales(self):
         num_rep_iniciales, num_repeticiones = self.num_repeticiones()
         _data_rep_iniciales = self.Procesador_Datos.obtener_datos_paciente(self.dataframe, 
-                                                                        self.metricas.keys(),
+                                                                        self.metricas,
                                                                         num_rep_iniciales, 
                                                                         num_repeticiones)
         data_inicio_reps = self.Procesador_Datos.obtener_media(_data_rep_iniciales, self.metricas)
@@ -116,7 +117,7 @@ class BBT(JUEGO):
     def calcular_media_historica(self, datos_historico):
         pesos = aux.crear_pesos(len(datos_historico))
         datos_historico = list(datos_historico.values())
-        datos_historico = {clave: aux.media_ponderada_lista_diccionarios(datos_historico, clave, pesos) for clave in self.metricas.keys()}
+        datos_historico = {clave: aux.media_ponderada_lista_diccionarios(datos_historico, clave, pesos) for clave in self.metricas}
         return datos_historico
     
 
@@ -136,14 +137,14 @@ class BBT(JUEGO):
         num_rep_iniciales = round(num_repeticiones * (self.porcentaje/100)) + Const.INICIO_REPES #Ignoramos rep 0
         return num_rep_iniciales, num_repeticiones
 
-    def fatigas_por_metricas(self):
+    def obtain_fatigue_per_metric(self):
         fatigas = {}
         for f in range(0, self.dataframe[Const.NUMREPETICION].max()):
             fatigas[f] = self.fatiga_por_metrica_rep(f)
         self.fatiga_por_metrica = fatigas
     def fatiga_por_metrica_rep(self, repeticion):
         fatigas = {}
-        for clave in self.metricas.keys():
+        for clave in self.metricas:
             if isinstance(self.datos_serie[clave], list):
                 fatigas[clave] = self.Procesador_Fatigas.fatiga_por_repeticion(self.datos_serie[clave][repeticion], self.datos_comparacion[clave], clave)
             elif clave==Const.FATIGUE_HAND_TRAJECTORY:
@@ -154,11 +155,11 @@ class BBT(JUEGO):
             fatigas[clave] = self.datos_serie[clave][repeticion]
         return fatigas
 
-    def obtener_fatiga_por_repeticion(self):
+    def obtain_fatigue_per_repetition(self):
         fatigas = []
         for f in range(0, self.dataframe[Const.NUMREPETICION].max()):
-            valor_fatiga, nuevas_metricas = self.Procesador_Fatigas.ponderacion_owa(self.fatiga_por_metrica[f], self.metricas)
-            self.metricas = nuevas_metricas
+            valor_fatiga, nuevos_owa_operadores = self.Procesador_Fatigas.ponderacion_owa(self.fatiga_por_metrica[f], self.owa_weights)
+            self.owa_weights = nuevos_owa_operadores
             valor_fatiga = self.aplicar_penalizacion(valor_fatiga, f)
             fatigas.append(valor_fatiga)
 
@@ -173,7 +174,7 @@ class BBT(JUEGO):
                 valor_fatiga += valor_fatiga*valor       
         return valor_fatiga
 
-    def obtener_fatiga_serie(self):
+    def obtain_fatigue_per_series(self):
         data_sin_valores_bajos =aux.quitar_porcentaje_mas_bajo(self.fatiga_por_repeticion, 20)
         valor_fatiga_serie = sum(data_sin_valores_bajos)/len(data_sin_valores_bajos)        
         hijo = self.hijo
@@ -198,7 +199,7 @@ class BBT(JUEGO):
         else:
             multiplicador_fatiga_acumulada = 0
         return multiplicador_fatiga_acumulada
-    def clasificar_fatigas(self):
+    def clasify_fatigues(self):
         bbt = self
         while bbt:
             bbt.fatiga_serie_clasificacion = self.indicador_clasificacion(bbt.fatiga_serie_num)
@@ -223,8 +224,8 @@ def bucleBBT(juegos, user):
         my_bbt = BBT(juegos[date], Config.PORCENTAJE_COMPARACION, date, user, my_bbt)
         my_bbt.main()
     if len(lista_juegos)>1:
-        my_bbt.normalizar_datos()
-        my_bbt.clasificar_fatigas()
+        my_bbt.normalize_data()
+        my_bbt.clasify_fatigues()
     bbt = my_bbt
     valores_de_fatiga = []
     outputs = []

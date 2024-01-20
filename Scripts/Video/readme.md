@@ -1,41 +1,38 @@
-Pasos a seguir para ejecutar el programa:
+1.  Execute the command python3 -m pip install -r requirements.txt
 
-1. Ejecutamos el comando python3 -m pip install -r requirements.txt
+2.  (Optional) Download the same versions of the software used, which are listed in Software.txt.
 
-2. (Opcional) Descargar las mismas versiones del software utilizado que se encuentra en Software.txt 
+3.  Execute the server program with 3 attributes (for a better view, use the command "server.py -h"):
+    -   --ruta_oculus: Path to write the file with host and port on Oculus Quest.
+    -   --video_oculus: Path to save the Oculus video.
+    -   --video_webcam: Path to save the webcam video.
 
-3.  Ejecutamos el programa del servidor que tiene 3 atributos (podemos verlo mejor si escribimos el comando "server.py -h"):
-    *   --ruta_oculus : Ruta donde escribir el fichero con host y puerto en las oculus quest
-    *   --video_oculus : Ruta donde guardar el video de las oculus
-    *   --video_webcam : Ruta donde guardar el video de la webcam
+4.  Run the Unity project, passing the server data file path (defined in ruta_oculus) as an argument with -e ruta "ruta."
 
-4.  Ejecutamos el proyecto de unity pasandole como argumento la ruta del fichero de los datos del servidor (el mismo definido en 
-    ruta_oculus) con -e ruta "ruta"
+5.  Using the trigger of the right Oculus Quest controller, if we press "Start Recording," the recording will begin, and if we press "Finish Recording," the recording will end, and the file will be written to the path specified in the first step.
 
-5.  Utilizando el trigger del mando derecho de oculus quest si pulsamos Iniciar Grabación se iniciará la grabación y si pulsamos
-    finalizar Grabación se finalizará la grabación y se escribirá en la ruta marcada en el primer paso
+6.  To merge the videos, use the script editar_video.py, which will generate a video by combining and synchronizing both parts. It has 3 attributes (for a better view, use the command "editar_video.py -h"):
+    -   --video_salida: Path to save the output video.
+    -   --video_oculus: Path where the Oculus video is located.
+    -   --video_webcam: Path where the webcam video is located.
 
-6.  Para juntar los videos utilizamos el script editar_video.py que te generará un video uniendo y sincronizando ambas partes. Tiene 3 atributos (podemos verlo mejor si escribimos el comando "editar_video.py -h"):
-    *   --video_salida : Ruta donde guardar el video de salida
-    *   --video_oculus : Ruta donde esta el video de las oculus
-    *   --video_webcam : Ruta donde esta el video de la webcam
-
-
-Un ejemplo de ejecución sería:
-```
+An example of execution would be:
+´´´
 python3 -m pip install -r requirements.txt
 
-python3 .\Scripts\Video\server.py --ruta_oculus "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt" --video_oculus "video_oculus.mkv" --video_webcam "video_webcam.avi"
-```
+python3 .\Scripts\Video\server.py --oculus_directory "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt" --oculus_video_directory "video_oculus.mkv" --webcam_video_directory "video_webcam.avi"
+´´´
+Now, run the recording from the Unity program:
 
-Ahora ejecutaríamos la grabación desde el programa de unity 
-
-```
+´´´
 adb shell am start -n com.DefaultCompany.Prueba_ClienteServidor2/com.unity3d.player.UnityPlayerActivity -e ruta "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt"
-```
 
-Por último, una vez creado el video podríamos editarlo de esta manera
+´´´
+Finally, once the video is created, you can edit it as follows:
+´´´
+python3 .\Scripts\Video\edit_video.py --output_video "video_salida.mp4" --oculus_video "video_oculus.mkv" --webcam_video "video_webcam.avi"
+´´´
 
-```
-python3 .\Scripts\Video\editar_video.py --video_salida "video_salida.mp4" --video_oculus "video_oculus.mkv" --video_webcam "video_webcam.avi"
-```
+
+
+

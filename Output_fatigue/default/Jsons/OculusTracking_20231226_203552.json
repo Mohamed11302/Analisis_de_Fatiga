@@ -2,7 +2,7 @@
   "Repetitions": [
     {
       "Repetition number": 0,
-      "Repetition Fatigue": 0.187,
+      "Repetition Fatigue": 0.782,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -19,7 +19,7 @@
     },
     {
       "Repetition number": 1,
-      "Repetition Fatigue": 0.121,
+      "Repetition Fatigue": 0.108,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -33,7 +33,7 @@
     },
     {
       "Repetition number": 2,
-      "Repetition Fatigue": 0.168,
+      "Repetition Fatigue": 0.158,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -47,7 +47,7 @@
     },
     {
       "Repetition number": 3,
-      "Repetition Fatigue": 0.285,
+      "Repetition Fatigue": 0.246,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -63,7 +63,7 @@
     },
     {
       "Repetition number": 4,
-      "Repetition Fatigue": 0.104,
+      "Repetition Fatigue": 0.091,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -77,7 +77,7 @@
     },
     {
       "Repetition number": 5,
-      "Repetition Fatigue": 0.06,
+      "Repetition Fatigue": 0.057,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.11543977591036396,
@@ -91,7 +91,7 @@
     },
     {
       "Repetition number": 6,
-      "Repetition Fatigue": 0.059,
+      "Repetition Fatigue": 0.043,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -105,7 +105,7 @@
     },
     {
       "Repetition number": 7,
-      "Repetition Fatigue": 0.139,
+      "Repetition Fatigue": 0.107,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -121,7 +121,7 @@
     },
     {
       "Repetition number": 8,
-      "Repetition Fatigue": 0.019,
+      "Repetition Fatigue": 0.027,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -135,7 +135,7 @@
     },
     {
       "Repetition number": 9,
-      "Repetition Fatigue": 0.055,
+      "Repetition Fatigue": 0.057,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.11543977591036396,
@@ -149,7 +149,7 @@
     },
     {
       "Repetition number": 10,
-      "Repetition Fatigue": 0.118,
+      "Repetition Fatigue": 0.094,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -163,7 +163,7 @@
     },
     {
       "Repetition number": 11,
-      "Repetition Fatigue": 0.001,
+      "Repetition Fatigue": -0.0,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -177,7 +177,7 @@
     },
     {
       "Repetition number": 12,
-      "Repetition Fatigue": 0.107,
+      "Repetition Fatigue": 0.085,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -191,7 +191,7 @@
     },
     {
       "Repetition number": 13,
-      "Repetition Fatigue": 0.011,
+      "Repetition Fatigue": 0.013,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.11543977591036396,
@@ -205,7 +205,7 @@
     },
     {
       "Repetition number": 14,
-      "Repetition Fatigue": 0.092,
+      "Repetition Fatigue": 0.09,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -219,7 +219,7 @@
     },
     {
       "Repetition number": 15,
-      "Repetition Fatigue": 0.133,
+      "Repetition Fatigue": 0.11,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -247,7 +247,7 @@
     },
     {
       "Repetition number": 17,
-      "Repetition Fatigue": 0.023,
+      "Repetition Fatigue": 0.018,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -261,7 +261,7 @@
     },
     {
       "Repetition number": 18,
-      "Repetition Fatigue": 0.038,
+      "Repetition Fatigue": 0.029,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.3114611005692597,
@@ -275,7 +275,7 @@
     },
     {
       "Repetition number": 19,
-      "Repetition Fatigue": 0.07,
+      "Repetition Fatigue": 0.063,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.3114611005692597,
@@ -289,7 +289,7 @@
     },
     {
       "Repetition number": 20,
-      "Repetition Fatigue": 0.103,
+      "Repetition Fatigue": 0.109,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -303,7 +303,7 @@
     },
     {
       "Repetition number": 21,
-      "Repetition Fatigue": 0.217,
+      "Repetition Fatigue": 0.188,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -319,7 +319,7 @@
     },
     {
       "Repetition number": 22,
-      "Repetition Fatigue": 0.038,
+      "Repetition Fatigue": 0.031,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.11543977591036396,
@@ -333,7 +333,7 @@
     },
     {
       "Repetition number": 23,
-      "Repetition Fatigue": 0.232,
+      "Repetition Fatigue": 0.216,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -347,7 +347,7 @@
     },
     {
       "Repetition number": 24,
-      "Repetition Fatigue": 0.1,
+      "Repetition Fatigue": 0.104,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -361,7 +361,7 @@
     },
     {
       "Repetition number": 25,
-      "Repetition Fatigue": 0.11,
+      "Repetition Fatigue": 0.077,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -375,7 +375,7 @@
     },
     {
       "Repetition number": 26,
-      "Repetition Fatigue": 0.11,
+      "Repetition Fatigue": 0.105,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -389,7 +389,7 @@
     },
     {
       "Repetition number": 27,
-      "Repetition Fatigue": 0.104,
+      "Repetition Fatigue": 0.106,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -403,7 +403,7 @@
     },
     {
       "Repetition number": 28,
-      "Repetition Fatigue": 0.208,
+      "Repetition Fatigue": 0.159,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -419,7 +419,7 @@
     },
     {
       "Repetition number": 29,
-      "Repetition Fatigue": 0.053,
+      "Repetition Fatigue": 0.033,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -433,7 +433,7 @@
     },
     {
       "Repetition number": 30,
-      "Repetition Fatigue": 0.146,
+      "Repetition Fatigue": 0.116,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -449,7 +449,7 @@
     },
     {
       "Repetition number": 31,
-      "Repetition Fatigue": -0.033,
+      "Repetition Fatigue": -0.007,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -463,7 +463,7 @@
     },
     {
       "Repetition number": 32,
-      "Repetition Fatigue": 0.124,
+      "Repetition Fatigue": 0.105,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -477,7 +477,7 @@
     },
     {
       "Repetition number": 33,
-      "Repetition Fatigue": 0.045,
+      "Repetition Fatigue": 0.014,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -491,7 +491,7 @@
     },
     {
       "Repetition number": 34,
-      "Repetition Fatigue": 0.098,
+      "Repetition Fatigue": 0.079,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.11543977591036396,
@@ -519,7 +519,7 @@
     },
     {
       "Repetition number": 36,
-      "Repetition Fatigue": 0.148,
+      "Repetition Fatigue": 0.15,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -533,7 +533,7 @@
     },
     {
       "Repetition number": 37,
-      "Repetition Fatigue": 0.134,
+      "Repetition Fatigue": 0.133,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -547,7 +547,7 @@
     },
     {
       "Repetition number": 38,
-      "Repetition Fatigue": 0.171,
+      "Repetition Fatigue": 0.155,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -561,7 +561,7 @@
     },
     {
       "Repetition number": 39,
-      "Repetition Fatigue": 0.026,
+      "Repetition Fatigue": 0.034,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -575,7 +575,7 @@
     },
     {
       "Repetition number": 40,
-      "Repetition Fatigue": 0.158,
+      "Repetition Fatigue": 0.143,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -589,7 +589,7 @@
     },
     {
       "Repetition number": 41,
-      "Repetition Fatigue": 0.16,
+      "Repetition Fatigue": 0.149,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -603,7 +603,7 @@
     },
     {
       "Repetition number": 42,
-      "Repetition Fatigue": 0.068,
+      "Repetition Fatigue": 0.063,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.3114611005692597,
@@ -631,7 +631,7 @@
     },
     {
       "Repetition number": 44,
-      "Repetition Fatigue": 0.177,
+      "Repetition Fatigue": 0.145,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -647,7 +647,7 @@
     },
     {
       "Repetition number": 45,
-      "Repetition Fatigue": 0.036,
+      "Repetition Fatigue": 0.031,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.11543977591036396,
@@ -661,7 +661,7 @@
     },
     {
       "Repetition number": 46,
-      "Repetition Fatigue": 0.216,
+      "Repetition Fatigue": 0.185,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -677,7 +677,7 @@
     },
     {
       "Repetition number": 47,
-      "Repetition Fatigue": 0.006,
+      "Repetition Fatigue": 0.007,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -691,7 +691,7 @@
     },
     {
       "Repetition number": 48,
-      "Repetition Fatigue": 0.138,
+      "Repetition Fatigue": 0.14,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -705,7 +705,7 @@
     },
     {
       "Repetition number": 49,
-      "Repetition Fatigue": 0.167,
+      "Repetition Fatigue": 0.161,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.3114611005692597,
@@ -719,7 +719,7 @@
     },
     {
       "Repetition number": 50,
-      "Repetition Fatigue": 0.077,
+      "Repetition Fatigue": 0.074,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -733,7 +733,7 @@
     },
     {
       "Repetition number": 51,
-      "Repetition Fatigue": 0.108,
+      "Repetition Fatigue": 0.109,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -747,7 +747,7 @@
     },
     {
       "Repetition number": 52,
-      "Repetition Fatigue": 0.1,
+      "Repetition Fatigue": 0.102,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -761,7 +761,7 @@
     },
     {
       "Repetition number": 53,
-      "Repetition Fatigue": 0.184,
+      "Repetition Fatigue": 0.146,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -777,7 +777,7 @@
     },
     {
       "Repetition number": 54,
-      "Repetition Fatigue": 0.031,
+      "Repetition Fatigue": 0.025,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.3114611005692597,
@@ -791,7 +791,7 @@
     },
     {
       "Repetition number": 55,
-      "Repetition Fatigue": 0.056,
+      "Repetition Fatigue": 0.064,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -805,7 +805,7 @@
     },
     {
       "Repetition number": 56,
-      "Repetition Fatigue": 0.263,
+      "Repetition Fatigue": 0.221,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -821,7 +821,7 @@
     },
     {
       "Repetition number": 57,
-      "Repetition Fatigue": 0.037,
+      "Repetition Fatigue": 0.05,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -835,7 +835,7 @@
     },
     {
       "Repetition number": 58,
-      "Repetition Fatigue": 0.082,
+      "Repetition Fatigue": 0.061,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -849,7 +849,7 @@
     },
     {
       "Repetition number": 59,
-      "Repetition Fatigue": 0.081,
+      "Repetition Fatigue": 0.073,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.3114611005692597,
@@ -863,7 +863,7 @@
     },
     {
       "Repetition number": 60,
-      "Repetition Fatigue": 0.207,
+      "Repetition Fatigue": 0.196,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -877,7 +877,7 @@
     },
     {
       "Repetition number": 61,
-      "Repetition Fatigue": 0.146,
+      "Repetition Fatigue": 0.124,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -891,7 +891,7 @@
     },
     {
       "Repetition number": 62,
-      "Repetition Fatigue": 0.145,
+      "Repetition Fatigue": 0.133,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.45197478991596596,
@@ -905,7 +905,7 @@
     },
     {
       "Repetition number": 63,
-      "Repetition Fatigue": 0.15,
+      "Repetition Fatigue": 0.126,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -919,7 +919,7 @@
     },
     {
       "Repetition number": 64,
-      "Repetition Fatigue": 0.049,
+      "Repetition Fatigue": 0.058,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.11543977591036396,
@@ -933,7 +933,7 @@
     },
     {
       "Repetition number": 65,
-      "Repetition Fatigue": 0.179,
+      "Repetition Fatigue": 0.168,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.11543977591036396,
@@ -947,7 +947,7 @@
     },
     {
       "Repetition number": 66,
-      "Repetition Fatigue": 0.26,
+      "Repetition Fatigue": 0.229,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -963,7 +963,7 @@
     },
     {
       "Repetition number": 67,
-      "Repetition Fatigue": 0.087,
+      "Repetition Fatigue": 0.084,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -977,7 +977,7 @@
     },
     {
       "Repetition number": 68,
-      "Repetition Fatigue": 0.009,
+      "Repetition Fatigue": 0.021,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -991,7 +991,7 @@
     },
     {
       "Repetition number": 69,
-      "Repetition Fatigue": 0.147,
+      "Repetition Fatigue": 0.112,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -1007,7 +1007,7 @@
     },
     {
       "Repetition number": 70,
-      "Repetition Fatigue": 0.088,
+      "Repetition Fatigue": 0.09,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -1021,7 +1021,7 @@
     },
     {
       "Repetition number": 71,
-      "Repetition Fatigue": 0.182,
+      "Repetition Fatigue": 0.176,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3114611005692597,
@@ -1035,7 +1035,7 @@
     },
     {
       "Repetition number": 72,
-      "Repetition Fatigue": 0.123,
+      "Repetition Fatigue": 0.098,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.45197478991596596,
@@ -1049,7 +1049,7 @@
     },
     {
       "Repetition number": 73,
-      "Repetition Fatigue": -0.065,
+      "Repetition Fatigue": -0.06,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -1063,7 +1063,7 @@
     },
     {
       "Repetition number": 74,
-      "Repetition Fatigue": 0.017,
+      "Repetition Fatigue": 0.016,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -1077,7 +1077,7 @@
     },
     {
       "Repetition number": 75,
-      "Repetition Fatigue": 0.111,
+      "Repetition Fatigue": 0.08,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,

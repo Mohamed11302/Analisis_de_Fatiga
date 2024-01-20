@@ -1,6 +1,6 @@
 from abc import ABC
 
-class JUEGO(ABC):
+class FATIGUE_GAMES(ABC):
     def __init__(self, date, user, fatiga_serie=-1):
         self.date = date
         self.user = user

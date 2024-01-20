@@ -5,7 +5,7 @@ import server as server
 import Constantes as Const
 
 
-def grabar_oculus(process):
+def record_oculus(process):
     cmd = F"scrcpy --crop=2000:2000:0:0 --record={Const.RUTA_VIDEO_OCULUS} --record-format=mkv  --no-playback --kill-adb-on-close --max-fps=30 --display-buffer=50"
     if server.is_process_running(process):
         print("[!] Ya hay un proceso en ejecución. No se puede iniciar otro.")
@@ -14,7 +14,7 @@ def grabar_oculus(process):
         print(f"[*] Proceso iniciado con PID: {process.pid}")
     return process
 
-def finalizar_grabacion_oculus(process):
+def finish_oculus_recording(process):
     if server.is_process_running(process):
         ctypes.windll.kernel32.GenerateConsoleCtrlEvent(0, process.pid)
         process.wait()
@@ -25,7 +25,7 @@ def finalizar_grabacion_oculus(process):
     return process
 
 
-def grabar_webcam(evento):
+def record_webcam(evento):
     cap = cv2.VideoCapture(0)
 
     ancho = int(cap.get(3))

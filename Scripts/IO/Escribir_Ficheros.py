@@ -27,7 +27,7 @@ def escribir_datos_json(datos_fichero_json: dict, juego)-> dict:
 
 def escribir_mensajes_fatiga(fatiga: dict, metricas:dict):
     mensajes = []
-    for nombre, _ in metricas.items():
+    for nombre in metricas:
         if fatiga[nombre] > 0.5:
             mensajes.append("The patient has experienced a decrease in performance "  + str(nombre))
     if fatiga[Const.PENALIZATION_BLOCK_DROP]>0:
