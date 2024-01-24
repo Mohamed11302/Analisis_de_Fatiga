@@ -5,7 +5,7 @@ import Constantes.Configuracion as Config
 from Procesadores.Procesador_Datos import Procesador_Datos
 from Procesadores.Procesador_Fatigas import Procesador_Fatigas
 from Fatigue_Games.FATIGUE_GAMES import FATIGUE_GAMES
-import auxiliares as aux
+import Utils.auxiliares as aux
 import numpy as np
 class BBT(FATIGUE_GAMES):
     def __init__(self, dataframe:pd.DataFrame, porcentaje:int, date:str, user:str, hijo, fatiga_serie=None):
@@ -225,7 +225,7 @@ def bucleBBT(juegos, user):
         my_bbt.main()
     if len(lista_juegos)>1:
         my_bbt.normalize_data()
-        my_bbt.clasify_fatigues()
+    my_bbt.clasify_fatigues()
     bbt = my_bbt
     valores_de_fatiga = []
     outputs = []

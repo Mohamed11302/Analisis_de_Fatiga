@@ -10,6 +10,8 @@ OUTPUT_NUMREPETITION = 'Repetition number'
 OUTPUT_FATIGUE_REPETITION = 'Repetition Fatigue'
 OUTPUT_FATIGUE_METRICS = 'Fatigue per metric'
 OUTPUT_WARNINGS = 'Fatigue warnings'
+OUTPUT_INICIO_SEG = 'Inicio_Seg'
+OUTPUT_FINAL_SEG = 'Final_Seg'
 
 
 OUTPUT_FOLDER = "Output_fatigue/"

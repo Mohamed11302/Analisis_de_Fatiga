@@ -1,7 +1,8 @@
-from moviepy.editor import VideoFileClip, clips_array
+from moviepy.editor import VideoFileClip, clips_array, concatenate_videoclips, CompositeVideoClip
 import argparse
 import Constantes as Const
-def edit_video(ruta_webcam, ruta_oculus, ruta_salida):
+
+def edit_video(ruta_webcam, ruta_oculus, ruta_salida, video_fatiga):
     try:
         video_webcam = VideoFileClip(ruta_webcam)
         video_oculus = VideoFileClip(ruta_oculus)
@@ -12,10 +13,22 @@ def edit_video(ruta_webcam, ruta_oculus, ruta_salida):
         else:
             inicio = video_webcam.duration - min_duration
             video_webcam = video_webcam.subclip(inicio, video_webcam.duration)
-        videos_concatenados = clips_array([[video_webcam, video_oculus]])
+
+        if video_fatiga != None:
+            video_fatiga = video_fatiga.subclip(inicio, video_fatiga.duration)
+            combined = clips_array([[video_webcam], [video_fatiga]])
+        
+        else:
+            combined = video_webcam
+
+        videos_concatenados = clips_array([[combined, video_oculus]])
+        # Escribir el nuevo video
         videos_concatenados.write_videofile(ruta_salida, codec="libx264", fps=15)
-    except:
-        print(f"Las rutas \n\t{ruta_webcam}\n\t{ruta_oculus}\nno están bien definidas")
+    except Exception as e:
+        print(f"Ocurrió un error al procesar los videos: {str(e)}")
+
+
+
 
 def obtener_argumentos_entrada():
     parser = argparse.ArgumentParser(description='Edit video arguments.')
@@ -23,14 +36,21 @@ def obtener_argumentos_entrada():
     parser.add_argument('--oculus_video', type=str, help='Directory of oculus video')
     parser.add_argument('--webcam_video', type=str, help='Directory of webcam video')
     args = parser.parse_args()
-    if args.webcam_video != None:
-        Const.RUTA_VIDEO_WEBCAM = args.webcam_video
-    if args.oculus_video != None:
-        Const.RUTA_VIDEO_OCULUS = args.oculus_video
-    if args.output_video != None:
-        Const.RUTA_VIDEO_SALIDA = args.output_video
+    return args.webcam_video, args.oculus_video, args.output_video
+
+def asignar_argumentos(webcam_video, oculus_video, output_video):
+    if webcam_video != None:
+        Const.RUTA_VIDEO_WEBCAM = webcam_video
+    if oculus_video != None:
+        Const.RUTA_VIDEO_OCULUS = oculus_video
+    if output_video != None:
+        Const.RUTA_VIDEO_SALIDA = output_video
 
 
 if __name__ == "__main__":
-    obtener_argumentos_entrada()
-    edit_video(Const.RUTA_VIDEO_WEBCAM, Const.RUTA_VIDEO_OCULUS, Const.RUTA_VIDEO_SALIDA)
+    try:
+        webcam_video, oculus_video, output_video = obtener_argumentos_entrada()
+        asignar_argumentos(webcam_video, oculus_video, output_video)
+        edit_video(Const.RUTA_VIDEO_WEBCAM, Const.RUTA_VIDEO_OCULUS, Const.RUTA_VIDEO_SALIDA, None)
+    except Exception as e:
+        print(f"Ocurrió un error al procesar los videos: {str(e)}")

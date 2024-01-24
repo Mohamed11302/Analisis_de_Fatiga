@@ -1,5 +1,5 @@
 import Constantes.Constantes as Const
-import auxiliares as aux
+import Utils.auxiliares as aux
 import numpy as np
 import skfuzzy as fuzz
 

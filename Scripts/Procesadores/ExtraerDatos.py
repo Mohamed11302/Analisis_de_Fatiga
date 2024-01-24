@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import Constantes.Constantes as Const
-import auxiliares as aux
+import Utils.auxiliares as aux
 
 
 ############################ DIVIDIR EN REPETICIONES ######################################

@@ -10,16 +10,21 @@ def generar_salida(juego):
     modificar_csv_output(juego)  
     modificar_json_output(juego)
     print(f"Results saved in {Const_output.OUTPUT_FOLDER}{juego.user}")
-    
+    return crear_ruta_json(juego.date, juego.user)
 
 def escribir_datos_json(datos_fichero_json: dict, juego)-> dict:
     i = 0
     for repeticion, fatiga in juego.fatiga_por_metrica.items():
+        repeticion = repeticion +1
+        inicio_seg =  juego.dataframe[juego.dataframe[Const.NUMREPETICION]==repeticion][Const.TIME]
+        #print(repeticion)
+        #print(inicio_seg.values[0])
         nueva_repeticion = {
             Const_output.OUTPUT_NUMREPETITION: repeticion,
             Const_output.OUTPUT_FATIGUE_REPETITION: juego.fatiga_por_repeticion[i],
             Const_output.OUTPUT_FATIGUE_METRICS: fatiga, 
-            Const_output.OUTPUT_WARNINGS: escribir_mensajes_fatiga(fatiga, juego.metricas)
+            Const_output.OUTPUT_WARNINGS: escribir_mensajes_fatiga(fatiga, juego.metricas),
+            Const_output.OUTPUT_INICIO_SEG: inicio_seg.values[0]
         }
         datos_fichero_json[Const_output.OUTPUT_REPETITIONS].append(nueva_repeticion)
         i += 1
