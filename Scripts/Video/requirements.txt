@@ -1,0 +1,2 @@
+moviepy==2.0.0.dev2
+opencv-python==4.8.1.78
