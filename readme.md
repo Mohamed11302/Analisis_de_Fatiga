@@ -56,23 +56,23 @@ python3 -m pip install -r Scripts/Video/requirements.txt
     -   --webcam_video WEBCAM_VIDEO :Directory of webcam video
 
 An example of execution would be:
-´´´
+```
 python3 -m pip install -r Scripts/Video/requirements.txt
-´´´
+```
 
 Now, run the recording from the BBT program:
-´´´
+```
 adb shell am start -n com.DefaultCompany.Prueba_ClienteServidor2/com.unity3d.player.UnityPlayerActivity -e ruta "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt"
-´´´
+```
 Now start the server:
-´´´
+```
 python3 .\Scripts\server.py --oculus_directory "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt" --oculus_video_directory "video_oculus.mkv" --webcam_video_directory "video_webcam.avi"
-´´´
+```
 
 Finally, once the video is created, you can generate the fatigue report video as it follows:
 
-´´´
+```
 python3 .\Scripts\Fatigue_and_video.py --user prueba --date 20240123_172111 --read_oculus 1 --directory "/sdcard/Android/data/com.RehabImmersive.BBT_2023_12_BodyCalibration/BoxAndBlock" --output_video "fatigue_video.mp4" --oculus_video "video_oculus.mkv" --webcam_video "video_webcam.avi"
-´´´
+```
 
 
