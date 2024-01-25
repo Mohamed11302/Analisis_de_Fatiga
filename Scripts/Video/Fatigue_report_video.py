@@ -5,7 +5,7 @@ import json
 clips = []
 def crear_clip_de_texto(inicio, fin, mensaje):
     # Crear un clip de texto con un tamaño de fuente más pequeño y centrado
-    clip = TextClip(mensaje, fontsize=24, color='black', align='center').set_duration(fin - inicio).set_start(inicio).set_position('center')
+    clip = TextClip(mensaje, fontsize=30, color='black', align='center').set_duration(fin - inicio).set_start(inicio).set_position('center')
     # Almacenar el clip en la lista global
     clips.append(clip)
 

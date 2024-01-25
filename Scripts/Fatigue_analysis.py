@@ -47,14 +47,6 @@ def main(user, date, read_oculus, directory):
     try:
         asignar_argumentos(read_oculus, directory)
         juego = Const.JUEGO_BBT
-        #nombre_intento = "20231230_182344"
-        #user = "siham"
-        #nombre_intento = "20231226_204637"
-        #user = "default"
-        #nombre_intento = "20240116_164720"
-        #user = "miguel"
-        #nombre_intento = "20240116_184911"
-        #user = "raul"
         
         if Config.LEER_FICHEROS_OCULUS:
             if pre_requisitos.prerequisitos(user):
@@ -71,5 +63,5 @@ def main(user, date, read_oculus, directory):
     
 if __name__ == "__main__":
     user, date, read_oculus, directory = obtener_argumentos_entrada()
-    main(user, date)
+    main(user, date, read_oculus, directory)
 

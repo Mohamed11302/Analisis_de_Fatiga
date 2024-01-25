@@ -1,8 +1,8 @@
 {
   "Repetitions": [
     {
-      "Repetition number": 0,
-      "Repetition Fatigue": 0.753,
+      "Repetition number": 1,
+      "Repetition Fatigue": 0.767,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -16,11 +16,12 @@
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue",
         "The patient has drop the block 1 times",
         "Incorrect movement. The patient has placed the object outside of the box"
-      ]
+      ],
+      "Inicio_Seg": 1.719999
     },
     {
-      "Repetition number": 1,
-      "Repetition Fatigue": 0.257,
+      "Repetition number": 2,
+      "Repetition Fatigue": 0.301,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -32,11 +33,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 2.759998
     },
     {
-      "Repetition number": 2,
-      "Repetition Fatigue": 0.189,
+      "Repetition number": 3,
+      "Repetition Fatigue": 0.237,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -48,11 +50,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 3.879997
     },
     {
-      "Repetition number": 3,
-      "Repetition Fatigue": 0.197,
+      "Repetition number": 4,
+      "Repetition Fatigue": 0.244,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -64,11 +67,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 4.859996
     },
     {
-      "Repetition number": 4,
-      "Repetition Fatigue": 0.123,
+      "Repetition number": 5,
+      "Repetition Fatigue": 0.175,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -78,11 +82,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 5.899995
     },
     {
-      "Repetition number": 5,
-      "Repetition Fatigue": 0.17,
+      "Repetition number": 6,
+      "Repetition Fatigue": 0.219,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -94,11 +99,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 6.939994
     },
     {
-      "Repetition number": 6,
-      "Repetition Fatigue": 0.178,
+      "Repetition number": 7,
+      "Repetition Fatigue": 0.226,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -110,11 +116,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 7.839993
     },
     {
-      "Repetition number": 7,
-      "Repetition Fatigue": 0.177,
+      "Repetition number": 8,
+      "Repetition Fatigue": 0.225,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -126,11 +133,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 8.960015
     },
     {
-      "Repetition number": 8,
-      "Repetition Fatigue": 0.093,
+      "Repetition number": 9,
+      "Repetition Fatigue": 0.146,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -142,11 +150,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 10.00004
     },
     {
-      "Repetition number": 9,
-      "Repetition Fatigue": 0.056,
+      "Repetition number": 10,
+      "Repetition Fatigue": 0.111,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -158,11 +167,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 11.04006
     },
     {
-      "Repetition number": 10,
-      "Repetition Fatigue": 0.04,
+      "Repetition number": 11,
+      "Repetition Fatigue": 0.096,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -174,11 +184,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 11.94008
     },
     {
-      "Repetition number": 11,
-      "Repetition Fatigue": 0.271,
+      "Repetition number": 12,
+      "Repetition Fatigue": 0.313,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -190,11 +201,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 13.06011
     },
     {
-      "Repetition number": 12,
-      "Repetition Fatigue": 0.137,
+      "Repetition number": 13,
+      "Repetition Fatigue": 0.188,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -206,11 +218,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 14.24014
     },
     {
-      "Repetition number": 13,
-      "Repetition Fatigue": 0.094,
+      "Repetition number": 14,
+      "Repetition Fatigue": 0.147,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -222,11 +235,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 15.14016
     },
     {
-      "Repetition number": 14,
-      "Repetition Fatigue": 0.069,
+      "Repetition number": 15,
+      "Repetition Fatigue": 0.124,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -238,11 +252,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 16.18018
     },
     {
-      "Repetition number": 15,
-      "Repetition Fatigue": 0.121,
+      "Repetition number": 16,
+      "Repetition Fatigue": 0.172,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -254,11 +269,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 17.36021
     },
     {
-      "Repetition number": 16,
-      "Repetition Fatigue": 0.125,
+      "Repetition number": 17,
+      "Repetition Fatigue": 0.176,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -270,11 +286,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 18.26023
     },
     {
-      "Repetition number": 17,
-      "Repetition Fatigue": 0.064,
+      "Repetition number": 18,
+      "Repetition Fatigue": 0.119,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -286,11 +303,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 19.02024
     },
     {
-      "Repetition number": 18,
-      "Repetition Fatigue": 0.061,
+      "Repetition number": 19,
+      "Repetition Fatigue": 0.116,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -302,11 +320,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 20.28027
     },
     {
-      "Repetition number": 19,
-      "Repetition Fatigue": 0.1,
+      "Repetition number": 20,
+      "Repetition Fatigue": 0.153,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -318,11 +337,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 21.18029
     },
     {
-      "Repetition number": 20,
-      "Repetition Fatigue": 0.162,
+      "Repetition number": 21,
+      "Repetition Fatigue": 0.211,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.18731182795698886,
@@ -334,11 +354,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 22.22032
     },
     {
-      "Repetition number": 21,
-      "Repetition Fatigue": 0.097,
+      "Repetition number": 22,
+      "Repetition Fatigue": 0.15,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -350,11 +371,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 22.92033
     },
     {
-      "Repetition number": 22,
-      "Repetition Fatigue": 0.08,
+      "Repetition number": 23,
+      "Repetition Fatigue": 0.134,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -366,11 +388,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 23.82035
     },
     {
-      "Repetition number": 23,
-      "Repetition Fatigue": 0.111,
+      "Repetition number": 24,
+      "Repetition Fatigue": 0.163,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -382,11 +405,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 24.72038
     },
     {
-      "Repetition number": 24,
-      "Repetition Fatigue": 0.123,
+      "Repetition number": 25,
+      "Repetition Fatigue": 0.175,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -398,11 +422,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 25.7004
     },
     {
-      "Repetition number": 25,
-      "Repetition Fatigue": 0.154,
+      "Repetition number": 26,
+      "Repetition Fatigue": 0.204,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -414,11 +439,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 26.52042
     },
     {
-      "Repetition number": 26,
-      "Repetition Fatigue": 0.072,
+      "Repetition number": 27,
+      "Repetition Fatigue": 0.127,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -430,11 +456,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 27.36044
     },
     {
-      "Repetition number": 27,
-      "Repetition Fatigue": 0.105,
+      "Repetition number": 28,
+      "Repetition Fatigue": 0.158,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -446,11 +473,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 28.12045
     },
     {
-      "Repetition number": 28,
-      "Repetition Fatigue": 0.153,
+      "Repetition number": 29,
+      "Repetition Fatigue": 0.202,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.18731182795698886,
@@ -462,11 +490,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 28.96047
     },
     {
-      "Repetition number": 29,
-      "Repetition Fatigue": 0.068,
+      "Repetition number": 30,
+      "Repetition Fatigue": 0.123,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -478,11 +507,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 29.72049
     },
     {
-      "Repetition number": 30,
-      "Repetition Fatigue": 0.142,
+      "Repetition number": 31,
+      "Repetition Fatigue": 0.192,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -494,11 +524,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 31.52053
     },
     {
-      "Repetition number": 31,
-      "Repetition Fatigue": 0.247,
+      "Repetition number": 32,
+      "Repetition Fatigue": 0.291,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.18731182795698886,
@@ -510,11 +541,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 32.50055
     },
     {
-      "Repetition number": 32,
-      "Repetition Fatigue": 0.1,
+      "Repetition number": 33,
+      "Repetition Fatigue": 0.152,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -526,11 +558,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 33.26057
     },
     {
-      "Repetition number": 33,
-      "Repetition Fatigue": 0.151,
+      "Repetition number": 34,
+      "Repetition Fatigue": 0.201,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -542,11 +575,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 34.10059
     },
     {
-      "Repetition number": 34,
-      "Repetition Fatigue": 0.166,
+      "Repetition number": 35,
+      "Repetition Fatigue": 0.215,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.18731182795698886,
@@ -558,11 +592,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 35.00061
     },
     {
-      "Repetition number": 35,
-      "Repetition Fatigue": 0.097,
+      "Repetition number": 36,
+      "Repetition Fatigue": 0.15,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -574,11 +609,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 35.76063
     },
     {
-      "Repetition number": 36,
-      "Repetition Fatigue": 0.153,
+      "Repetition number": 37,
+      "Repetition Fatigue": 0.202,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -590,11 +626,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 36.52065
     },
     {
-      "Repetition number": 37,
-      "Repetition Fatigue": 0.147,
+      "Repetition number": 38,
+      "Repetition Fatigue": 0.197,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -606,11 +643,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 37.36066
     },
     {
-      "Repetition number": 38,
-      "Repetition Fatigue": 0.132,
+      "Repetition number": 39,
+      "Repetition Fatigue": 0.183,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -622,11 +660,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 38.12068
     },
     {
-      "Repetition number": 39,
-      "Repetition Fatigue": 0.094,
+      "Repetition number": 40,
+      "Repetition Fatigue": 0.147,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -638,11 +677,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 38.8807
     },
     {
-      "Repetition number": 40,
-      "Repetition Fatigue": 0.169,
+      "Repetition number": 41,
+      "Repetition Fatigue": 0.218,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.18731182795698886,
@@ -654,11 +694,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 39.86072
     },
     {
-      "Repetition number": 41,
-      "Repetition Fatigue": 0.123,
+      "Repetition number": 42,
+      "Repetition Fatigue": 0.175,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -670,11 +711,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 40.62074
     },
     {
-      "Repetition number": 42,
-      "Repetition Fatigue": 0.164,
+      "Repetition number": 43,
+      "Repetition Fatigue": 0.213,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -686,11 +728,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 41.38076
     },
     {
-      "Repetition number": 43,
-      "Repetition Fatigue": 0.254,
+      "Repetition number": 44,
+      "Repetition Fatigue": 0.298,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3457142857142853,
@@ -702,11 +745,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 42.22078
     },
     {
-      "Repetition number": 44,
-      "Repetition Fatigue": 0.106,
+      "Repetition number": 45,
+      "Repetition Fatigue": 0.158,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -718,11 +762,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 42.84079
     },
     {
-      "Repetition number": 45,
-      "Repetition Fatigue": 0.152,
+      "Repetition number": 46,
+      "Repetition Fatigue": 0.201,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.18731182795698886,
@@ -734,11 +779,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 43.68081
     },
     {
-      "Repetition number": 46,
-      "Repetition Fatigue": 0.152,
+      "Repetition number": 47,
+      "Repetition Fatigue": 0.201,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -750,11 +796,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 44.44083
     },
     {
-      "Repetition number": 47,
-      "Repetition Fatigue": 0.155,
+      "Repetition number": 48,
+      "Repetition Fatigue": 0.205,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -766,11 +813,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 45.20084
     },
     {
-      "Repetition number": 48,
-      "Repetition Fatigue": 0.02,
+      "Repetition number": 49,
+      "Repetition Fatigue": 0.078,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -780,11 +828,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 46.04086
     },
     {
-      "Repetition number": 49,
-      "Repetition Fatigue": 0.228,
+      "Repetition number": 50,
+      "Repetition Fatigue": 0.273,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3457142857142853,
@@ -796,11 +845,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 47.08089
     },
     {
-      "Repetition number": 50,
-      "Repetition Fatigue": 0.182,
+      "Repetition number": 51,
+      "Repetition Fatigue": 0.23,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -812,11 +862,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 47.7009
     },
     {
-      "Repetition number": 51,
-      "Repetition Fatigue": 0.126,
+      "Repetition number": 52,
+      "Repetition Fatigue": 0.177,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -828,11 +879,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 48.68092
     },
     {
-      "Repetition number": 52,
-      "Repetition Fatigue": 0.299,
+      "Repetition number": 53,
+      "Repetition Fatigue": 0.34,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -845,11 +897,12 @@
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue",
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 49.58094
     },
     {
-      "Repetition number": 53,
-      "Repetition Fatigue": 0.133,
+      "Repetition number": 54,
+      "Repetition Fatigue": 0.183,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -861,11 +914,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 50.06096
     },
     {
-      "Repetition number": 54,
-      "Repetition Fatigue": 0.149,
+      "Repetition number": 55,
+      "Repetition Fatigue": 0.199,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -877,11 +931,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 50.90097
     },
     {
-      "Repetition number": 55,
-      "Repetition Fatigue": 0.104,
+      "Repetition number": 56,
+      "Repetition Fatigue": 0.157,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -893,11 +948,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 51.66099
     },
     {
-      "Repetition number": 56,
-      "Repetition Fatigue": 0.19,
+      "Repetition number": 57,
+      "Repetition Fatigue": 0.237,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -909,11 +965,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 52.56101
     },
     {
-      "Repetition number": 57,
-      "Repetition Fatigue": 0.103,
+      "Repetition number": 58,
+      "Repetition Fatigue": 0.155,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -925,11 +982,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 53.40103
     },
     {
-      "Repetition number": 58,
-      "Repetition Fatigue": 0.174,
+      "Repetition number": 59,
+      "Repetition Fatigue": 0.222,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -941,11 +999,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 54.16105
     },
     {
-      "Repetition number": 59,
-      "Repetition Fatigue": 0.176,
+      "Repetition number": 60,
+      "Repetition Fatigue": 0.224,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -957,11 +1016,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 55.00107
     },
     {
-      "Repetition number": 60,
-      "Repetition Fatigue": 0.179,
+      "Repetition number": 61,
+      "Repetition Fatigue": 0.227,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.18731182795698886,
@@ -973,11 +1033,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 55.90109
     },
     {
-      "Repetition number": 61,
-      "Repetition Fatigue": 0.188,
+      "Repetition number": 62,
+      "Repetition Fatigue": 0.235,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.18731182795698886,
@@ -989,11 +1050,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 56.6011
     },
     {
-      "Repetition number": 62,
-      "Repetition Fatigue": 0.096,
+      "Repetition number": 63,
+      "Repetition Fatigue": 0.149,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -1005,11 +1067,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 57.36112
     },
     {
-      "Repetition number": 63,
-      "Repetition Fatigue": 0.204,
+      "Repetition number": 64,
+      "Repetition Fatigue": 0.251,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.3457142857142853,
@@ -1021,7 +1084,8 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 58.26114
     }
   ]
 }

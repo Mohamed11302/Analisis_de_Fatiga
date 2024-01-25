@@ -1,8 +1,8 @@
 {
   "Repetitions": [
     {
-      "Repetition number": 0,
-      "Repetition Fatigue": 0.866,
+      "Repetition number": 1,
+      "Repetition Fatigue": 0.874,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -16,11 +16,12 @@
         "The patient has experienced a decrease in performance Time Fatigue",
         "The patient has drop the block 1 times",
         "Incorrect movement. The patient has placed the object outside of the box"
-      ]
+      ],
+      "Inicio_Seg": 0.9599996
     },
     {
-      "Repetition number": 1,
-      "Repetition Fatigue": 0.185,
+      "Repetition number": 2,
+      "Repetition Fatigue": 0.233,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -32,11 +33,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 1.519999
     },
     {
-      "Repetition number": 2,
-      "Repetition Fatigue": 0.121,
+      "Repetition number": 3,
+      "Repetition Fatigue": 0.172,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.0,
@@ -46,11 +48,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 2.139999
     },
     {
-      "Repetition number": 3,
-      "Repetition Fatigue": -0.007,
+      "Repetition number": 4,
+      "Repetition Fatigue": 0.052,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -60,11 +63,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 2.559998
     },
     {
-      "Repetition number": 4,
-      "Repetition Fatigue": 0.229,
+      "Repetition number": 5,
+      "Repetition Fatigue": 0.274,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -76,11 +80,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 3.319998
     },
     {
-      "Repetition number": 5,
-      "Repetition Fatigue": 0.046,
+      "Repetition number": 6,
+      "Repetition Fatigue": 0.102,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -90,11 +95,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 3.879997
     },
     {
-      "Repetition number": 6,
-      "Repetition Fatigue": 0.114,
+      "Repetition number": 7,
+      "Repetition Fatigue": 0.166,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -106,11 +112,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 4.579997
     },
     {
-      "Repetition number": 7,
-      "Repetition Fatigue": 0.16,
+      "Repetition number": 8,
+      "Repetition Fatigue": 0.209,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -122,11 +129,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 5.199996
     },
     {
-      "Repetition number": 8,
-      "Repetition Fatigue": 0.104,
+      "Repetition number": 9,
+      "Repetition Fatigue": 0.156,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -136,11 +144,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 5.759995
     },
     {
-      "Repetition number": 9,
-      "Repetition Fatigue": 0.125,
+      "Repetition number": 10,
+      "Repetition Fatigue": 0.176,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -150,11 +159,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 6.519995
     },
     {
-      "Repetition number": 10,
-      "Repetition Fatigue": 0.234,
+      "Repetition number": 11,
+      "Repetition Fatigue": 0.279,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -166,11 +176,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 7.139994
     },
     {
-      "Repetition number": 11,
-      "Repetition Fatigue": 0.066,
+      "Repetition number": 12,
+      "Repetition Fatigue": 0.121,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -180,11 +191,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 7.699994
     },
     {
-      "Repetition number": 12,
-      "Repetition Fatigue": 0.146,
+      "Repetition number": 13,
+      "Repetition Fatigue": 0.196,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -194,11 +206,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 8.460004
     },
     {
-      "Repetition number": 13,
-      "Repetition Fatigue": 0.215,
+      "Repetition number": 14,
+      "Repetition Fatigue": 0.261,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -208,11 +221,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 9.16002
     },
     {
-      "Repetition number": 14,
-      "Repetition Fatigue": 0.235,
+      "Repetition number": 15,
+      "Repetition Fatigue": 0.28,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -224,11 +238,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 9.920037
     },
     {
-      "Repetition number": 15,
-      "Repetition Fatigue": 0.083,
+      "Repetition number": 16,
+      "Repetition Fatigue": 0.136,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -238,11 +253,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 10.48005
     },
     {
-      "Repetition number": 16,
-      "Repetition Fatigue": 0.174,
+      "Repetition number": 17,
+      "Repetition Fatigue": 0.222,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -252,11 +268,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 11.24007
     },
     {
-      "Repetition number": 17,
-      "Repetition Fatigue": 0.166,
+      "Repetition number": 18,
+      "Repetition Fatigue": 0.214,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -266,11 +283,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 11.94008
     },
     {
-      "Repetition number": 18,
-      "Repetition Fatigue": 0.143,
+      "Repetition number": 19,
+      "Repetition Fatigue": 0.193,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -280,11 +298,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 12.7001
     },
     {
-      "Repetition number": 19,
-      "Repetition Fatigue": 0.071,
+      "Repetition number": 20,
+      "Repetition Fatigue": 0.126,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -294,11 +313,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 13.40012
     },
     {
-      "Repetition number": 20,
-      "Repetition Fatigue": 0.18,
+      "Repetition number": 21,
+      "Repetition Fatigue": 0.228,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -308,11 +328,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 14.22014
     },
     {
-      "Repetition number": 21,
-      "Repetition Fatigue": 0.061,
+      "Repetition number": 22,
+      "Repetition Fatigue": 0.116,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -322,11 +343,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 14.92015
     },
     {
-      "Repetition number": 22,
-      "Repetition Fatigue": 0.078,
+      "Repetition number": 23,
+      "Repetition Fatigue": 0.132,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -336,11 +358,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 15.68017
     },
     {
-      "Repetition number": 23,
-      "Repetition Fatigue": 0.099,
+      "Repetition number": 24,
+      "Repetition Fatigue": 0.152,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -352,11 +375,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 16.38018
     },
     {
-      "Repetition number": 24,
-      "Repetition Fatigue": 0.252,
+      "Repetition number": 25,
+      "Repetition Fatigue": 0.296,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -368,11 +392,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 16.9402
     },
     {
-      "Repetition number": 25,
-      "Repetition Fatigue": 0.137,
+      "Repetition number": 26,
+      "Repetition Fatigue": 0.187,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -382,11 +407,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 17.56021
     },
     {
-      "Repetition number": 26,
-      "Repetition Fatigue": 0.05,
+      "Repetition number": 27,
+      "Repetition Fatigue": 0.106,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -396,11 +422,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 18.26023
     },
     {
-      "Repetition number": 27,
-      "Repetition Fatigue": 0.25,
+      "Repetition number": 28,
+      "Repetition Fatigue": 0.294,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -410,11 +437,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 19.22025
     },
     {
-      "Repetition number": 28,
-      "Repetition Fatigue": 0.016,
+      "Repetition number": 29,
+      "Repetition Fatigue": 0.073,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -424,11 +452,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 19.92027
     },
     {
-      "Repetition number": 29,
-      "Repetition Fatigue": 0.168,
+      "Repetition number": 30,
+      "Repetition Fatigue": 0.217,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -438,11 +467,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 20.68028
     },
     {
-      "Repetition number": 30,
-      "Repetition Fatigue": 0.066,
+      "Repetition number": 31,
+      "Repetition Fatigue": 0.121,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -452,11 +482,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 21.3803
     },
     {
-      "Repetition number": 31,
-      "Repetition Fatigue": 0.302,
+      "Repetition number": 32,
+      "Repetition Fatigue": 0.343,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -466,11 +497,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 22.14032
     },
     {
-      "Repetition number": 32,
-      "Repetition Fatigue": 0.113,
+      "Repetition number": 33,
+      "Repetition Fatigue": 0.165,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -480,11 +512,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 22.84033
     },
     {
-      "Repetition number": 33,
-      "Repetition Fatigue": 0.188,
+      "Repetition number": 34,
+      "Repetition Fatigue": 0.235,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.6,
@@ -496,11 +529,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 23.74035
     },
     {
-      "Repetition number": 34,
-      "Repetition Fatigue": 0.059,
+      "Repetition number": 35,
+      "Repetition Fatigue": 0.114,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -510,11 +544,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 24.22036
     },
     {
-      "Repetition number": 35,
-      "Repetition Fatigue": 0.02,
+      "Repetition number": 36,
+      "Repetition Fatigue": 0.077,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -524,11 +559,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 25.06038
     },
     {
-      "Repetition number": 36,
-      "Repetition Fatigue": 0.028,
+      "Repetition number": 37,
+      "Repetition Fatigue": 0.085,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -538,11 +574,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 25.9604
     },
     {
-      "Repetition number": 37,
-      "Repetition Fatigue": 0.064,
+      "Repetition number": 38,
+      "Repetition Fatigue": 0.119,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -552,11 +589,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 26.72042
     },
     {
-      "Repetition number": 38,
-      "Repetition Fatigue": 0.153,
+      "Repetition number": 39,
+      "Repetition Fatigue": 0.202,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -566,11 +604,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 27.56044
     },
     {
-      "Repetition number": 39,
-      "Repetition Fatigue": 0.022,
+      "Repetition number": 40,
+      "Repetition Fatigue": 0.079,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -580,11 +619,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 28.18045
     },
     {
-      "Repetition number": 40,
-      "Repetition Fatigue": 0.132,
+      "Repetition number": 41,
+      "Repetition Fatigue": 0.183,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -596,11 +636,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 29.02047
     },
     {
-      "Repetition number": 41,
-      "Repetition Fatigue": 0.139,
+      "Repetition number": 42,
+      "Repetition Fatigue": 0.189,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -610,11 +651,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 29.50048
     },
     {
-      "Repetition number": 42,
-      "Repetition Fatigue": 0.113,
+      "Repetition number": 43,
+      "Repetition Fatigue": 0.165,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -624,11 +666,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 30.2005
     },
     {
-      "Repetition number": 43,
-      "Repetition Fatigue": 0.078,
+      "Repetition number": 44,
+      "Repetition Fatigue": 0.132,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -638,11 +681,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 30.96052
     },
     {
-      "Repetition number": 44,
-      "Repetition Fatigue": 0.176,
+      "Repetition number": 45,
+      "Repetition Fatigue": 0.224,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -654,11 +698,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 31.72054
     },
     {
-      "Repetition number": 45,
-      "Repetition Fatigue": 0.044,
+      "Repetition number": 46,
+      "Repetition Fatigue": 0.1,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -668,11 +713,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 32.28055
     },
     {
-      "Repetition number": 46,
-      "Repetition Fatigue": 0.023,
+      "Repetition number": 47,
+      "Repetition Fatigue": 0.08,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.1,
@@ -682,11 +728,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 33.04057
     },
     {
-      "Repetition number": 47,
-      "Repetition Fatigue": 0.111,
+      "Repetition number": 48,
+      "Repetition Fatigue": 0.163,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -696,11 +743,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 33.88058
     },
     {
-      "Repetition number": 48,
-      "Repetition Fatigue": 0.154,
+      "Repetition number": 49,
+      "Repetition Fatigue": 0.203,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -710,11 +758,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 34.5006
     },
     {
-      "Repetition number": 49,
-      "Repetition Fatigue": 0.042,
+      "Repetition number": 50,
+      "Repetition Fatigue": 0.098,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -724,11 +773,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 35.20061
     },
     {
-      "Repetition number": 50,
-      "Repetition Fatigue": 0.211,
+      "Repetition number": 51,
+      "Repetition Fatigue": 0.257,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -740,11 +790,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 35.96063
     },
     {
-      "Repetition number": 51,
-      "Repetition Fatigue": 0.177,
+      "Repetition number": 52,
+      "Repetition Fatigue": 0.225,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -756,11 +807,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 36.66065
     },
     {
-      "Repetition number": 52,
-      "Repetition Fatigue": 0.078,
+      "Repetition number": 53,
+      "Repetition Fatigue": 0.132,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -770,11 +822,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 37.28066
     },
     {
-      "Repetition number": 53,
-      "Repetition Fatigue": 0.099,
+      "Repetition number": 54,
+      "Repetition Fatigue": 0.152,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -784,11 +837,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 37.98068
     },
     {
-      "Repetition number": 54,
-      "Repetition Fatigue": 0.152,
+      "Repetition number": 55,
+      "Repetition Fatigue": 0.202,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -800,11 +854,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 38.7407
     },
     {
-      "Repetition number": 55,
-      "Repetition Fatigue": 0.029,
+      "Repetition number": 56,
+      "Repetition Fatigue": 0.086,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.2925259314896804,
@@ -814,11 +869,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 39.30071
     },
     {
-      "Repetition number": 56,
-      "Repetition Fatigue": 0.203,
+      "Repetition number": 57,
+      "Repetition Fatigue": 0.249,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -828,11 +884,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 40.06073
     },
     {
-      "Repetition number": 57,
-      "Repetition Fatigue": 0.121,
+      "Repetition number": 58,
+      "Repetition Fatigue": 0.172,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -842,11 +899,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 40.68074
     },
     {
-      "Repetition number": 58,
-      "Repetition Fatigue": 0.121,
+      "Repetition number": 59,
+      "Repetition Fatigue": 0.172,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -856,11 +914,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 41.38076
     },
     {
-      "Repetition number": 59,
-      "Repetition Fatigue": 0.19,
+      "Repetition number": 60,
+      "Repetition Fatigue": 0.238,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -870,11 +929,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 42.00077
     },
     {
-      "Repetition number": 60,
-      "Repetition Fatigue": 0.029,
+      "Repetition number": 61,
+      "Repetition Fatigue": 0.085,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -884,11 +944,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 42.70079
     },
     {
-      "Repetition number": 61,
-      "Repetition Fatigue": 0.021,
+      "Repetition number": 62,
+      "Repetition Fatigue": 0.078,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -898,11 +959,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 44.78083
     },
     {
-      "Repetition number": 62,
-      "Repetition Fatigue": 0.103,
+      "Repetition number": 63,
+      "Repetition Fatigue": 0.155,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -914,11 +976,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 46.10086
     },
     {
-      "Repetition number": 63,
-      "Repetition Fatigue": 0.19,
+      "Repetition number": 64,
+      "Repetition Fatigue": 0.238,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -930,11 +993,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 46.86088
     },
     {
-      "Repetition number": 64,
-      "Repetition Fatigue": 0.165,
+      "Repetition number": 65,
+      "Repetition Fatigue": 0.214,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -944,11 +1008,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 47.42089
     },
     {
-      "Repetition number": 65,
-      "Repetition Fatigue": 0.107,
+      "Repetition number": 66,
+      "Repetition Fatigue": 0.16,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -958,11 +1023,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 48.12091
     },
     {
-      "Repetition number": 66,
-      "Repetition Fatigue": 0.087,
+      "Repetition number": 67,
+      "Repetition Fatigue": 0.14,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -972,11 +1038,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 48.88093
     },
     {
-      "Repetition number": 67,
-      "Repetition Fatigue": 0.123,
+      "Repetition number": 68,
+      "Repetition Fatigue": 0.174,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -988,11 +1055,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 49.58094
     },
     {
-      "Repetition number": 68,
-      "Repetition Fatigue": 0.102,
+      "Repetition number": 69,
+      "Repetition Fatigue": 0.154,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.2925259314896804,
@@ -1002,11 +1070,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 50.20096
     },
     {
-      "Repetition number": 69,
-      "Repetition Fatigue": 0.107,
+      "Repetition number": 70,
+      "Repetition Fatigue": 0.159,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.6,
@@ -1018,11 +1087,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Time Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 50.96098
     },
     {
-      "Repetition number": 70,
-      "Repetition Fatigue": 0.07,
+      "Repetition number": 71,
+      "Repetition Fatigue": 0.124,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.1,
@@ -1032,11 +1102,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 51.52099
     },
     {
-      "Repetition number": 71,
-      "Repetition Fatigue": -0.036,
+      "Repetition number": 72,
+      "Repetition Fatigue": 0.025,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -1046,11 +1117,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 52.42101
     },
     {
-      "Repetition number": 72,
-      "Repetition Fatigue": 0.069,
+      "Repetition number": 73,
+      "Repetition Fatigue": 0.123,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -1060,11 +1132,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 53.60104
     },
     {
-      "Repetition number": 73,
-      "Repetition Fatigue": 0.085,
+      "Repetition number": 74,
+      "Repetition Fatigue": 0.139,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -1074,11 +1147,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 54.22105
     },
     {
-      "Repetition number": 74,
-      "Repetition Fatigue": 0.161,
+      "Repetition number": 75,
+      "Repetition Fatigue": 0.21,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -1088,11 +1162,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 54.92107
     },
     {
-      "Repetition number": 75,
-      "Repetition Fatigue": 0.1,
+      "Repetition number": 76,
+      "Repetition Fatigue": 0.153,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -1102,11 +1177,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 55.54108
     },
     {
-      "Repetition number": 76,
-      "Repetition Fatigue": 0.134,
+      "Repetition number": 77,
+      "Repetition Fatigue": 0.185,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -1116,11 +1192,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 56.2411
     },
     {
-      "Repetition number": 77,
-      "Repetition Fatigue": 0.186,
+      "Repetition number": 78,
+      "Repetition Fatigue": 0.234,
       "Fatigue per metric": {
         "Strength Fatigue": 0.1,
         "Time Fatigue": 0.4330795681119667,
@@ -1132,11 +1209,12 @@
       },
       "Fatigue warnings": [
         "The patient has experienced a decrease in performance Hand Trajectory Fatigue"
-      ]
+      ],
+      "Inicio_Seg": 56.86111
     },
     {
-      "Repetition number": 78,
-      "Repetition Fatigue": -0.007,
+      "Repetition number": 79,
+      "Repetition Fatigue": 0.052,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -1146,11 +1224,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 57.56113
     },
     {
-      "Repetition number": 79,
-      "Repetition Fatigue": 0.152,
+      "Repetition number": 80,
+      "Repetition Fatigue": 0.202,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.4330795681119667,
@@ -1160,11 +1239,12 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 58.74115
     },
     {
-      "Repetition number": 80,
-      "Repetition Fatigue": 0.008,
+      "Repetition number": 81,
+      "Repetition Fatigue": 0.067,
       "Fatigue per metric": {
         "Strength Fatigue": 0.0,
         "Time Fatigue": 0.0,
@@ -1174,7 +1254,8 @@
         "Block Drop Penalization": 0,
         "Incorrect movement Penalization": false
       },
-      "Fatigue warnings": []
+      "Fatigue warnings": [],
+      "Inicio_Seg": 59.36117
     }
   ]
 }
