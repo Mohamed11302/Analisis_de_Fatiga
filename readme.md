@@ -1,3 +1,7 @@
+# Fatigue analysis 
+Model to assess fatigue experienced by a patient in the Box and Box game developed in Rehab-Immersive. The model returns a label (Low, Moderate, High, Very High) indicating the level of fatigue the patient has experienced in that exercise series.
+
+
 # Run Fatigue_analysis program:
 Steps to run program:
 1.  Install python 3.11.7 and add to the environment path
@@ -25,7 +29,7 @@ This will generate a new folder Output_fatigue with the results for the analysis
 
 
 # Run Server and create the Fatigue video
-1.  Execute the command 
+1.  Install the dependencies
 ```
 python3 -m pip install -r Scripts/Video/requirements.txt
 ```
@@ -61,9 +65,9 @@ Now, run the recording from the BBT program:
 adb shell am start -n com.DefaultCompany.Prueba_ClienteServidor2/com.unity3d.player.UnityPlayerActivity -e ruta "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt"
 ´´´
 Now start the server:
-```
+´´´
 python3 .\Scripts\server.py --oculus_directory "/sdcard/Android/data/com.DefaultCompany.Prueba_ClienteServidor2/servidor.txt" --oculus_video_directory "video_oculus.mkv" --webcam_video_directory "video_webcam.avi"
-```
+´´´
 
 Finally, once the video is created, you can generate the fatigue report video as it follows:
 
